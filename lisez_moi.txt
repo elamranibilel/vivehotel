@@ -17,3 +17,9 @@ La base de données vide est créée
 - 10. Retourner dans le sous-dossier "_dataset" depuis le navigateur (avec XAMPP/Apache/Mysql en fonctionnement).
 - 10. Lancer le fichier "all.php" depuis le navigateur 
 La base de données contient le dataset, génération en moins de 6 secondes.
+
+Génération du CRUD :
+Pour assurer une meilleure sécurité, nous avons désactivé 
+les fonctionnalités de génération de CRUD et de dataset. 
+Nous avons supprimé le générateur de data.
+Cette copie de projet n'a pas de générateur de CRUD.
