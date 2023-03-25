@@ -9,6 +9,7 @@ date_default_timezone_set('Europe/Paris');
 
 /** Les constantes **/
 define("SITE_NOM", "Vivehotel");
+define("SITE_SLOGAN", "Chaîne hôtelière de l'année");
 define("DB_SERVER", "localhost");
 define("DB_PORT", "3306");
 define("DB_USER", "root");
