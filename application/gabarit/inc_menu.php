@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Home</span></a>
+          <a class="nav-link active" aria-current="page" href="index.php">Index</span></a>
         </li>
         <li><a class='nav-link' href='<?= hlien("chambre", "index") ?>'>Chambre</a></li>
         <!-- <li><a class='nav-link' href='<?= hlien("chcategorie", "index") ?>'>Chcategorie</a></li> -->
