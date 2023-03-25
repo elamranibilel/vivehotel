@@ -9,16 +9,13 @@
           <a class="nav-link active" aria-current="page" href="index.php">Home</span></a>
         </li>
         <li><a class='nav-link' href='<?= hlien("chambre", "index") ?>'>Chambre</a></li>
-        <li><a class='nav-link' href='<?= hlien("chcategorie", "index") ?>'>Chcategorie</a></li>
+        <!-- <li><a class='nav-link' href='<?= hlien("chcategorie", "index") ?>'>Chcategorie</a></li> -->
         <li><a class='nav-link' href='<?= hlien("client", "index") ?>'>Client</a></li>
-        <li><a class='nav-link' href='<?= hlien("commander", "index") ?>'>Commander</a></li>
-        <li><a class='nav-link' href='<?= hlien("hocategorie", "index") ?>'>Hocategorie</a></li>
         <li><a class='nav-link' href='<?= hlien("hotel", "index") ?>'>Hotel</a></li>
         <li><a class='nav-link' href='<?= hlien("personnel", "index") ?>'>Personnel</a></li>
-        <li><a class='nav-link' href='<?= hlien("proposer", "index") ?>'>Proposer</a></li>
         <li><a class='nav-link' href='<?= hlien("reservation", "index") ?>'>Reservation</a></li>
         <li><a class='nav-link' href='<?= hlien("services", "index") ?>'>Services</a></li>
-        <li><a class='nav-link' href='<?= hlien("tarifer", "index") ?>'>Tarifer</a></li>
+        <!-- <li><a class='nav-link' href='<?= hlien("tarifer", "index") ?>'>Tarifer</a></li>  -->
 
       </ul>
       <ul class="navbar-nav ml-auto">
