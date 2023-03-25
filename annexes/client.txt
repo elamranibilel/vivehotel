@@ -1,0 +1,1 @@
+Est-qu'un adminsitarteur peut supprimer un hôtel de la liste des hôtels de la chaine ?
