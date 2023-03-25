@@ -10,7 +10,7 @@ class Hotel extends Table {
 // creation d'une table hotel categore
 public function selectAllcategorie(): array
 {
-	$sql="select * from hotel, hocategorie where hot_id=hoc_categorie order by hot_id;";
+	$sql="select * from hotel, hocategorie where hot_id=hoc_categorie order by hoc_categorie;";
 	        $result=self::$link->query($sql);
         return $result->fetchAll();
 }
