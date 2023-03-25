@@ -1,10 +1,25 @@
 <?php
+
 /**
 Classe créé par le générateur.
-*/
-class Chambre extends Table {
-	public function __construct() {
+ */
+class Chambre extends Table
+{
+	public function __construct()
+	{
 		parent::__construct("chambre", "cha_id");
 	}
+
+	public function selectAll(): array
+	{
+		$sql = "SELECT  cha_id, cha_numero, 
+		cha_statut, cha_surface, cha_typelit1, 
+		cha_typelit2, cha_description, cha_jacuzzi,
+		cha_balcon, cha_wifi, cha_minibar, cha_coffre,
+		cha_vue, chc_categorie FROM chambre, chcategorie
+		WHERE cha_chcategorie = chc_id";
+		$result = self::$link->query($sql);
+		return $result->fetchAll();
+		return parent::selectAll();
+	}
 }
-?>
