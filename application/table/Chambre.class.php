@@ -16,10 +16,10 @@ class Chambre extends Table
 		cha_statut, cha_surface, cha_typelit1, 
 		cha_typelit2, cha_description, cha_jacuzzi,
 		cha_balcon, cha_wifi, cha_minibar, cha_coffre,
-		cha_vue, chc_categorie FROM chambre, chcategorie
+		cha_vue, chc_categorie FROM chambre, chcategorie 
 		WHERE cha_chcategorie = chc_id";
+
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
-		return parent::selectAll();
 	}
 }
