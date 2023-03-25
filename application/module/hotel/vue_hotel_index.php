@@ -26,7 +26,7 @@
     				<td><?= mhe($row['hot_adresse']) ?></td>
     				<td><?= mhe($row['hot_departement']) ?></td>
     				<td><?= mhe($row['hot_description']) ?></td>
-    				<td><?= mhe($row['hot_hocategorie']) ?></td>
+    				<td><?= mhe($row['hoc_hocategorie']) ?></td>
     				<td><a class="btn btn-warning" href="<?= hlien("hotel", "edit", "id", $row["hot_id"]) ?>">Modifier</a></td>
     				<td><a class="btn btn-danger" href="<?= hlien("hotel", "delete", "id", $row["hot_id"]) ?>">Supprimer</a></td>
     			</tr>
