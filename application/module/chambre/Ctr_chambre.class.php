@@ -71,7 +71,8 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 			$u->delete($_GET["id"]);
 			$_SESSION["message"][] = "L'enregistrement Chambre a bien été supprimé.";
 		}
-		header("location:" . hlien("chambre"));
+		header("location:" . hlien("chambre"));	{
+
 	}
 
 	function a_reservations()
