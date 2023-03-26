@@ -2,7 +2,12 @@
         <input type="hidden" name="cha_id" id="cha_id" value="<?= $id ?>" />
 
         <div class='form-group'>
-            <label for='cha_numero'>Modification de la chambre <?= mhe($cha_numero) ?></label>
+            <h1>
+                <label for='cha_numero'>Modification de la chambre <?= mhe($cha_numero) ?></label>
+            </h1>
+            <h2><a href="<?= hlien('chambre', 'reservations', 'id', $cha_id) ?>">Réservation de la chambre actuelle</a></h2>
+            <h2><a href="<?= hlien('chambre', 'index') ?>">Liste des chambres</a></h2>
+
         </div>
         <div class='form-group'>
             <label for='cha_statut'>Statut</label>
@@ -30,7 +35,7 @@
 
         <div class='form-group'>
             <label for='cha_description'>Description</label><br />
-            <textarea id='cha_description' name='cha_description' rows='10' class='form-control'>text 1 &lt;a href=&#039;index.php&#039;&gt;Accueil&lt;/a&gt;</textarea>
+            <textarea id='cha_description' name='cha_description' rows='5' class='form-control'>text 1 &lt;a href=&#039;index.php&#039;&gt;Accueil&lt;/a&gt;</textarea>
         </div>
         <div class='form-group'>
             <label for='cha_jacuzzi'>Jacuzzi</label>

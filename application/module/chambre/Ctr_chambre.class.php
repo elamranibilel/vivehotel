@@ -55,10 +55,8 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 
 			$u = new Chambre();
 			$u->save($_POST);
-			if ($_POST["cha_id"] == 0)
-				$_SESSION["message"][] = "Le nouvel enregistrement Chambre a bien été créé.";
-			else
-				$_SESSION["message"][] = "L'enregistrement Chambre a bien été mis à jour.";
+			$_SESSION["message"][] = ($_POST["cha_id"] == 0) ?  "Le nouvel enregistrement" .
+				"Chambre a bien été créé." :  "L'enregistrement Chambre a bien été mis à jour.";
 		}
 		header("location:" . hlien("chambre"));
 	}
@@ -74,5 +72,25 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 			$_SESSION["message"][] = "L'enregistrement Chambre a bien été supprimé.";
 		}
 		header("location:" . hlien("chambre"));
+	}
+
+	function a_reservations()
+	{
+		if (!is_numeric($_GET['id'])) {
+			$_SESSION['message'][] = 'Le lien est invalide';
+			header('Location: ' . hlien('chambre', 'index'));
+		}
+		$cha = new Chambre();
+		$dataCha = $cha->select($_GET['id']);
+		if ($dataCha === false) {
+			$_SESSION['message'][] = 'Le lien est invalide';
+			header('Location: ' . hlien('chambre', 'index'));
+		}
+
+		$reserv = new Reservation();
+		$data = $reserv->reservationsCha($_GET['id']);
+
+
+		require $this->gabarit;
 	}
 }

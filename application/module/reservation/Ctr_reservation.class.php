@@ -40,7 +40,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud {
 			else
 				$_SESSION["message"][]="L'enregistrement Reservation a bien été mis à jour.";
 		}
-		header("location:" . hlien("reservation"));
+		header("location:" . hlien("chambre", "edit", "id", $_POST['cha_id']));
 	}
 
 	
@@ -55,5 +55,3 @@ class Ctr_reservation extends Ctr_controleur implements I_crud {
 		header("location:" . hlien("reservation"));
 	}
 }
-
-?>

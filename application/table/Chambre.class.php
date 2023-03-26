@@ -18,8 +18,7 @@ class Chambre extends Table
 		cha_balcon, cha_wifi, cha_minibar, cha_coffre,
 		cha_vue, chc_categorie FROM chambre, chcategorie 
 		WHERE cha_chcategorie = chc_id
-		ORDER BY cha_id 
-		";
+		ORDER BY cha_id";
 
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
