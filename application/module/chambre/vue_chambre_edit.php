@@ -74,9 +74,9 @@
         </div>
         <div class='form-group'>
             <label for='cha_vue'>Vue</label>
-            <select id='cha_coffre' name='cha_coffre' type='text' class='form-control'>
-                <option value='0' <?= ($cha_coffre ===  0) ? 'selected' : '' ?>>Non</option>
-                <option value='1' <?= ($cha_coffre ===  1) ? 'selected' : '' ?>>Oui</option>
+            <select id='cha_vue' name='cha_vue' type='text' class='form-control'>
+                <option value='0' <?= ($cha_vue ===  0) ? 'selected' : '' ?>>Non</option>
+                <option value='1' <?= ($cha_vue ===  1) ? 'selected' : '' ?>>Oui</option>
             </select>
         </div>
         <div class='form-group'>
