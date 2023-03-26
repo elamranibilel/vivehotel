@@ -25,13 +25,19 @@ class Chambre extends Table
 		return $result->fetchAll();
 	}
 
-	static public function OPTIONStatut($statut)
+	public static function ARRAYstatut(): array
 	{
-		return self::HTMLoptions(
-			'SELECT DISTINCT cha_statut FROM chambre',
-			'cha_statut',
-			'cha_statut',
-			$statut
-		);
+		return ['Annnulé', 'Initialisé', 'Validé', 'En attente'];
+	}
+
+	public static function ARRAYtypelit(): array
+	{
+		return [
+			'2 Lits simples' => ['Lit simple', 'Lit simple'],
+			'Lit double standard Queen Size' => ['Lit double standard Queen Size', ''],
+			'Lit double Confort' => ['Lit double Confort', ''],
+			'Lit double King Size' => ['Lit double King Size', ''],
+			'1 lit double et un lit simple' => ['Lit double', 'lit simple']
+		];
 	}
 }
