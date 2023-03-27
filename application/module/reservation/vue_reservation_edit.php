@@ -2,20 +2,16 @@
         <input type="hidden" name="res_id" id="res_id" value="<?= $id ?>" />
 
         <div class='form-group'>
-            <label for='res_date_creation'>Date_creation</label>
-            <input id='res_date_creation' name='res_date_creation' type='datetime' size='50' value='<?= mhe($res_date_creation) ?>' class='form-control' />
+            <label for='res_date_debut'>Date de dedebut</label>
+            <input id='res_date_debut' name='res_date_debut' type='date' size='50' value='<?= mhe($res_date_debut) ?>' class='form-control' />
         </div>
         <div class='form-group'>
-            <label for='res_date_debut'>Date_debut</label>
-            <input id='res_date_debut' name='res_date_debut' type='datetime' size='50' value='<?= mhe($res_date_debut) ?>' class='form-control' />
-        </div>
-        <div class='form-group'>
-            <label for='res_date_maj'>Date_maj</label>
-            <input id='res_date_maj' name='res_date_maj' type='datetime' size='50' value='<?= mhe($res_date_maj) ?>' class='form-control' />
+            <label for='res_date_maj'>Date de mise à jour</label>
+            <input id='res_date_maj' name='res_date_maj' type='datetime-local' size='50' value='<?= mhe($res_date_maj) ?>' class='form-control' />
         </div>
         <div class='form-group'>
             <label for='res_date_fin'>Date_fin</label>
-            <input id='res_date_fin' name='res_date_fin' type='datetime' size='50' value='<?= mhe($res_date_fin) ?>' class='form-control' />
+            <input id='res_date_fin' name='res_date_fin' type='date' size='50' value='<?= mhe($res_date_fin) ?>' class='form-control' />
         </div>
         <div class='form-group'>
             <label for='res_etat'>Etat</label>
@@ -23,7 +19,9 @@
         </div>
         <div class='form-group'>
             <label for='res_client'>Client</label>
-            <input id='res_client' name='res_client' type='text' size='50' value='<?= mhe($res_client) ?>' class='form-control' />
+            <select id='res_client' name='res_client' type='text' class='form-control'>
+                <?= Client::OPTIONclients($res_client); ?>
+            </select>
         </div>
         <div class='form-group'>
             <label for='res_hotel'>Hotel</label>
