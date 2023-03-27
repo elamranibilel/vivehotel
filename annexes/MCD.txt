@@ -26,6 +26,7 @@
 
 *Chambre
 - id (int)
+- id_hotel (int)
 - numero (int)
 - statut (varchar(500))
 - surface (int)
