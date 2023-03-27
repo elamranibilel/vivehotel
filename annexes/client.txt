@@ -1,1 +1,2 @@
-Est-qu'un adminsitarteur peut supprimer un hôtel de la liste des hôtels de la chaine ?
+* Est-qu'un adminsitarteur peut supprimer un hôtel de la liste des hôtels de la chaine ?
+* Peut-on changer la chambre/hôtel d'une réservation ?
