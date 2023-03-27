@@ -5,9 +5,7 @@
             <tr>
 
                 <th>Id</th>
-                <th>Date_creation</th>
                 <th>Date_debut</th>
-                <th>Date_maj</th>
                 <th>Date_fin</th>
                 <th>Etat</th>
                 <th>Client</th>
@@ -22,9 +20,7 @@
                 <tr>
 
                     <td><?= mhe($row['res_id']) ?></td>
-                    <td><?= mhe($row['res_date_creation']) ?></td>
                     <td><?= mhe($row['res_date_debut']) ?></td>
-                    <td><?= mhe($row['res_date_maj']) ?></td>
                     <td><?= mhe($row['res_date_fin']) ?></td>
                     <td><?= mhe($row['res_etat']) ?></td>
                     <td><?= mhe($row['cli_nom']) ?></td>

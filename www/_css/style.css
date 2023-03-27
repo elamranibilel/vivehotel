@@ -14,3 +14,11 @@ img.logo {
 label {
   font-weight: bold;
 }
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: orange;
+}

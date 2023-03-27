@@ -5,6 +5,13 @@ Classe créé par le générateur.
  */
 class Reservation extends Table
 {
+	const RES_ETAT = [
+		'Annnulé',
+		'Initialisé',
+		'Validé',
+		'En attente'
+	];
+
 	public function __construct()
 	{
 		parent::__construct("reservation", "res_id");
@@ -38,15 +45,5 @@ class Reservation extends Table
 		$stmt->bindValue(':chambre', $idChambre, PDO::PARAM_INT);
 		$stmt->execute();
 		return $stmt->fetchAll();
-	}
-
-	public function ARRAYstatus(): array
-	{
-		return [
-			'Annnulé',
-			'Initialisé',
-			'Validé',
-			'En attente'
-		];
 	}
 }

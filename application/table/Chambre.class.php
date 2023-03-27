@@ -39,4 +39,9 @@ class Chambre extends Table
 			'1 lit double et un lit simple' => ['Lit double', 'lit simple']
 		];
 	}
+
+	static public function OPTIONChambre(int $idChambre)
+	{
+		return self::HTMLoptions('SELECT cha_id, cha_numero FROM chambre', 'cha_id', 'cha_numero', $idChambre);
+	}
 }

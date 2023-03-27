@@ -31,8 +31,6 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		else
 			$row = $u->emptyRecord();
 
-		// debug($row);
-		// exit();
 		extract($row);
 		require $this->gabarit;
 	}
@@ -46,7 +44,8 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 			$u->save($_POST);
 			if ($_POST["res_id"] == 0) {
 				$_SESSION["message"][] = "Le nouvel enregistrement Reservation a bien été créé.";
-				$_POST['res_date_debut'] = date('Y-m-', time());
+				$_POST['res_date_creation'] = date('Y-m-d', time());
+				$_POST['res_date_maj'] = $_POST['res_date_creation'];
 			} else
 				$_SESSION["message"][] = "L'enregistrement Reservation a bien été mis à jour.";
 		}
