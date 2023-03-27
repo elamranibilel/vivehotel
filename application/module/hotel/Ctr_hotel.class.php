@@ -13,7 +13,7 @@ class Ctr_hotel extends Ctr_controleur implements I_crud {
 
 	function a_index() {
 		$u=new Hotel();
-		$data=$u->selectAllcategorie();
+		$data=$u->selectAll();
 		require $this->gabarit;
 	}
 	

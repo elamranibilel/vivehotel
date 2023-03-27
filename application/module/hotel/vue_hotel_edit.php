@@ -36,6 +36,20 @@
                 <?= Table::HTMLoptions("select * from hocategorie ", "hoc_id", "hoc_categorie", $hot_hocategorie) ?>
             </select>
 
+
         </div>
+
+        ---------------------
+        <div class='form-group'>
+            <label for='hot_statut'>statut</label>
+<?php
+foreach (hotel::statut as cle)
+
+
+
+
+            
+ </div>
+        
         <input class="btn btn-success" type="submit" name="btSubmit" value="Enregistrer" />
     </form>
