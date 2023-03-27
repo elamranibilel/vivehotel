@@ -1,2 +1,6 @@
 * Est-qu'un adminsitarteur peut supprimer un hôtel de la liste des hôtels de la chaine ?
-* Peut-on changer la chambre/hôtel d'une réservation ?
+Il pourrait le supprimer mais il est aussi possible de faire une suppression logique (càd changer le statut) avec
+un update au lieu d'un DELETE.
+
+* Peut-on changer la chambre/hôtel d'une réservation ? 
+L'administrateur fait ce qu'il veut, à nous de voir.

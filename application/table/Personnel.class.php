@@ -5,6 +5,11 @@ Classe créé par le générateur.
  */
 class Personnel extends Table
 {
+	const ROLE = [
+		'gestionnaire',
+		'teleconseiller',
+		'personnel'
+	];
 	public function __construct()
 	{
 		parent::__construct("personnel", "per_id");

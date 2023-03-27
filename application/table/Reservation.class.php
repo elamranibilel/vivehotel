@@ -47,7 +47,8 @@ class Reservation extends Table
 		return $stmt->fetchAll();
 	}
 
-	public function reservationsClient($cli_id): array {
+	public function reservationsClient($cli_id): array
+	{
 		$sql = "select 
 		* from reservation, client, hotel, chambre
 		where res_hotel = hot_id
@@ -58,5 +59,5 @@ class Reservation extends Table
 		$stmt->bindValue(':client', $cli_id, PDO::PARAM_INT);
 		$stmt->execute();
 		return $stmt->fetchAll();
-	} 
+	}
 }
