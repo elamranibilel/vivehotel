@@ -64,4 +64,10 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		}
 		header("location:" . hlien("reservation"));
 	}
+
+	function a_historique() {
+		$u=new Reservation();
+		$data=$u->reservationsClient($_GET["id"]);
+		require $this->gabarit;
+	}
 }
