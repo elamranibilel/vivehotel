@@ -31,25 +31,18 @@
         </div>
         <div class='form-group'>
             <label for='hot_hocategorie'>Hocategorie</label>
-
             <select id='hot_hocategorie' name='hot_hocategorie' class='form-control'>
                 <?= Table::HTMLoptions("select * from hocategorie ", "hoc_id", "hoc_categorie", $hot_hocategorie) ?>
             </select>
-
-
         </div>
-
-        ---------------------
         <div class='form-group'>
-            <label for='hot_statut'>statut</label>
-<?php
-foreach (hotel::statut as cle)
-
-
-
-
-            
- </div>
-        
-        <input class="btn btn-success" type="submit" name="btSubmit" value="Enregistrer" />
+            <label for='statut'>statut</label> 
+            <select name="hot_statut">
+                <?php
+                foreach (Hotel::statut as $cle => $valeur) { ?>
+                    <option id="<?=$cle?>" value="<?=$valeur?>><?=$valeur?></option>
+           <?php}?>
+        </select>
+        </div>
+        <input class=" btn btn-success" type="submit" name="btSubmit" value="Enregistrer" />
     </form>

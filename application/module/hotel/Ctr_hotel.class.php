@@ -10,7 +10,13 @@ class Ctr_hotel extends Ctr_controleur implements I_crud {
         $a = "a_$action";
         $this->$a();
     }
-
+	
+	function a_statut() {
+		$u=new Hotel();
+		$data=$u->selectAll();
+		require $this->gabarit;
+	}
+	
 	function a_index() {
 		$u=new Hotel();
 		$data=$u->selectAll();
@@ -55,5 +61,3 @@ class Ctr_hotel extends Ctr_controleur implements I_crud {
 		header("location:" . hlien("hotel"));
 	}
 }
-
-?>
