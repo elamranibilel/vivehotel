@@ -11,11 +11,6 @@ class Ctr_hotel extends Ctr_controleur implements I_crud {
         $this->$a();
     }
 	
-	function a_statut() {
-		$u=new Hotel();
-		$data=$u->selectAll();
-		require $this->gabarit;
-	}
 	
 	function a_index() {
 		$u=new Hotel();
