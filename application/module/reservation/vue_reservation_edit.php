@@ -39,3 +39,6 @@
         </div>
         <input class="btn btn-success" type="submit" name="btSubmit" value="Enregistrer" />
     </form>
+    <hr />
+    Liste des services d'une réservation :<br />
+    <?= debug($res_commandes) ?>
