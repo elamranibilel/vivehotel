@@ -25,11 +25,15 @@
         </div>
         <div class='form-group'>
             <label for='res_hotel'>Hotel</label>
-            <input id='res_hotel' name='res_hotel' type='text' size='50' value='<?= mhe($res_hotel) ?>' class='form-control' />
+            <select id='res_hotel' name='res_hotel' type='text' class='form-control'>
+                <?= Hotel::OPTIONhotel($res_hotel); ?>
+            </select>
         </div>
         <div class='form-group'>
             <label for='res_chambre'>Chambre</label>
-            <input id='res_chambre' name='res_chambre' type='text' size='50' value='<?= mhe($res_chambre) ?>' class='form-control' />
+            <select id='res_chambre' name='res_chambre' type='text' class='form-control'>
+                <?= Chambre::OPTIONChambre($res_hotel); ?>
+            </select>
         </div>
         <input class="btn btn-success" type="submit" name="btSubmit" value="Enregistrer" />
     </form>

@@ -83,7 +83,7 @@ class Table
 	 *
 	 * @return string
 	 */
-	function updateSql(array $fields,array $row)
+	function updateSql(array $fields, array $row)
 	{
 		foreach ($fields as $name) {
 			if ($name != $this->pk and isset($row["$name"]))
@@ -121,7 +121,7 @@ class Table
 		$fields = $this->getFields();
 
 		if ($row[$this->pk] > 0) {
-			$sql = $this->updateSql($fields,$row);
+			$sql = $this->updateSql($fields, $row);
 		} else {
 			$sql = $this->insertSql($fields);
 		}
@@ -179,12 +179,13 @@ class Table
 		return $s;
 	}
 
-	static public function getTablesNames() {
+	static public function getTablesNames()
+	{
 		$sql = "show tables";
-        $result = self::$link->query($sql,PDO::FETCH_BOTH);
-        $data=[];
-        foreach ( $result as $row)
-            $data[]=$row[0];
+		$result = self::$link->query($sql, PDO::FETCH_BOTH);
+		$data = [];
+		foreach ($result as $row)
+			$data[] = $row[0];
 
 		return $data;
 	}
