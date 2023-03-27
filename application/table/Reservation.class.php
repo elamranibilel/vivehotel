@@ -39,4 +39,14 @@ class Reservation extends Table
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
+
+	public function ARRAYstatus(): array
+	{
+		return [
+			'Annnulé',
+			'Initialisé',
+			'Validé',
+			'En attente'
+		];
+	}
 }

@@ -42,10 +42,12 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	{
 		if (isset($_POST["btSubmit"])) {
 			$u = new Reservation();
+
 			$u->save($_POST);
-			if ($_POST["res_id"] == 0)
+			if ($_POST["res_id"] == 0) {
 				$_SESSION["message"][] = "Le nouvel enregistrement Reservation a bien été créé.";
-			else
+				$_POST['res_date_debut'] = date('Y-m-', time());
+			} else
 				$_SESSION["message"][] = "L'enregistrement Reservation a bien été mis à jour.";
 		}
 		header("location:" . hlien("chambre", "edit", "id", $_POST['cha_id']));
