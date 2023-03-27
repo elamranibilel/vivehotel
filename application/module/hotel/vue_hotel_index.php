@@ -23,7 +23,7 @@
     				<td><?= mhe($row['hot_id']) ?></td>
     				<td><?= mhe($row['hot_statut']) ?></td>
     				<td><?= mhe($row['hot_nom']) ?></td>
-    				<td><?= mhe($row['hot_adresse']) ?></td>
+    				<td><?=nl2br(mhe($row['hot_adresse']))?></td>
     				<td><?= mhe($row['hot_departement']) ?></td>
     				<td><?= mhe($row['hot_description']) ?></td>
     				<td><?= mhe($row['hoc_categorie']) ?></td>

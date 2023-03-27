@@ -19,7 +19,7 @@
         </div>
         <div class='form-group'>
             <label for='hot_description'>Description</label>
-            <input id='hot_description' name='hot_description' type='text' size='50' value='<?= mhe($hot_description) ?>' class='form-control' />
+            <textarea id='hot_description' name='hot_description' rows="5" class='form-control'><?= mhe($hot_description) ?></textarea>
         </div>
         <div class='form-group'>
             <label for='hot_longitude'>Longitude</label>
@@ -31,11 +31,11 @@
         </div>
         <div class='form-group'>
             <label for='hot_hocategorie'>Hocategorie</label>
-        
-<select id='hot_hocategorie' name='hot_hocategorie' class='form-control'>
+
+            <select id='hot_hocategorie' name='hot_hocategorie' class='form-control'>
                 <?= Table::HTMLoptions("select * from hocategorie ", "hoc_id", "hoc_categorie", $hot_hocategorie) ?>
             </select>
-    
+
         </div>
         <input class="btn btn-success" type="submit" name="btSubmit" value="Enregistrer" />
     </form>
