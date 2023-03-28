@@ -1,0 +1,12 @@
+Module : Chambre
+Actions : index, edit, reservations
+Module : Hôtel
+Actions : index, edit, chambres, clients, services
+Module : Services
+Actions : Index, edit, hotel
+Module : Personnel
+Actions : Index, edit
+Module : Réservation
+Action : Index, edit
+Action : Services
+Action : Index, edit
