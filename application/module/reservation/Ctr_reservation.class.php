@@ -42,6 +42,10 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	{
 		if (isset($_POST["btSubmit"])) {
 			$u = new Reservation();
+			print_r($u->valid($_POST));
+			debug($_POST);
+			exit();
+
 
 			$u->save($_POST);
 			if ($_POST["res_id"] == 0) {

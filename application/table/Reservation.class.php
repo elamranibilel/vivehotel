@@ -60,4 +60,25 @@ class Reservation extends Table
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
+
+	public function valid(array $res)
+	{
+		// Vérifie si la réservation n'a pas de doublon
+		$sql = 'SELECT res_id, res_date_debut, res_date_fin
+		FROM reservation
+		WHERE res_date_debut >= :res_debut 
+		AND res_date_fin <= :res_fin
+		AND res_hotel = :res_hotel 
+		AND res_chambre = :res_chambre
+		';
+
+		$stmt = Table::$link->prepare($sql);
+
+		$stmt->bindValue(':res_hotel', $res['res_hotel'],  PDO::PARAM_INT);
+		$stmt->bindValue(':res_debut', $res['res_date_debut'],  PDO::PARAM_STR);
+		$stmt->bindValue(':res_fin', $res['res_date_fin'], PDO::PARAM_STR);
+		$stmt->bindValue(':res_chambre', $res['res_chambre'],  PDO::PARAM_INT);
+
+		return $stmt->fetchAll();
+	}
 }

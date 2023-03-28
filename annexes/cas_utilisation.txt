@@ -7,6 +7,6 @@ Actions : Index, edit, hotel
 Module : Personnel
 Actions : Index, edit
 Module : Réservation
-Action : Index, edit
+Action : Index, edit, services
 Action : Services
 Action : Index, edit
