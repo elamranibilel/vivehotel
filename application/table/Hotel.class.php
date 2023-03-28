@@ -19,9 +19,15 @@ class Hotel extends Table
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
 	}
+	public function selectAllservices(): array
+	{
+		$sql = "select * from services order by ser_nom";
+		$result = self::$link->query($sql);
+		return $result->fetchAll();
+	}
 
 	static public function OPTIONhotel(int $idHotel)
 	{
 		return self::HTMLoptions('SELECT hot_id, hot_nom FROM hotel', 'hot_id', 'hot_nom', $idHotel);
 	}
-	}
+}
