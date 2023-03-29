@@ -22,4 +22,3 @@
     $sql = "insert into services values " . implode(",", $tab);
     mysqli_query($link, $sql);
     echo "<p>génération de " . count($services) . " services</p>";
-?> 
