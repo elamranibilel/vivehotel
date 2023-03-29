@@ -41,7 +41,6 @@
     <input class="btn btn-success" type="submit" name="btSubmit" value="Enregistrer" />
 </form>
 <hr />
-<?= debug($res_commandes); ?>
 <table class="table table-striped table-bordered table-hover">
     <caption>Liste des services d'une réservation.</caption>
     <tr>
@@ -50,15 +49,19 @@
         <th>Prix (unitaire)</th>
 
     </tr>
-    <?php foreach ($res_commandes as $row) {
-        array_map('mhe', $row);
+    <?php if (count($res_commandes) == 0)
+        echo '<tr><td colspan="3">Pas de service pour cette réservation</td></tr>';
+    else {
+        foreach ($res_commandes as $row) {
+            array_map('mhe', $row);
     ?>
-        <tr>
-            <td><?= $row['ser_nom'] ?></td>
-            <td><?= mhe($row['com_quantite']) ?></td>
-            <td><?= mhe($row['pro_prix']) ?></td>
-        </tr>
-    <?php } ?>
+            <tr>
+                <td><?= $row['ser_nom'] ?></td>
+                <td><?= mhe($row['com_quantite']) ?></td>
+                <td><?= mhe($row['pro_prix']) ?></td>
+            </tr>
+    <?php }
+    } ?>
 </table>
 
 <form method="post" action="<?= hlien('reservation', 'save') ?>">
