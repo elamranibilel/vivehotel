@@ -23,7 +23,7 @@ for ($i = 1; $i <= NOMBRE_HOTEL; $i++) {
         $no_chambres_hotels[$i][] = $k;
         $cha_statut = $chambre_statut[array_rand($chambre_statut)];
         $cha_surface = mt_rand(10, 40);
-        $cha_type = $type_lits[array_rand($type_lits)];
+        $cha_typeLit = $type_lits[array_rand($type_lits)];
 
         $cha_description = "text $i <a href=\'index.php\'>Accueil</a>";
         $cha_jacuzzi = mt_rand(0, 1);
@@ -38,7 +38,7 @@ for ($i = 1; $i <= NOMBRE_HOTEL; $i++) {
 
         $cha_hotel=mt_rand(1,NOMBRE_HOTEL);
 
-		$tab[] = "(null,'$cha_numero','$cha_statut','$cha_surface','$cha_type', 
+		$tab[] = "(null,'$cha_numero','$cha_statut','$cha_surface','$cha_typeLit', 
         '$cha_description','$cha_jacuzzi','$cha_balcon','$cha_wifi',
         '$cha_minibar','$cha_coffre','$cha_vue',
 		'$cha_chcategorie','$cha_hotel')";
