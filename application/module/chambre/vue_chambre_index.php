@@ -1,5 +1,4 @@
     <h2>chambre</h2>
-    <p><a class="btn btn-primary" href="<?= hlien("chambre", "edit", "id", 0) ?>">Nouveau chambre</a></p>
     <table class="table table-striped table-bordered table-hover">
     	<thead>
     		<tr>
@@ -13,6 +12,7 @@
     			<th>Description</th>
     			<th>Services</th>
     			<th>Chcategorie</th>
+    			<th>Réservation</th>
     			<th>modifier</th>
     			<th>supprimer</th>
     		</tr>
@@ -31,14 +31,15 @@
     				<td><?= mhe($row['cha_typeLit']) ?></td>
     				<td><?= $row['cha_description'] ?></td>
     				<td>
-    					<?= ($row['cha_jacuzzi'] === 1 ? 'jaccuzi' : '') ?>
-    					<?= ($row['cha_balcon'] === 1 ? 'balcon' : '') ?>
-    					<?= ($row['cha_wifi'] === 1 ? 'wifi' : '') ?>
-    					<?= ($row['cha_minibar'] === 1 ? 'minibar' : '') ?>
-    					<?= ($row['cha_coffre'] === 1 ? 'coffre' : '') ?>
-    					<?= ($row['cha_vue'] === 1 ? 'vue' : '') ?>
+    					<?= ($row['cha_jacuzzi'] === 1 ? 'jaccuzi<br />' : '') ?>
+    					<?= ($row['cha_balcon'] === 1 ? 'balcon<br />' : '') ?>
+    					<?= ($row['cha_wifi'] === 1 ? 'wifi<br />' : '') ?>
+    					<?= ($row['cha_minibar'] === 1 ? 'minibar<br />' : '') ?>
+    					<?= ($row['cha_coffre'] === 1 ? 'coffre<br />' : '') ?>
+    					<?= ($row['cha_vue'] === 1 ? 'vue<br />' : '') ?>
     				</td>
     				<td><?= mhe($row['chc_categorie']) ?></td>
+    				<td><a class="btn btn-info" href="<?= hlien("chambre", "reservations", "id", $row["cha_id"]) ?>">Réservation</td>
     				<td><a class="btn btn-warning" href="<?= hlien("chambre", "edit", "id", $row["cha_id"]) ?>">Modifier</a></td>
     				<td><a class="btn btn-danger" href="<?= hlien("chambre", "delete", "id", $row["cha_id"]) ?>">Supprimer</a></td>
     			</tr>
