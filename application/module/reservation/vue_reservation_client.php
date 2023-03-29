@@ -1,14 +1,14 @@
-    <h2>reservation</h2>
+    <h2>Réservation du client "<?= mhe($client['cli_nom']) ?>"</h2>
     <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Date_creation</th>
+
                 <th>Date_debut</th>
-                <th>Date_maj</th>
                 <th>Date_fin</th>
+                <th>Date_maj</th>
+                <th>Date_creation</th>
                 <th>Etat</th>
-                <th>Client</th>
                 <th>Hotel</th>
                 <th>Chambre</th>
                 <th>modifier</th>
@@ -24,9 +24,8 @@
                     <td><?= mhe($row['res_date_creation']) ?></td>
                     <td><?= mhe($row['res_date_debut']) ?></td>
                     <td><?= mhe($row['res_date_maj']) ?></td>
-                    <td><?=mhe($row['res_date_fin']) ?></td>
+                    <td><?= mhe($row['res_date_fin']) ?></td>
                     <td><?= mhe($row['res_etat']) ?></td>
-                    <td><?= mhe($row['cli_email']) ?></td>
                     <td><?= mhe($row['hot_nom']) ?></td>
                     <td><?= mhe($row['cha_numero']) ?></td>
                     <td><a class="btn btn-warning" href="<?= hlien("reservation", "edit", "id", $row["res_id"]) ?>">Modifier</a></td>
