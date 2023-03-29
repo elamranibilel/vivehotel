@@ -42,7 +42,8 @@
 </form>
 <hr />
 <table class="table table-striped table-bordered table-hover">
-    <caption>Liste des services d'une réservation.</caption>
+    <caption>Liste des services d'une réserva
+        tion.</caption>
     <tr>
         <th>Nom</th>
         <th>Quantité</th>
