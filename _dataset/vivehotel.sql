@@ -56,12 +56,10 @@ drop table if exists chambre;
 
 create table chambre (
     cha_id int auto_increment primary key,
-    cha_hotel int not null,
     cha_numero varchar(500) not null,
     cha_statut varchar(500) not null,
     cha_surface int not null,
-    cha_typelit1 varchar(500) not null,
-    cha_typelit2 varchar(500),
+    cha_type varchar(500) not null,
     cha_description text not null,
     cha_jacuzzi boolean not null,
     cha_balcon boolean not null,
@@ -69,8 +67,9 @@ create table chambre (
     cha_minibar boolean not null,
     cha_coffre boolean not null,
     cha_vue boolean not null,
-    cha_chcategorie int not null
-) engine = innodb;
+    cha_chcategorie int not null,
+    cha_hotel int not null
+)engine=innodb; 
 
 -- création table services 
 drop table if exists services;
@@ -144,67 +143,17 @@ set
     foreign_key_checks = 1;
 
 -- contraintes d'intrégritées 
-alter table
-    personnel
-add
-    constraint cs1 foreign key (per_hotel) references hotel(hot_id) on delete cascade;
 
-alter table
-    hotel
-add
-    constraint cs2 foreign key (hot_hocategorie) references hocategorie(hoc_id) on delete cascade;
-
-alter table
-    chambre
-add
-    constraint cs3 foreign key (cha_chcategorie) references chcategorie(chc_id) on delete cascade;
-
-alter table
-    chambre
-add
-    constraint cs13 foreign key (cha_hotel) references hotel(hot_id) on delete cascade;
-
-alter table
-    reservation
-add
-    constraint cs4 foreign key (res_client) references client(cli_id) on delete cascade;
-
-alter table
-    reservation
-add
-    constraint cs5 foreign key (res_hotel) references hotel(hot_id) on delete cascade;
-
-alter table
-    reservation
-add
-    constraint cs6 foreign key (res_chambre) references chambre(cha_id) on delete cascade;
-
-alter table
-    commander
-add
-    constraint cs7 foreign key (com_services) references services(ser_id) on delete cascade;
-
-alter table
-    commander
-add
-    constraint cs8 foreign key (com_reservation) references reservation(res_id) on delete cascade;
-
-alter table
-    proposer
-add
-    constraint cs9 foreign key (pro_hotel) references hotel(hot_id) on delete cascade;
-
-alter table
-    proposer
-add
-    constraint cs10 foreign key (pro_services) references services(ser_id) on delete cascade;
-
-alter table
-    tarifer
-add
-    constraint cs11 foreign key (tar_hocategorie) references hocategorie(hoc_id) on delete cascade;
-
-alter table
-    tarifer
-add
-    constraint cs12 foreign key (tar_chcategorie) references chcategorie(chc_id) on delete cascade;
+alter table personnel add constraint cs1 foreign key (per_hotel) references hotel(hot_id) on delete cascade;
+alter table hotel add constraint cs2 foreign key (hot_hocategorie) references hocategorie(hoc_id) on delete cascade;
+alter table chambre add constraint cs3 foreign key (cha_chcategorie) references chcategorie(chc_id) on delete cascade;
+alter table reservation add constraint cs4 foreign key (res_client) references client(cli_id) on delete cascade;
+alter table reservation add constraint cs5 foreign key (res_hotel) references hotel(hot_id) on delete cascade;
+alter table reservation add constraint cs6 foreign key (res_chambre) references chambre(cha_id) on delete cascade;
+alter table commander add constraint cs7 foreign key (com_services) references services(ser_id) on delete cascade;
+alter table commander add constraint cs8 foreign key (com_reservation) references reservation(res_id) on delete cascade;
+alter table proposer add constraint cs9 foreign key (pro_hotel) references hotel(hot_id) on delete cascade;
+alter table proposer add constraint cs10 foreign key (pro_services) references services(ser_id) on delete cascade;
+alter table tarifer add constraint cs11 foreign key (tar_hocategorie) references hocategorie(hoc_id) on delete cascade;
+alter table tarifer add constraint cs12 foreign key (tar_chcategorie) references chcategorie(chc_id) on delete cascade;
+alter table chambre add constraint cs13 foreign key (cha_hotel) references hotel(hot_id) on delete cascade;

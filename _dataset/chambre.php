@@ -3,14 +3,15 @@ const NB_CHAMBRE_P_HOTEL = 10;
 
 $chambre_statut = ['Initialisé', 'En attente', 'Validé', 'Annnulé'];
 
-$lits = [
-    ['Lit simple', 'Lit simple'],
-    ['Lit double standard Queen Size', 'NULL'],
-    ['Lit double Confort', 'NULL'],
-    ['Lit double King Size', 'NULL'],
-    ['Lit double', 'lit simple']
+$type_lits = [
+    '2 Lits simples',
+    'Lit double standard Queen Size',
+    'Lit double Confort',
+    'Lit double King Size',
+    '1 Lit double et un lit simple'
 ];
 
+//  ['2 Lits simples']
 //génération de chambre
 $tab = [];
 $no_chambres_hotels = [];
@@ -19,13 +20,10 @@ for ($i = 1; $i <= NOMBRE_HOTEL; $i++) {
     $no_chambres_hotels[$i] = [];
     for ($j = 1; $j <= NB_CHAMBRE_P_HOTEL; $j++) {
         $cha_numero = $j;
-        $cha_hotel = $i;
         $no_chambres_hotels[$i][] = $k;
         $cha_statut = $chambre_statut[array_rand($chambre_statut)];
         $cha_surface = mt_rand(10, 40);
-        $type_lits = array_rand($lits);
-        $cha_typelit1 = $lits[$type_lits][0];
-        $cha_typelit2 = $lits[$type_lits][1];
+        $cha_type = $type_lits[array_rand($type_lits)];
 
         $cha_description = "text $i <a href=\'index.php\'>Accueil</a>";
         $cha_jacuzzi = mt_rand(0, 1);
@@ -36,11 +34,14 @@ for ($i = 1; $i <= NOMBRE_HOTEL; $i++) {
         $cha_vue = mt_rand(0, 1);
         $cha_chcategorie = mt_rand(1, count($chcategorie));
 
-        $chtypelit2 = ($cha_typelit2 == 'NULL') ? 'NULL' : "'$cha_typelit2'";
+        //$chtypelit2 = ($cha_typelit2 == 'NULL') ? 'NULL' : "'$cha_typelit2'";
 
-        $tab[] = "(null,'$cha_hotel','$cha_numero','$cha_statut','$cha_surface','$cha_typelit1', $chtypelit2,
-		'$cha_description','$cha_jacuzzi','$cha_balcon','$cha_wifi','$cha_minibar','$cha_coffre','$cha_vue',
-		'$cha_chcategorie')";
+        $cha_hotel=mt_rand(1,NOMBRE_HOTEL);
+
+		$tab[] = "(null,'$cha_numero','$cha_statut','$cha_surface','$cha_type', 
+        '$cha_description','$cha_jacuzzi','$cha_balcon','$cha_wifi',
+        '$cha_minibar','$cha_coffre','$cha_vue',
+		'$cha_chcategorie','$cha_hotel')";
 
         $k++;
     }
