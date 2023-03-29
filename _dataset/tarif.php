@@ -20,20 +20,16 @@ $hoc = 1;
 foreach ($hocategorie as $hocat) {
     $chc = 1;
     foreach ($chcategorie as $chcat) {
-
-        $tar_id = 'NULL';
         $tar_prix = $tarifs[$hocat][$chcat];
         $tar_hocategorie = $hoc;
         $tar_chcategorie = $chc;
 
-       
-        if($tar_prix != '0')
-        {
+
+        if ($tar_prix != '0') {
             $tab[] = "(null,'$tar_prix', '$tar_hocategorie', '$tar_chcategorie')";
             $nb_tarifs++;
         }
         $chc++;
-        
     }
     $hoc++;
 }
@@ -42,4 +38,4 @@ foreach ($hocategorie as $hocat) {
 $sql = "insert into tarifer values " . implode(",", $tab);
 mysqli_query($link, $sql);
 
-echo '<p>génération de ' .($nb_tarifs) . ' tarifs</p>';
+echo '<p>génération de ' . ($nb_tarifs) . ' tarifs</p>';
