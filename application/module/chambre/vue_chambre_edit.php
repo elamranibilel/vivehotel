@@ -23,12 +23,10 @@
             <input id='cha_surface' name='cha_surface' type='number' size='50' value='16' class='form-control' />
         </div>
         <div class='form-group'>
-            <label for='cha_typelit'>Type lits</label>
-            <select id='cha_typelit' name='cha_typelit' class='form-control'>
-                <?php
-                foreach (Chambre::TYPE_LITS as $typeLit) {
-                ?>
-                    <option value='<?= mhe($typeLit) ?>' <?= ($typeLit === $row['cha_typelit']) ? 'selected' : '' ?>><?= mhe($typeLit) ?></option>
+            <label for='cha_typeLit'>Type lits</label>
+            <select id='cha_typeLit' name='cha_typeLit' class='form-control'>
+                <?php foreach (Chambre::TYPE_LITS as $typelit) { ?>
+                    <option value='<?= mhe($typelit) ?>' <?= ($typelit === $row['cha_typeLit']) ? 'selected' : '' ?>><?= mhe($typelit) ?></option>
                 <?php } ?>
             </select>
         </div>

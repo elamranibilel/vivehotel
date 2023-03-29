@@ -13,6 +13,13 @@ class Chambre extends Table
 		'1 lit double et un lit simple'
 	];
 
+	const CHA_STATUT = [
+		'Annnulé',
+		'Initialisé',
+		'Validé',
+		'En attente'
+	];
+
 	public function __construct()
 	{
 		parent::__construct("chambre", "cha_id");
@@ -21,7 +28,7 @@ class Chambre extends Table
 	public function selectAll(): array
 	{
 		$sql = "SELECT  cha_id, cha_numero, 
-		cha_statut, cha_surface, cha_typelit,  cha_description, cha_jacuzzi,
+		cha_statut, cha_surface, cha_typeLit,  cha_description, cha_jacuzzi,
 		cha_balcon, cha_wifi, cha_minibar, cha_coffre,
 		cha_vue, chc_categorie, cha_hotel FROM chambre, chcategorie, hotel 
 		WHERE cha_chcategorie = chc_id AND cha_hotel = hot_id
@@ -29,11 +36,6 @@ class Chambre extends Table
 
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
-	}
-
-	public static function ARRAYstatut(): array
-	{
-		return ['Annnulé', 'Initialisé', 'Validé', 'En attente'];
 	}
 
 	static public function OPTIONChambre(int $idChambre)
