@@ -19,15 +19,13 @@ class Hotel extends Table
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
 	}
-	public function selectAllservices(): array
+	public function selectAllservices($id): array
 	{
-		$sql = "select * from services order by ser_nom";
-		$result = self::$link->query($sql);
-		return $result->fetchAll();
-	}
-
-	static public function OPTIONhotel(int $idHotel)
-	{
-		return self::HTMLoptions('SELECT hot_id, hot_nom FROM hotel', 'hot_id', 'hot_nom', $idHotel);
+		$sql = "select ser_id, ser_nom, hot_id from proposer, services, hotel
+		where pro_services=ser_id and pro_hotel=hot_id and hot_id=:id";
+		$stmt = self::$link->prepare($sql);
+		$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetchAll();
 	}
 }

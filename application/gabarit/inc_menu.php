@@ -6,15 +6,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.php">Index</span></a>
+          <a class="nav-link active" aria-current="page" href="index.php">accueil</span></a>
         </li>
-        <li><a class='nav-link' href='<?= hlien("chambre", "index") ?>'>Chambre</a></li>
-        <!-- <li><a class='nav-link' href='<?= hlien("chcategorie", "index") ?>'>Chcategorie</a></li> -->
-        <li><a class='nav-link' href='<?= hlien("client", "index") ?>'>Client</a></li>
-        <li><a class='nav-link' href='<?= hlien("hotel", "index") ?>'>Hotel</a></li>
-        <li><a class='nav-link' href='<?= hlien("personnel", "index") ?>'>Personnel</a></li>
-        <li><a class='nav-link' href='<?= hlien("services", "index") ?>'>Services</a></li>
-        <!-- <li><a class='nav-link' href='<?= hlien("tarifer", "index") ?>'>Tarifer</a></li>  -->
+        
+          <li><a class='nav-link' href='<?= hlien("chambre", "index") ?>'>Chambre</a></li>
+          <!-- <li><a class='nav-link' href='<?= hlien("chcategorie", "index") ?>'>Chcategorie</a></li> -->
+          <li><a class='nav-link' href='<?= hlien("client", "index") ?>'>Client</a></li>
+          <li><a class='nav-link' href='<?= hlien("hotel", "index") ?>'>Hotel</a></li>
+                  <li><a class='nav-link' href='<?= hlien("services", "index") ?>'>Services</a></li>
+          <!-- <li><a class='nav-link' href='<?= hlien("tarifer", "index") ?>'>Tarifer</a></li>  -->
+        
 
       </ul>
       <ul class="navbar-nav ml-auto">
