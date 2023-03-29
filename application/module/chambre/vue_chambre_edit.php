@@ -26,9 +26,9 @@
             <label for='cha_typelit'>Type lits</label>
             <select id='cha_typelit' name='cha_typelit' class='form-control'>
                 <?php
-                foreach (Chambre::ARRAYtypelit() as $typelit => $dataLit) {
+                foreach (Chambre::TYPE_LITS as $typeLit) {
                 ?>
-                    <option value='<?= mhe($typelit) ?>' <?= ($dataLit === [$cha_typelit1, $cha_typelit2]) ? 'selected' : '' ?>><?= mhe($typelit) ?></option>
+                    <option value='<?= mhe($typeLit) ?>' <?= ($typeLit === $row['cha_typelit']) ? 'selected' : '' ?>><?= mhe($typeLit) ?></option>
                 <?php } ?>
             </select>
         </div>

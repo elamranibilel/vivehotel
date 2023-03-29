@@ -1,4 +1,11 @@
     <h2>reservation</h2>
+
+    <form method="post">
+    	<label for="nom_film">Rechercher une réservation :</label> <input type="text" name="nom_reservation" value='' />
+    	<input type="hidden" name="bt_submit" />
+    	<input class="btn btn-success" type="submit" value="Enregistrer" />
+    </form>
+
     <p><a class="btn btn-primary" href="<?= hlien("reservation", "edit", "id", 0) ?>">Nouveau reservation</a></p>
     <table class="table table-striped table-bordered table-hover">
     	<thead>
