@@ -1,26 +1,26 @@
 <?php
 $timestart = microtime(true);
 // Fichier qui génère l'ensemble de la base de donnée
-include('connexion.php');
+include('datasets/connexion.php');
 
-include('client.php');
-include("services.php");
+include('datasets/client.php');
+include('datasets/services.php');
 
-include("chcategorie.php");
-include("hocategorie.php");
+include('datasets/chcategorie.php');
+include('datasets/hocategorie.php');
 
 
-include("hotel.php");
-include("personnel.php");
+include('datasets/hotel.php');
+include('datasets/personnel.php');
 
-include('chambre.php');
+include('datasets/chambre.php');
 
-include('tarif.php');
+include('datasets/tarif.php');
 
-include('proposer.php');
+include('datasets/proposer.php');
 
-include('reservation.php');
-include('commander.php');
+include('datasets/reservation.php');
+include('datasets/commander.php');
 
 //Fin du code PHP
 $timeend = microtime(true);
