@@ -48,7 +48,7 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 		}
 		header("location:" . hlien("hotel"));
 	}
-     
+
 	function a_delete()
 	{
 		if (isset($_GET["id"])) {
@@ -61,9 +61,8 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 	function a_services()
 	{
 		$u = new Hotel();
-		if (!isset($_GET["id"]))
-		{
-		header("location:" . hlien("hotel"));
+		if (!isset($_GET["id"])) {
+			header("location:" . hlien("hotel"));
 		}
 		$data = $u->selectAllservices($_GET["id"]);
 		require $this->gabarit;
