@@ -20,6 +20,12 @@ class Chambre extends Table
 		'En attente'
 	];
 
+	const CRI_RECHERCHE = [
+		'Type lits' => 'cha_typeLit',
+		'Catégorie' => 'chc_categorie',
+		'Description' => 'cha_description',
+	];
+
 	public function __construct()
 	{
 		parent::__construct("chambre", "cha_id");
@@ -36,6 +42,26 @@ class Chambre extends Table
 
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
+	}
+
+	public function chaRecherche(string $texte, string $champ)
+	{
+		$sql = "SELECT  cha_id, cha_numero, 
+		cha_statut, cha_surface, cha_typeLit,  cha_description, cha_jacuzzi,
+		cha_balcon, cha_wifi, cha_minibar, cha_coffre,
+		cha_vue, chc_categorie, cha_hotel FROM chambre, chcategorie, hotel 
+		WHERE cha_chcategorie = chc_id 
+		AND cha_hotel = hot_id
+		AND LOWER($champ) LIKE :valeur
+		ORDER BY $champ";
+
+		$stmt = self::$link->prepare($sql);
+		$stmt->bindParam(':champ', $champ,  PDO::PARAM_STR, 12);
+		$stmt->bindValue(':valeur', '%' . $texte . '%', PDO::PARAM_STR); // problème sécurité, il faut échapper les %
+
+		$stmt->execute();
+		// chercher avec cha_statut "annulé"
+		return $stmt->fetchAll();
 	}
 
 	static public function OPTIONChambre(int $idChambre)

@@ -1,4 +1,7 @@
     <h2>chambre</h2>
+
+    <?= FormRecherche('Chambre') ?>
+
     <table class="table table-striped table-bordered table-hover">
     	<thead>
     		<tr>

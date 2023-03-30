@@ -125,3 +125,24 @@ function debug($t)
 	print_r($t);
 	echo "</pre>";
 }
+
+function FormRecherche($className)
+{ ?>
+	<p>
+	<form method='post'>
+		<p>
+			<label for='rech_texte'>Rechercher <?= mhe(strtolower($className)) ?> :</label> <input type='text' name='rech_texte' value='' />
+		</p>
+		<label for="rech_champ">Crtière :</label>
+		<?php
+		foreach ($className::CRI_RECHERCHE as $name => $field) {
+			echo mhe($name) . " <input type='radio' name='rech_champ' value='" . mhe($field) . "' /> ";
+		}
+		?>
+		<input class="btn btn-success" type="submit" value="Enregistrer" /><br />
+		<input type="hidden" name="bt_submit" />
+
+	</form>
+	</p>
+<?php
+}

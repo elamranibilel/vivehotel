@@ -16,9 +16,20 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 
 	function a_index()
 	{
-		$chClasse = new Chambre();
-		$data = $chClasse->selectAll();
 
+		$chClasse = new Chambre();
+
+		array_map('trim', $_POST);
+
+		if (
+			isset($_POST['bt_submit'])
+			&& isset($_POST['rech_texte'])
+			&& isset($_POST['rech_champ'])
+			&& in_array($_POST['rech_champ'], Chambre::CRI_RECHERCHE)
+		) {
+			$data = $chClasse->chaRecherche($_POST['rech_texte'], $_POST['rech_champ']);
+		} else
+			$data = $chClasse->selectAll();
 		require $this->gabarit;
 	}
 

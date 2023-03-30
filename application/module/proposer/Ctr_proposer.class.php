@@ -55,5 +55,3 @@ class Ctr_proposer extends Ctr_controleur implements I_crud {
 		header("location:" . hlien("proposer"));
 	}
 }
-
-?>
