@@ -52,7 +52,7 @@ class Ctr_proposer extends Ctr_controleur implements I_crud {
 			$u->delete($_GET["id"]);
 			$_SESSION["message"][]="L'enregistrement Proposer a bien été supprimé.";
 		}
-		header("location:" . hlien("proposer"));
+		header("location:" . hlien("hotel"));
 	}
 }
 

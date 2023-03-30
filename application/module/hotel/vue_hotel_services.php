@@ -15,7 +15,7 @@
     				<td><?= mhe($row['ser_id']) ?></td>
     				<td><?= mhe($row['ser_nom']) ?></td>
     				<td><a class="btn btn-warning" href="<?= hlien("services", "edit", "id", $row["ser_id"]) ?>">Modifier</a></td>
-    				<td><a class="btn btn-danger" href="<?= hlien("services", "delete", "id", $row["ser_id"]) ?>">Supprimer</a></td>
+    				<td><a class="btn btn-danger" href="<?= hlien("proposer", "delete", "id", $row["pro_id"]) ?>">Supprimer</a></td>
     			</tr>
     		<?php } ?>
     	</tbody>
