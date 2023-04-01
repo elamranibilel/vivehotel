@@ -42,9 +42,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	{
 		if (isset($_POST["btSubmit"])) {
 			$u = new Reservation();
-			print_r($u->valid($_POST));
-			debug($_POST);
-			exit();
+			$aDoublons = $u->doublons($_POST);
 
 
 			$u->save($_POST);
@@ -52,10 +50,16 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 				$_SESSION["message"][] = "Le nouvel enregistrement Reservation a bien été créé.";
 				$_POST['res_date_creation'] = date('Y-m-d', time());
 				$_POST['res_date_maj'] = $_POST['res_date_creation'];
-			} else
-				$_SESSION["message"][] = "L'enregistrement Reservation a bien été mis à jour.";
+			} elseif (false) {
+				$_SESSIOn['message'][] = 'La date de début et de fin de réservation ne sont pas cohérentes';
+			} elseif ($aDoublons)
+				$_SESSION["message"][] = "La chambre n'est pas libre entre ces deux dates.";
+			else
+				$_SESSION["message"][] = "L'enregistrement Reservation a bien été mise à jour.";
 		}
-		header("location:" . hlien("chambre", "edit", "id", $_POST['cha_id']));
+
+		$_POST = [];
+		header("location:" . hlien("reservation", "edit", "id", $_POST['res_id']));
 	}
 
 

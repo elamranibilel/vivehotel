@@ -61,24 +61,30 @@ class Reservation extends Table
 		return $stmt->fetchAll();
 	}
 
-	public function valid(array $res)
+	public function doublons(array $data)
 	{
-		// Vérifie si la réservation n'a pas de doublon
-		$sql = 'SELECT res_id, res_date_debut, res_date_fin, res_hotel
+
+		// Récupère l'ensemble des id doublons de notre réservation
+		// Cherche toutes les réservations qui se superpose à la réservation en édition
+		// dans le même hôtel, même chambre et stricteemnt différente de notre réservation
+		$sql = "SELECT 	res_id
 		FROM reservation
-		WHERE (res_date_debut >= :res_debut 
-		OR res_date_fin <= :res_fin)
-		AND res_hotel = :res_hotel 
+		WHERE ((:res_date_debut >= res_date_debut OR :res_date_fin >= res_date_debut)
+		AND (:res_date_debut <= res_date_fin OR :res_date_fin <= res_date_fin) )
+		AND res_hotel = :res_hotel
 		AND res_chambre = :res_chambre
-		';
+		AND res_id != :res_id";
 
 		$stmt = Table::$link->prepare($sql);
+		$stmt->bindValue(':res_id', $data['res_id'], PDO::PARAM_INT);
 
-		$stmt->bindValue(':res_hotel', $res['res_hotel'],  PDO::PARAM_INT);
-		$stmt->bindValue(':res_debut', $res['res_date_debut'],  PDO::PARAM_STR);
-		$stmt->bindValue(':res_fin', $res['res_date_fin'], PDO::PARAM_STR);
-		$stmt->bindValue(':res_chambre', $res['res_chambre'],  PDO::PARAM_INT);
+		$stmt->bindValue(':res_chambre', $data['res_chambre'], PDO::PARAM_STR);
+		$stmt->bindValue(':res_hotel', $data['res_hotel'], PDO::PARAM_INT);
 
+		$stmt->bindValue(':res_date_debut', $data['res_date_debut'], PDO::PARAM_STR);
+		$stmt->bindValue(':res_date_fin', $data['res_date_fin'], PDO::PARAM_STR);
+
+		$stmt->execute();
 		return $stmt->fetchAll();
 	}
 }
