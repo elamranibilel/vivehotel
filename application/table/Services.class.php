@@ -29,19 +29,20 @@ class Services extends Table
 		return $stmt->fetchAll();
 	}
 
-	static public function pasRes(int $idRes)
+	static public function pasRes(int $idRss, int $resHotel)
 	{
-		$sql = 'SELECT ser_id, ser_nom FROM services
-		WHERE ser_id NOT IN(SELECT com_services 
-		FROM commander, services, reservation, proposer
-		WHERE com_services = ser_id
-		AND com_reservation = :reservation
-		AND com_reservation = res_id
-		AND res_hotel = pro_hotel
-		AND pro_services = ser_id)';
+		$sql = 'SELECT ser_id,ser_nom FROM proposer, services
+		WHERE 
+		ser_id = pro_services
+		AND pro_hotel = :hotel
+		AND pro_id NOT IN(SELECT com_services 
+		FROM commander WHERE com_reservation = :reservation)';
 
 		$stmt = self::$link->prepare($sql);
-		$stmt->bindValue(':reservation', $idRes, PDO::PARAM_INT);
+
+		$stmt->bindValue(':reservation', $idRss, PDO::PARAM_INT);
+		$stmt->bindValue(':hotel', $resHotel, PDO::PARAM_INT);
+
 		$stmt->execute();
 		$resultat = $stmt->fetchAll();
 

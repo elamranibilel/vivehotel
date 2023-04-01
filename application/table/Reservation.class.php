@@ -61,7 +61,7 @@ class Reservation extends Table
 		return $stmt->fetchAll();
 	}
 
-	public function doublons(array $data)
+	public function aDoublons(array $data)
 	{
 
 		// Récupère l'ensemble des id doublons de notre réservation

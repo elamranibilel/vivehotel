@@ -69,7 +69,7 @@
 <form method="post" action="<?= hlien('reservation', 'save') ?>">
     <label for="nouv_service">Ajouter un service à la réservation :</label>
     <select name="nouv_service">
-        <?= Services::pasRes($res_id) ?>
+        <?= Services::pasRes($res_id, $res_hotel) ?>
     </select>
     <input type="hidden" name="novueau_service" />
     <input type="hidden" name="btsubmit" />

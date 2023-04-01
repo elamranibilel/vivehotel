@@ -30,8 +30,10 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		if ($id > 0) {
 			$row = $u->select($id);
 			$res_commandes = Services::Res($id);
-		} else
+		} else {
 			$row = $u->emptyRecord();
+			$res_commandes = [];
+		}
 
 		extract($row);
 		require $this->gabarit;
@@ -43,7 +45,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		if (!isset($_POST["btSubmit"])) exit();
 
 		$u = new Reservation();
-		$aDoublons = $u->doublons($_POST);
+		$aDoublons = $u->aDoublons($_POST);
 
 		if ($aDoublons) {
 			$_SESSION["message"][] = "La chambre n'est pas libre entre ces deux dates : "
