@@ -1,4 +1,4 @@
-<h1>Modifier une réservation de la chambre <?= mhe($res_chambre) ?> de l'hôtel <?= mhe($res_hotel) ?></h1>
+<h1>Modifier une réservation de la chambre <?= mhe($res_chambre) ?> du client <?= $res_client ?>de l'hôtel <?= mhe($res_hotel) ?></h1>
 <form method="post" action="<?= hlien("reservation", "save") ?>">
     <input type="hidden" name="res_id" id="res_id" value="<?= $id ?>" />
 
@@ -23,6 +23,7 @@
     <div class='form-group'>
         <label for='res_client'>Client</label>
         <select id='res_client' name='res_client' type='text' class='form-control'>
+            <?= 'SON NOM EST : "' . $res_client  . '"' ?>
             <?= Client::OPTIONclients($res_client); ?>
         </select>
     </div>
