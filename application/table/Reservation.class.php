@@ -64,10 +64,10 @@ class Reservation extends Table
 	public function valid(array $res)
 	{
 		// Vérifie si la réservation n'a pas de doublon
-		$sql = 'SELECT res_id, res_date_debut, res_date_fin
+		$sql = 'SELECT res_id, res_date_debut, res_date_fin, res_hotel
 		FROM reservation
-		WHERE res_date_debut >= :res_debut 
-		AND res_date_fin <= :res_fin
+		WHERE (res_date_debut >= :res_debut 
+		OR res_date_fin <= :res_fin)
 		AND res_hotel = :res_hotel 
 		AND res_chambre = :res_chambre
 		';

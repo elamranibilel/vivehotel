@@ -31,29 +31,29 @@
         </div>
         <div class='form-group'>
             <label for='hot_hocategorie'>Hocategorie</label>
-           
-           
+
+
             <select id='hot_hocategorie' name='hot_hocategorie' class='form-control'>
                 <?= Table::HTMLoptions("select * from hocategorie ", "hoc_id", "hoc_categorie", $hot_hocategorie) ?>
             </select>
         </div>
         <div class='form-group'>
-            <label for='statut'>statut</label> 
+            <label for='statut'>statut</label>
             <select name="hot_statut">
                 <?php
-                foreach (Hotel::statut as  $valeur) { ?>
-                    <option id="<?=$cvaleur?>" value="<?=$valeur?>"><?=$valeur?></option>
-           <?php } ?>
-        </select>
+                foreach (Hotel::STATUT as  $valeur) { ?>
+                    <option id="<?= $cvaleur ?>" value="<?= $valeur ?>"><?= $valeur ?></option>
+                <?php } ?>
+            </select>
         </div>
-   
+
         <div class='form-group'>
-            <label for='pro_services'>services</label>                    
+            <label for='pro_services'>services</label>
             <select id='pro_services' name='pro_services' class='form-control'>
-                <?= Table::HTMLoptions("select * from services ", "ser_id", "ser_nom", $pro_services) ?>
+                <?= Services::OPTIONServices($pro_services); ?>
             </select>
         </div>
         <input class=" btn btn-success" type="submit" name="btSubmit" value="Enregistrer" />
-   
-   
+
+
     </form>

@@ -52,15 +52,13 @@ class Chambre extends Table
 		cha_vue, chc_categorie, cha_hotel FROM chambre, chcategorie, hotel 
 		WHERE cha_chcategorie = chc_id 
 		AND cha_hotel = hot_id
-		AND LOWER($champ) LIKE :valeur
-		ORDER BY $champ";
+		AND LOWER({$champ}) LIKE :recherche
+		ORDER BY {$champ}";
 
 		$stmt = self::$link->prepare($sql);
-		$stmt->bindParam(':champ', $champ,  PDO::PARAM_STR, 12);
-		$stmt->bindValue(':valeur', '%' . $texte . '%', PDO::PARAM_STR); // problème sécurité, il faut échapper les %
-
+		$stmt->bindValue(":recherche", '%' . $texte . '%', PDO::PARAM_STR);
 		$stmt->execute();
-		// chercher avec cha_statut "annulé"
+
 		return $stmt->fetchAll();
 	}
 

@@ -51,4 +51,9 @@ class Services extends Table
 		}
 		return $s;
 	}
+
+	static public function OPTIONServices(string $selected)
+	{
+		Table::HTMLoptions("select * from services ", "ser_id", "ser_nom", $selected);
+	}
 }

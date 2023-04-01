@@ -6,7 +6,7 @@ Classe créé par le générateur.
 
 class Hotel extends Table
 {
-	const statut = ["En attente", "Initialisé", "Annnulé",	"validé"];
+	const STATUT = ["En attente", "Initialisé", "Annnulé",	"validé"];
 	public function __construct()
 	{
 		parent::__construct("hotel", "hot_id");
@@ -27,5 +27,10 @@ class Hotel extends Table
 		$stmt->bindValue(':id', $id, PDO::PARAM_INT);
 		$stmt->execute();
 		return $stmt->fetchAll();
+	}
+
+	static public function OPTIONhotel(string $selected)
+	{
+		return Table::HTMLoptions('SELECT * FROM hotel', 'hot_id', 'hot_nom', $selected);
 	}
 }
