@@ -40,38 +40,34 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	//$_POST
 	function a_save()
 	{
-		if (isset($_POST["btSubmit"])) {
-			$u = new Reservation();
-			$aDoublons = $u->doublons($_POST);
+		if (!isset($_POST["btSubmit"])) exit();
 
-			if ($aDoublons) {
-				$_SESSION["message"][] = "La chambre n'est pas libre entre ces deux dates : "
-					. "la réservation n'a pas été modifiée";
-				header("location:" . hlien("reservation", "edit", "id", $_POST['res_id']));
-				exit();
-			}
+		$u = new Reservation();
+		$aDoublons = $u->doublons($_POST);
 
-			print_r($_POST);
-			print('date début :' . strtotime($_POST['res_date_debut']));
-			print(' date fin :' . strtotime($_POST['res_date_fin']));
-
-			if (strtotime($_POST['res_date_debut']) > strtotime($_POST['res_date_fin'])) {
-				$_SESSION["message"][] = "La réservation se termine avant la date de début : pas de mise à jour";
-				header("location:" . hlien("reservation", "edit", "id", $_POST['res_id']));
-				exit();
-			}
-
-			$_POST['res_date_maj'] = $_POST['res_date_creation'] ?? date('Y-m-d', time());
-
-			if ($_POST["res_id"] == 0) {
-				$_SESSION["message"][] = "Le nouvel enregistrement Reservation a bien été créé.";
-				$_POST['res_date_creation'] = date('Y-m-d', time());
-			} else {
-				$_SESSION["message"][] = "L'enregistrement Reservation a bien été mise à jour.";
-			}
-			$u->save($_POST);
+		if ($aDoublons) {
+			$_SESSION["message"][] = "La chambre n'est pas libre entre ces deux dates : "
+				. "la réservation n'a pas été modifiée";
 			header("location:" . hlien("reservation", "edit", "id", $_POST['res_id']));
+			exit();
 		}
+
+		if (strtotime($_POST['res_date_debut']) > strtotime($_POST['res_date_fin'])) {
+			$_SESSION["message"][] = "La réservation se serait terminé avant de commencer : pas de mise à jour";
+			header("location:" . hlien("reservation", "edit", "id", $_POST['res_id']));
+			exit();
+		}
+
+		$_POST['res_date_maj'] = $_POST['res_date_creation'] ?? date('Y-m-d', time());
+
+		if ($_POST["res_id"] == 0) {
+			$_SESSION["message"][] = "Le nouvel enregistrement Reservation a bien été créé.";
+			$_POST['res_date_creation'] = date('Y-m-d', time());
+		} else {
+			$_SESSION["message"][] = "L'enregistrement Reservation a bien été mise à jour.";
+		}
+		$u->save($_POST);
+		header("location:" . hlien("reservation", "edit", "id", $_POST['res_id']));
 	}
 
 
