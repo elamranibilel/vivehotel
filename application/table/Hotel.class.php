@@ -24,7 +24,7 @@ class Hotel extends Table
 		return $row;
 	}
 	
-	// creation d'une table hotel categore
+	// creation d'une table de catégorie d'hotel
 	public function selectAll(): array
 	{
 		$sql = "select * from hotel, hocategorie where hot_hocategorie=hoc_id";
