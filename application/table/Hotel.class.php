@@ -12,6 +12,18 @@ class Hotel extends Table
 		parent::__construct("hotel", "hot_id");
 	}
 
+
+	//retourne un enregistrement vide
+	function emptyRecord(): array
+	{
+		$fields = $this->getFields();
+		$row = [];
+		foreach ($fields as $name)
+			$row[$name] = "";
+		$row[$this->pk] = 0;
+		return $row;
+	}
+	
 	// creation d'une table hotel categore
 	public function selectAll(): array
 	{
