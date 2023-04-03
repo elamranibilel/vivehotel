@@ -66,15 +66,15 @@
     } ?>
 </table>
 
-<form method="post" action="<?= hlien('reservation', 'save') ?>">
-    <label for="nouv_service">Ajouter un service à la réservation :</label>
-    <select name="nouv_service">
+<form method="post" action="<?= hlien('reservation', 'save_res') ?>">
+    <label for="com_">Ajouter un service à la réservation :</label>
+    <select name="com_reservation">
         <?= Services::pasRes($res_id, $res_hotel) ?>
     </select>
-    <input type="hidden" name="novueau_service" />
     <input type="hidden" name="btsubmit" />
 
-    <input type="text" name="serv_quantite" />
+    <input type="text" name="com_reservation" value="<?= $res_id ?>" />
+    <input type="text" name="com_quantite" />
 
     <input type="submit" value="Envoyer" />
 </form>

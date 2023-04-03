@@ -21,8 +21,11 @@ class Hotel extends Table
 	}
 	public function selectAllservices($id): array
 	{
-		$sql = "select ser_id, ser_nom, hot_id, pro_id from proposer, services, hotel
-		where pro_services=ser_id and pro_hotel=hot_id and hot_id=:id";
+		$sql = "SELECT ser_id, ser_nom, 
+		pro_prix, pro_hotel, pro_id
+		FROM proposer, services
+		WHERE pro_services=ser_id 
+		AND pro_hotel=:id";
 		$stmt = self::$link->prepare($sql);
 		$stmt->bindValue(':id', $id, PDO::PARAM_INT);
 		$stmt->execute();

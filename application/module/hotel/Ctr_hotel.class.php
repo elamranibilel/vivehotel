@@ -60,11 +60,49 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 	}
 	function a_services()
 	{
-		$u = new Hotel();
-		if (!isset($_GET["id"])) {
+		$hotel = new Hotel();
+
+		if (!isset($_GET["id"]) or !is_numeric($_GET['id'])) {
 			header("location:" . hlien("hotel"));
 		}
-		$data = $u->selectAllservices($_GET["id"]);
+		$data = $hotel->selectAllServices($_GET["id"]);
 		require $this->gabarit;
+	}
+
+	function a_save_services()
+	{
+		$hotel = new Hotel();
+		$service = new Services();
+
+		if (isset($_POST["bt_submit"])) {
+			extract($_POST);
+
+			$dataService = $service->select($pro_services);
+			$dataHotel = $hotel->select($pro_hotel);
+
+			if (count($dataService) == 0 or count($dataHotel) == 0) {
+				$_SESSION['message'][] = "L'hôtel ou le service n'existe pas";;
+				header("Location: " . hlien('hotel', 'services', 'id', $pro_hotel));
+				exit();
+			}
+
+			$proRecord = Proposer::selectHotService($dataHotel['hot_id'], $dataService['ser_id']);
+
+			if (count($proRecord) != 0) {
+				$_SESSION['message'][] = "Ce service existe déjà dans l'hôtel";
+				header("Location: " . hlien('hotel', 'services', 'id', $pro_hotel));
+				exit();
+			}
+
+			$proposer = new Proposer();
+			$proposer->save($_POST);
+
+			$_SESSION['message'][] = "Nouveau service proposé dans l'hôtel {$_POST['hot_id']}";
+		} else {
+			$_SESSION['message'][] = "Euh nan !";
+		}
+
+		header("Location: " . hlien('hotel', 'services', 'id', $pro_hotel));
+		exit();
 	}
 }

@@ -31,7 +31,7 @@ class Services extends Table
 
 	static public function pasRes(int $idRss, int $resHotel)
 	{
-		$sql = 'SELECT ser_id,ser_nom FROM proposer, services
+		$sql = 'SELECT ser_id,ser_nom, pro_prix FROM proposer, services
 		WHERE 
 		ser_id = pro_services
 		AND pro_hotel = :hotel
@@ -56,5 +56,17 @@ class Services extends Table
 	static public function OPTIONServices(string $selected)
 	{
 		Table::HTMLoptions("select * from services ", "ser_id", "ser_nom", $selected);
+	}
+
+
+	static public function optionNotHotel(int $hot_id)
+	{
+		$sql = "SELECT ser_id, ser_nom 
+		FROM services 
+		WHERE ser_id NOT IN (SELECT pro_id
+		FROM proposer
+		WHERE pro_hotel = $hot_id)";
+
+		return Table::HTMLoptions($sql, 'ser_id', 'ser_nom', '');
 	}
 }

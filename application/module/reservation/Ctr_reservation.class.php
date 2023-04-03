@@ -98,4 +98,10 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 
 		require $this->gabarit;
 	}
+
+	function a_save_res()
+	{
+		if (!isset($_GET["id"]))
+			header('Location: ' . hlien('client'));
+	}
 }
