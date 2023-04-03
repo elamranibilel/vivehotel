@@ -26,11 +26,10 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 	{
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Hotel();
-		if ($id > 0)
+				if ($id > 0)
 			$row = $u->select($id);
 		else
 			$row = $u->emptyRecord();
-
 		extract($row);
 		require $this->gabarit;
 	}
