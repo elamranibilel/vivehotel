@@ -47,12 +47,6 @@
             </select>
         </div>
 
-        <div class='form-group'>
-            <label for='pro_services'>services</label>
-                    <select id='pro_services' name='pro_services' class='form-control'>
-                <?= Table::HTMLoptions("select * from services ", "ser_id", "ser_nom", $pro_services) ?>
-            </select>  
-        </div>
         <input class=" btn btn-success" type="submit" name="btSubmit" value="Enregistrer" />
 
 
