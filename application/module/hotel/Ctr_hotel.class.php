@@ -75,7 +75,6 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 		$pro = new Proposer();
 
 		$data = $pro->select($id);
-
 		extract($data);
 
 		require $this->gabarit;
@@ -91,7 +90,7 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 
 			$_SESSION["message"][] = "Le prix du servuice a bien été mis à jour pour l'hôtel {$pro_hotel}.";
 
-			header("location: " . hlien("hotel", "services_edit", "id", $pro_id));
+			header("location: " . hlien("hotel", "services", "id", $pro_hotel));
 		}
 	}
 }

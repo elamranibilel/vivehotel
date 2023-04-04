@@ -23,4 +23,25 @@ class Proposer extends Table
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
+
+
+	/**
+	 *  retourne un enregistrement depuis la base de données
+	 *
+	 * @param integer $id        	
+	 */
+	function select(int $id)
+	{
+		$sql = "SELECT pro_id, pro_hotel, 
+		pro_prix, pro_services, hot_id, ser_nom, hot_nom
+		FROM proposer, hotel, services
+		WHERE pro_id=:id
+		AND hot_id = pro_hotel
+		AND ser_id = pro_services
+		";
+		$statement = self::$link->prepare($sql);
+		$statement->bindValue(":id", $id, PDO::PARAM_INT);
+		$statement->execute();
+		return $statement->fetch();
+	}
 }

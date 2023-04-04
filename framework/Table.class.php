@@ -44,7 +44,7 @@ class Table
 	 */
 	function select(int $id)
 	{
-		$sql = "SELECT pro_id, pro_hotel, pro_prix, pro_services FROM $this->table where $this->pk=:id";
+		$sql = "SELECT * FROM $this->table where $this->pk=:id";
 		$statement = self::$link->prepare($sql);
 		$statement->bindValue(":id", $id, PDO::PARAM_INT);
 		$statement->execute();
