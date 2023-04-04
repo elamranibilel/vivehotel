@@ -14,7 +14,7 @@
     			<tr>
     				<td><?= mhe($row['ser_nom']) ?> et <?= mhe($row['ser_id']) ?></td>
     				<td><?= mhe($row['pro_prix']) ?></td>
-    				<td><a class="btn btn-warning" href="<?= hlien("hotel", "services_edit", "id", $row["ser_id"]) ?>">Modifier</a></td>
+    				<td><a class="btn btn-warning" href="<?= hlien("hotel", "services_edit", "id", $row["pro_id"]) ?>">Modifier</a></td>
     				<td><a class="btn btn-danger" href="<?= hlien("proposer", "delete", "id", $row["pro_id"]) ?>">Supprimer</a></td>
     			</tr>
     		<?php } ?>
