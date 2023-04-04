@@ -4,3 +4,4 @@ Actions : Index, edit
 - Pouvoir créer un service dans une chambre
 - Ajouter la possibilité de modifier le prix d'un service dans un Hôtel
 - Teste le CRUD administrateur
+- Commenter les actions des contrôleurs pour plus de clarté
