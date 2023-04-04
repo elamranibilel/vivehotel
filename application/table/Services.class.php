@@ -55,7 +55,7 @@ class Services extends Table
 
 	static public function OPTIONServices(string $selected)
 	{
-		Table::HTMLoptions("select * from services ", "ser_id", "ser_nom", $selected);
+		return Table::HTMLoptions("SELECT * FROM services", "ser_id", "ser_nom", $selected);
 	}
 
 

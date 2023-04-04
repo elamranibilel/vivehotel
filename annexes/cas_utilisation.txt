@@ -1,10 +1,6 @@
-Module : Chambre
-Actions : index, edit, reservations
-Module : Hôtel
-Actions : index, edit, chambres, clients, services
-Module : Services
-Actions : Index, edit, hotel
 Module : Personnel
 Actions : Index, edit
-Module : Réservation
-Action : Index, edit, services
+
+- Pouvoir créer un service dans une chambre
+- Ajouter la possibilité de modifier le prix d'un service dans un Hôtel
+- Teste le CRUD administrateur
