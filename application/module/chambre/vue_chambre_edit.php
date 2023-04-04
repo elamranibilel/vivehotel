@@ -5,7 +5,6 @@
             <h1>
                 <label for='cha_numero'>Modification de la chambre <?= mhe($cha_numero) ?></label>
             </h1>
-            <h2><a href="<?= hlien('chambre', 'reservations', 'id', $cha_id) ?>">Réservation de la chambre actuelle</a></h2>
             <h2><a href="<?= hlien('chambre', 'index') ?>">Liste des chambres</a></h2>
 
         </div>

@@ -3,8 +3,6 @@
     <table class="table table-striped table-bordered table-hover">
     	<thead>
     		<tr>
-
-    			<th>Id</th>
     			<th>Statut</th>
     			<th>Nom</th>
     			<th>Adresse</th>
@@ -20,8 +18,6 @@
     		<?php
 			foreach ($data as $row) { ?>
     			<tr>
-
-    				<td><?= mhe($row['hot_id']) ?></td>
     				<td><?= mhe($row['hot_statut']) ?></td>
     				<td><?= mhe($row['hot_nom']) ?></td>
     				<td><?= mhe($row['hot_adresse']) ?></td>

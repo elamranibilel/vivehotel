@@ -5,8 +5,6 @@
     <table class="table table-striped table-bordered table-hover">
     	<thead>
     		<tr>
-
-    			<th>Id</th>
     			<th>Numero</th>
     			<th>Statut</th>
     			<th>Surface</th>
@@ -26,8 +24,6 @@
 				array_map('trim', $row);
 			?>
     			<tr>
-
-    				<td><?= mhe($row['cha_id']) ?></td>
     				<td><?= mhe($row['cha_numero']) ?></td>
     				<td><?= mhe($row['cha_statut']) ?></td>
     				<td><?= mhe($row['cha_surface']) ?>m²</td>

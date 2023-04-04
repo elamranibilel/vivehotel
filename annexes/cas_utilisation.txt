@@ -8,5 +8,3 @@ Module : Personnel
 Actions : Index, edit
 Module : Réservation
 Action : Index, edit, services
-Action : Services
-Action : Index, edit
