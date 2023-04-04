@@ -84,16 +84,12 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 	function a_services_save()
 	{
 		extract($_POST);
-		// debug($_POST);
-		// exit();
 
 		if (isset($btSubmit)) {
 			$u = new Proposer();
 			$u->save($_POST);
-			if ($_POST["pro_id"] == 0)
-				$_SESSION["message"][] = "Le prix du servuice a bien été mis à jour pour l'hôtel {$pro_hotel}.";
-			else
-				$_SESSION["message"][] = "Le prix du servuice a bien été mis à jour pour l'hôtel {$pro_hotel}.";
+
+			$_SESSION["message"][] = "Le prix du servuice a bien été mis à jour pour l'hôtel {$pro_hotel}.";
 
 			header("location: " . hlien("hotel", "services_edit", "id", $pro_id));
 		}

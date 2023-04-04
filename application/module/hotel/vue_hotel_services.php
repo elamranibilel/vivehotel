@@ -2,7 +2,7 @@
     <table class="table table-striped table-bordered table-hover">
     	<thead>
     		<tr>
-    			<th>Nom et id</th>
+    			<th>Service</th>
     			<th>Prix</th>
     			<th>modifier</th>
     			<th>suprimer</th>
@@ -12,7 +12,7 @@
     		<?php
 			foreach ($data as $row) { ?>
     			<tr>
-    				<td><?= mhe($row['ser_nom']) ?> et <?= mhe($row['ser_id']) ?></td>
+    				<td><?= mhe($row['ser_nom']) ?></td>
     				<td><?= mhe($row['pro_prix']) ?></td>
     				<td><a class="btn btn-warning" href="<?= hlien("hotel", "services_edit", "id", $row["pro_id"]) ?>">Modifier</a></td>
     				<td><a class="btn btn-danger" href="<?= hlien("proposer", "delete", "id", $row["pro_id"]) ?>">Supprimer</a></td>
