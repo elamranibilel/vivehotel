@@ -34,22 +34,6 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	function a_edit_services()
-	{
-		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
-		$u = new Proposer();
-
-		if ($id > 0)
-			$row = $u->select($id);
-		else {
-			header('Locaiton: ' . hlien('hotel', 'index'));
-			exit();
-		}
-
-		extract($row);
-		require $this->gabarit;
-	}
-
 	//$_POST
 	function a_save()
 	{
@@ -84,40 +68,32 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	function a_save_services()
+	function a_services_edit()
 	{
-		$hotel = new Hotel();
-		$service = new Services();
+		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 
-		if (isset($_POST["bt_submit"])) {
-			extract($_POST);
+		$pro = new Proposer();
 
-			$dataService = $service->select($pro_services);
-			$dataHotel = $hotel->select($pro_hotel);
+		$data = $pro->select($id);
 
-			if (count($dataService) == 0 or count($dataHotel) == 0) {
-				$_SESSION['message'][] = "L'hôtel ou le service n'existe pas";;
-				header("Location: " . hlien('hotel', 'services', 'id', $pro_hotel));
-				exit();
-			}
+		extract($data);
 
-			$proRecord = Proposer::selectHotService($dataHotel['hot_id'], $dataService['ser_id']);
+		require $this->gabarit;
+	}
 
-			if (count($proRecord) != 0) {
-				$_SESSION['message'][] = "Ce service existe déjà dans l'hôtel";
-				header("Location: " . hlien('hotel', 'services', 'id', $pro_hotel));
-				exit();
-			}
-
-			$proposer = new Proposer();
-			$proposer->save($_POST);
-
-			$_SESSION['message'][] = "Nouveau service proposé dans l'hôtel {$_POST['hot_id']}";
-		} else {
-			$_SESSION['message'][] = "Euh nan !";
+	function a_services_save()
+	{
+		extract($_POST);
+		print_r($_POST);
+		if (isset($btSubmit)) {
+			$u = new Proposer();
+			$u->save($_POST);
+			if ($_POST["pro_id"] == 0)
+				$_SESSION["message"][] = "Le nouvel enregistrement Proposer a bien été créé.";
+			else
+				$_SESSION["message"][] = "L'enregistrement Proposer a bien été mis à jour.";
 		}
 
-		header("Location: " . hlien('hotel', 'services', 'id', $pro_hotel));
-		exit();
+		header("location: " . hlien("hotel", "services_edit", "id", $pro_hotel));
 	}
 }

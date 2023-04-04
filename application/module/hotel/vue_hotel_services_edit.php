@@ -1,4 +1,4 @@
-    <form method="post" action="<?= hlien("proposer", "save") ?>">
+    <form method="post" action="<?= hlien("hotel", "services_save") ?>">
         <input type="hidden" name="pro_id" id="pro_id" value="<?= $id ?>" />
 
         <div class='form-group'>
@@ -8,7 +8,7 @@
         <div class='form-group'>
             <label for='pro_hotel'>Hotel</label>
             <input disabled type='text' size='50' value='<?= mhe($pro_hotel) ?>' class='form-control' />
-            <input type="hidden" id="pro_hotel" name="pro_hotel" name="pro_hotel" value='<?= mhe($pro_hotel) ?>/>
+            <input type="hidden" id="pro_hotel" name="pro_hotel" name="pro_hotel" value="<?= mhe($pro_hotel) ?>" />
         </div>
         <div class=' form-group'>
             <label for='pro_services'>Services</label>
