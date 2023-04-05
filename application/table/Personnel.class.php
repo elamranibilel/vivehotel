@@ -20,9 +20,9 @@ class Personnel extends Table
 		$sql = "SELECT
 		per_id,	
 		per_nom,
-		per_identifiant,	
 		per_mdp,
-		per_email,	
+		per_identifiant,
+				per_email,	
 		per_role,	
 		hot_nom
 		FROM personnel, hotel
