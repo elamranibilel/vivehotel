@@ -22,9 +22,20 @@ class Chambre extends Table
 
 	const CRI_RECHERCHE = [
 		'Type lits' => 'cha_typeLit',
-		'Catégorie' => 'chc_categorie',
+		'Catégorie' => 'cha_chcategorie',
 		'Description' => 'cha_description',
+		'Wifi' => 'cha_wifi',
+		'Minibar' => 'cha_minibar',
+		'Coffre' => 'cha_coffre',
+		'Vue' => 'cha_vue'
 	];
+
+	const LISTE_OPTIONS = [
+		'Jacuzzi' => 'cha_jacuzzi',
+		'Balcon' => 'cha_balcon',
+	];
+
+	// (?) Catégories de la chambre
 
 	public function __construct()
 	{

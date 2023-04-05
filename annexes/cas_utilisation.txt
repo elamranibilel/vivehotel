@@ -1,8 +1,16 @@
 Module : Personnel
 Actions : Index, edit
 
-- Tester tout le site et faire les modifications nécessaires
+Module : Tarifer
+Actions : Index (voir les prix), edit (en JS (?))
 
-- Pouvoir ajouter un service à une réservation
+
+- Tester tout le site et faire les modifications nécessaires
+Testés : module service, 
+- Créer un novueau service à une réservation
+- Créer une page pour modifier le prix de chaque combinaison d'hôtel/Catégorie
+- Supprimer les actions de suppression des tarifications
+
+
 - Teste le CRUD administrateur
 - Commenter les actions des contrôleurs pour plus de clarté

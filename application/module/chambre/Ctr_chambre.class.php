@@ -43,6 +43,9 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 		else
 			$row = $u->emptyRecord();
 		extract($row);
+
+		$CRI_RECHERCHE = Chambre::CRI_RECHERCHE;
+
 		require $this->gabarit;
 	}
 
