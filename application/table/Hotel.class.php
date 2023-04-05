@@ -6,7 +6,7 @@ Classe créé par le générateur.
 
 class Hotel extends Table
 {
-	const STATUT = ["En attente", "Initialisé", "Annnulé",	"validé"];
+	const STATUT = ["En attente", "Initialisé", "Annnulé",	"Validé"];
 	public function __construct()
 	{
 		parent::__construct("hotel", "hot_id");
@@ -23,11 +23,13 @@ class Hotel extends Table
 		$row[$this->pk] = 0;
 		return $row;
 	}
-	
+
 	// creation d'une table de catégorie d'hotel
 	public function selectAll(): array
 	{
-		$sql = "select * from hotel, hocategorie where hot_hocategorie=hoc_id";
+		$sql = "SELECT * FROM hotel, hocategorie 
+		WHERE hot_hocategorie = hoc_id
+		ORDER BY hot_id";
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
 	}
