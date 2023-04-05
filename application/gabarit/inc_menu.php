@@ -15,8 +15,7 @@
         <li><a class='nav-link' href='<?= hlien("hotel", "index") ?>'>Hotel</a></li>
         <li><a class='nav-link' href='<?= hlien("services", "index") ?>'>Services</a></li>
         <li><a class='nav-link' href='<?= hlien("personnel", "index") ?>'>Personnel</a></li>
-
-
+        <li><a class='nav-link' href='<?= hlien("tarifer", "index") ?>'>Tarif</a></li>
       </ul>
       <ul class="navbar-nav ml-auto">
         <li><a class="nav-link" href="<?= hlien("authentification", "deconnexion") ?>">Déconnexion</a></li>
