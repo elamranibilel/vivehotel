@@ -6,7 +6,7 @@ Actions : Index (voir les prix), edit (en JS (?))
 
 
 - Tester tout le site et faire les modifications nécessaires
-Testés : module service, reservation, client, hôtel
+Testés : module service, reservation, client, hôtel, service
 
 
 - Créer un novueau service à une réservation
