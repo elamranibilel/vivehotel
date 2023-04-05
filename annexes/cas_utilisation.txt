@@ -6,7 +6,8 @@ Actions : Index (voir les prix), edit (en JS (?))
 
 
 - Tester tout le site et faire les modifications nécessaires
-Testés : module service, 
+Testés : module service, chambre, client
+
 - Créer un novueau service à une réservation
 - Créer une page pour modifier le prix de chaque combinaison d'hôtel/Catégorie
 - Supprimer les actions de suppression des tarifications

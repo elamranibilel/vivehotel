@@ -21,9 +21,8 @@ class Chambre extends Table
 	];
 
 	const CRI_RECHERCHE = [
-		'Type lits' => 'cha_typeLit',
-		'Catégorie' => 'cha_chcategorie',
-		'Description' => 'cha_description',
+		'Jacuzzi' => 'cha_jacuzzi',
+		'Balcon' => 'cha_balcon',
 		'Wifi' => 'cha_wifi',
 		'Minibar' => 'cha_minibar',
 		'Coffre' => 'cha_coffre',

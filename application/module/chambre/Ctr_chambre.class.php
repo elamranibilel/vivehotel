@@ -42,6 +42,7 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 			$row = $u->select($id);
 		else
 			$row = $u->emptyRecord();
+
 		extract($row);
 
 		$CRI_RECHERCHE = Chambre::CRI_RECHERCHE;
@@ -59,10 +60,12 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 			}
 
 			$u = new Chambre();
+
 			$u->save($_POST);
-			$_SESSION["message"][] = ($_POST["cha_id"] == 0) ?  "Le nouvel enregistrement" .
+			$_SESSION["message"][] = ($_POST["cha_id"] == 0) ?  "Le nouvel enregistrement " .
 				"Chambre a bien été créé." :  "L'enregistrement Chambre a bien été mis à jour.";
 		}
+
 		header("location:" . hlien("chambre"));
 	}
 
