@@ -1,5 +1,4 @@
-    <h2>client</h2>
-    <p><a class="btn btn-primary" href="<?= hlien("client", "edit", "id", 0) ?>">Nouveau client</a></p>
+    <h2>Liste de tous les clients de "Vivehotel"</h2>
     <table class="table table-striped table-bordered table-hover">
     	<thead>
     		<tr>
@@ -18,9 +17,9 @@
     				<td><?= mhe($row['cli_nom']) ?></td>
     				<td><?= mhe($row['cli_identifiant']) ?></td>
     				<td><?= mhe($row['cli_email']) ?></td>
-    				<td><a class="btn btn-info" href="<?= hlien("reservation", "client", "id", $row["cli_id"]) ?>">Réservation</a></td>
-    				<td><a class="btn btn-warning" href="<?= hlien("client", "edit", "id", $row["cli_id"]) ?>">Modifier</a></td>
-    				<td><a class="btn btn-danger" href="<?= hlien("client", "delete", "id", $row["cli_id"]) ?>">Supprimer</a></td>
+    				<td><a class="btn btn-info" href="<?= hlien("reservation", "client", "id", mhe($row["cli_id"])) ?>">Réservation</a></td>
+    				<td><a class="btn btn-warning" href="<?= hlien("client", "edit", "id", mhe($row["cli_id"])) ?>">Modifier</a></td>
+    				<td><a class="btn btn-danger" href="<?= hlien("client", "delete", "id", mhe($row["cli_id"])) ?>">Supprimer</a></td>
     			</tr>
     		<?php } ?>
     	</tbody>

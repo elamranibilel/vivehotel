@@ -1,7 +1,8 @@
 Module : Personnel
 Actions : Index, edit
 
-- Pouvoir créer un service dans une chambre
-- Ajouter la possibilité de modifier le prix d'un service dans un Hôtel
+- Tester tout le site et faire les modifications nécessaires
+
+- Pouvoir ajouter un service à une réservation
 - Teste le CRUD administrateur
 - Commenter les actions des contrôleurs pour plus de clarté

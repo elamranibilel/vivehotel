@@ -15,7 +15,7 @@
         <li><a class='nav-link' href='<?= hlien("client", "index") ?>'>Client</a></li>
         <li><a class='nav-link' href='<?= hlien("hotel", "index") ?>'>Hotel</a></li>
         <li><a class='nav-link' href='<?= hlien("services", "index") ?>'>Services</a></li>
-        <!-- <li><a class='nav-link' href='<?= hlien("tarifer", "index") ?>'>Tarifer</a></li>  -->
+        <li><a class='nav-link' href='<?= hlien("personnel", "index") ?>'>Personnel</a></li>
 
 
       </ul>
