@@ -1,6 +1,12 @@
 - Modifier le CRUD de personnel edit [A]
-- Lister les services d'une réservation [B]
-- Ajouter ou supprimer les services d'une réservation [B]
+
+- Lister les services d'une réservation si cela ne fonctionne pas [B]
+- Sur la page "reservation" "edit", il y a un formulaire qui permet d'Ajouter
+un service à une réservation. Faire foncitonner ce formulaire en créant un formulaire
+qui permet à l'utilisateur d'ajouter des entrées dans la table  commander. Vérifier si la Liste
+des "proposer" de la réservation s'affiche bien dans la tableau. Créer une nouvelle action
+qui permet de supprimer un élément dans la table "proposer". [B]
+
 - Créer un tableau qui indique les tarifs des hôtels [C]
 - Modifier l'action edit de "tarifer" [C]
 
