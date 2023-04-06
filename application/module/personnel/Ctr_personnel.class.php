@@ -39,6 +39,7 @@ class Ctr_personnel extends Ctr_controleur implements I_crud
 	function a_save()
 	{
 		if (isset($_POST["btSubmit"])) {
+			$_POST["per_mdp"] = password_hash($_POST["per_mdp"], PASSWORD_DEFAULT);
 			$u = new Personnel();
 			$u->save($_POST);
 			if ($_POST["per_id"] == 0)
