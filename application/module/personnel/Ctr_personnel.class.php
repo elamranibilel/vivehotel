@@ -43,7 +43,7 @@ class Ctr_personnel extends Ctr_controleur implements I_crud
 			$u->save($_POST);
 			if ($_POST["per_id"] == 0)
 				$_SESSION["message"][] = "Le nouvel enregistrement Personnel a bien été créé.";
-²			else
+			else
 				$_SESSION["message"][] = "L'enregistrement Personnel a bien été mis à jour.";
 		}
 
