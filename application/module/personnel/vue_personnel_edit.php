@@ -5,6 +5,17 @@
             <label for='per_nom'>Nom</label>
             <input id='per_nom' name='per_nom' type='text' size='50' value='<?= mhe($per_nom) ?>' class='form-control' />
         </div>
+        <div class='form-group'>
+            <label for='per_identifiant'>identifiant</label>
+            <input id='per_identifiant' name='per_identifiant' type='text' size='50' value='<?= mhe($per_identifiant) ?>' class='form-control' />
+        </div>
+
+        <div class='form-group'>
+            <label for='per_mdp'>mot de passe</label>
+            <input id='per_mdp' name='per_mdp' type='password' size='50' value='<?= mhe($per_mdp) ?>' class='form-control' />
+        </div>
+
+       
 
         <div class='form-group'>
             <label for='per_role'>Role</label>

@@ -100,8 +100,14 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 			$_SESSION["message"][] = ($pro_id == 0) ? "Le service a été créé pour l'hôtel {$pro_hotel}."
 				: "Le prix du servuice a bien été mis à jour pour l'hôtel {$pro_hotel}.";
 
+<<<<<<< HEAD
 			header("Location: " . hlien("hotel", "services", "id", $pro_hotel));
 			exit();
+=======
+			$_SESSION["message"][] = "Le prix du service a bien été mis à jour pour l'hôtel {$pro_hotel}.";
+
+			header("location: " . hlien("hotel", "services", "id", $pro_hotel));
+>>>>>>> c342792 (statuco)
 		}
 	}
 }
