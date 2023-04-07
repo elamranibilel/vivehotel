@@ -14,4 +14,15 @@ class Chcategorie extends Table
 	{
 		return self::HTMLoptions('SELECT chc_id, chc_categorie FROM chcategorie', 'chc_id', 'chc_categorie', $id);
 	}
+
+	public function selectDistinctCat()
+	{
+		$sql = "SELECT DISTINCT chc_categorie FROM chcategorie";
+		$result = self::$link->query($sql);
+		$data = $result->fetchAll();
+
+		return array_map(function ($elem) {
+			return $elem['chc_categorie'];
+		}, $data);
+	}
 }
