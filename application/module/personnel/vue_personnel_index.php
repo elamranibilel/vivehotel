@@ -6,7 +6,6 @@
 
     			<th>Id</th>
     			<th>Nom</th>
-    			<th>mdp</th>
     			<th>Identifiant</th>
     			<th>Email</th>
     			<th>Role</th>
@@ -22,7 +21,6 @@
 
     				<td><?= mhe($row['per_id']) ?></td>
     				<td><?= mhe($row['per_nom']) ?></td>
-    				<td><?= mhe($row['per_mdp']) ?></td>
     				<td><?= mhe($row['per_identifiant']) ?></td>
     				<td><?= mhe($row['per_email']) ?></td>
     				<td><?= mhe($row['per_role']) ?></td>
