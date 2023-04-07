@@ -1,4 +1,5 @@
 boutonssSuppr = document.body.getElementsByClassName('btn-danger');
+tdEditablesTarifs = document.body.getElementsByClassName('tarif');
 
 Array.prototype.forEach.call(boutonssSuppr,
     function (item) {
@@ -6,8 +7,44 @@ Array.prototype.forEach.call(boutonssSuppr,
     }
 )
 
+Array.prototype.forEach.call(tdEditablesTarifs,
+    function (item) {
+        item.addEventListener('input', (e) => infoTarif(e))
+    }
+)
+
 function confSuppr(e) {
     boolConf = confirm("Voulez-vous vraiment supprimer cet élément ?");
     if (boolConf) return false;
-    e.preventDefault();
+}
+
+async function infoTarif(e) {
+
+    let tarPrix = e.target.innerHTML;
+    let tarHoCategorie = e.target.getAttribute('numhoc');
+    let tarChCategorie = e.target.getAttribute('numchc');
+
+    editTar(tarHoCategorie, tarChCategorie, tarPrix);
+
+}
+
+async function editTar(hoc, chc, tarprix) {
+    let tdEditionHeader = {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        mode: "cors",
+        credentials: "same-origin",
+        body: JSON.stringify({
+            hoc: hoc,
+            chc: chc,
+            tarprix: tarprix
+        })
+    };
+
+    const texte = await fetch('index.php?m=tarifer&a=ajax', tdEditionHeader)
+        .then((res) => res.text());
+
+    console.log(texte);
 }

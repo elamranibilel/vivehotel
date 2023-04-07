@@ -43,10 +43,30 @@ class Ctr_tarifer extends Ctr_controleur implements I_crud
 
 	function a_ajax()
 	{
-		// conditions GET
-		// affichage ajax
-		echo '';
-		// NE PAS METTRE CA : require $this->gabarit;
+		$tarif = new Tarifer();
+		// Vérifier si l'utilsiateur est administrateur
+		$reponseJSON = file_get_contents('php://input');
+		$reponseArray = json_decode($reponseJSON, true);
+
+		if (
+			!isset($reponseArray['tarprix'])
+			or !isset($reponseArray['hoc'])
+			or !isset($reponseArray['chc'])
+		)
+			return 'FAUX';
+
+		$reponseArray['hoc']++;
+		$reponseArray['chc']++;
+
+		$infosPrix = $tarif->selectPrix($reponseArray['hoc'], $reponseArray['chc']);
+
+		if (count($infosPrix) == 0)
+			die();
+
+		$tarifEntree = $infosPrix[0];
+		$tarifEntree['tar_prix'] = $reponseArray['tarprix'];
+		debug($tarifEntree);
+		$tarif->save($tarifEntree);
 	}
 
 	//$_GET["id"] : id de l'enregistrement

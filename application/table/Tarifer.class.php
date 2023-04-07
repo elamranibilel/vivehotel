@@ -18,4 +18,15 @@ class Tarifer extends Table
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
 	}
+
+	public function selectPrix(int $hocCat, $chcCat): array
+	{
+		$sql = 'SELECT tar_id, tar_chcategorie, tar_hocategorie, tar_prix FROM tarifer WHERE tar_chcategorie = :chcat
+		AND tar_hocategorie = :hocat';
+		$stmt = self::$link->prepare($sql);
+		$stmt->bindValue(':hocat', $hocCat);
+		$stmt->bindValue(':chcat', $chcCat);
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
 }

@@ -4,7 +4,7 @@
 <table>
 	<thead>
 		<tr>
-			<th></th>
+			<th>€</th>
 			<?php
 			foreach ($chCategorie as $catChambre) {
 				echo "<th>" . $catChambre . "</th>";
@@ -27,7 +27,7 @@
 				foreach ($chCategorie as $numChc => $nomChc) {
 					$prix = $grilleTarifaire[$numHoc][$numChc];
 				?>
-					<td><?= $prix ?></td>
+					<td class="tarif" numchc="<?= $numChc ?>" numhoc="<?= $numHoc; ?>" contenteditable="true"><?= $prix ?></td>
 				<?php } ?>
 			</tr>
 		<?php } ?>

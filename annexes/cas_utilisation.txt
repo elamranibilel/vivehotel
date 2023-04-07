@@ -1,5 +1,3 @@
-- Modifier le CRUD de personnel edit [A]
-
 - Lister les services d'une réservation si cela ne fonctionne pas [B]
 - Sur la page "reservation" "edit", il y a un formulaire qui permet d'Ajouter
 un service à une réservation. Faire foncitonner ce formulaire en créant un formulaire
