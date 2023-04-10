@@ -179,7 +179,7 @@ function tableau2D(int $dimensionX, int $dimensionY, string $defaultValue = 'X')
 */
 function tableauCD(array $vecteursCles, array $nomsAxes, array $tabValeurs): array
 {
-	// Je vérifie que les dimensions soient correctes
+	// Je vérifie que les dimensions sont valides
 	if (!isset($nomsAxes['X1']) or !isset($nomsAxes['X2']))
 		return [];
 
