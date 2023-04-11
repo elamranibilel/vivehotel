@@ -14,8 +14,10 @@ Array.prototype.forEach.call(tdEditablesTarifs,
 )
 
 function confSuppr(e) {
+
     boolConf = confirm("Voulez-vous vraiment supprimer cet élément ?");
     if (boolConf) return false;
+    e.preventDefault();
 }
 
 async function infoTarif(e) {
