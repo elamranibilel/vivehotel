@@ -10,15 +10,24 @@ class Hocategorie extends Table
 		parent::__construct("hocategorie", "hoc_id");
 	}
 
-	public function selectDistinctCat()
+	public function selectAll(): array
 	{
-		$sql = "SELECT DISTINCT hoc_categorie FROM hocategorie";
-		$result = self::$link->query($sql);
-		$data = $result->fetchAll();
+		$sql = 'SELECT hoc_categorie from hocategorie';
+		$resultats = self::$link->query($sql);
+		$hocCats = [];
 
-		$hoCategorie = array_map(function ($elem) {
-			return $elem['hoc_categorie'];
-		}, $data);
-		return $hoCategorie;
+		while ($nomCat = $resultats->fetchColumn()) {
+			$hocCats[] = $nomCat;
+		}
+
+		return $hocCats;
+	}
+
+
+	public function countCat()
+	{
+		$sql = "SELECT COUNT(DISTINCT hoc_categorie) `nb_hoc` FROM hocategorie";
+		$result = self::$link->query($sql);
+		return $result->fetch()['nb_hoc'];
 	}
 }

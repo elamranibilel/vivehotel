@@ -20,53 +20,45 @@ class Ctr_tarifer extends Ctr_controleur implements I_crud
 		$chc = new Chcategorie();
 		$tarifer = new Tarifer();
 
-		$hoCategorie = $hoc->selectDistinctCat();
-		$chCategorie =  $chc->selectDistinctCat();
+		$chCategorie = $chc->selectAll();
+		$hoCategorie = $hoc->selectAll();
 
 		$arrayTarifs = $tarifer->selectAll();
 
-		$vecteurCles = [
-			'X1' => $hoCategorie,
-			'X2' => $chCategorie
+		$dimArrayTarifs = [
+			'D1' => $hoc->countCat(),
+			'D2' => $chc->countCat()
 		];
 
-		$nomsAxes = [
-			'X1' => 'tar_hocategorie',
-			'X2' => 'tar_chcategorie',
-			'Y' => 'tar_prix'
-		];
-
-		$grilleTarifaire = tableauCD($vecteurCles, $nomsAxes, $arrayTarifs);
+		$grilleTarifaire = matriceSqlCD(
+			$dimArrayTarifs,
+			$tarifer::AXES_TABLEAU_TARIFS,
+			$arrayTarifs
+		);
 
 		require $this->gabarit;
 	}
 
+	/* 
+	* Traitement de la modification de la grille tarifaire
+	* Reçoit un appel AJAX de modification
+	*/
 	function a_ajax()
 	{
 		$tarif = new Tarifer();
+
 		// Vérifier si l'utilsiateur est administrateur
+
 		$reponseJSON = file_get_contents('php://input');
-		$reponseArray = json_decode($reponseJSON, true);
+		$reponseArray = array_map('trim', json_decode($reponseJSON, true));
 
-		if (
-			!isset($reponseArray['tarprix'])
-			or !isset($reponseArray['hoc'])
-			or !isset($reponseArray['chc'])
-		)
-			return 'FAUX';
+		$infosPrix = $tarif->selectPrix(
+			$reponseArray['tar_hocategorie'],
+			$reponseArray['tar_chcategorie']
+		);
 
-		$reponseArray['hoc']++;
-		$reponseArray['chc']++;
-
-		$infosPrix = $tarif->selectPrix($reponseArray['hoc'], $reponseArray['chc']);
-
-		if (count($infosPrix) == 0)
-			die();
-
-		$tarifEntree = $infosPrix[0];
-		$tarifEntree['tar_prix'] = $reponseArray['tarprix'];
-		debug($tarifEntree);
-		$tarif->save($tarifEntree);
+		$infosPrix['tar_prix'] = $reponseArray['tar_prix'];
+		$tarif->save($infosPrix);
 	}
 
 	//$_GET["id"] : id de l'enregistrement
@@ -83,30 +75,15 @@ class Ctr_tarifer extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	//$_POST
+	// Pas de fonction de sauvegarde des tarifs
 	function a_save()
 	{
-		if (isset($_POST["btSubmit"])) {
-			$u = new Tarifer();
-			$u->save($_POST);
-			if ($_POST["tar_id"] == 0)
-				$_SESSION["message"][] = "Le nouvel enregistrement Tarifer a bien été créé.";
-			else
-				$_SESSION["message"][] = "L'enregistrement Tarifer a bien été mis à jour.";
-		}
 		header("location:" . hlien("tarifer"));
 	}
 
-
-
-	//param GET id 
+	// Pas de fonction de suppression de tarifs
 	function a_delete()
 	{
-		if (isset($_GET["id"])) {
-			$u = new Tarifer();
-			$u->delete($_GET["id"]);
-			$_SESSION["message"][] = "L'enregistrement Tarifer a bien été supprimé.";
-		}
 		header("location:" . hlien("tarifer"));
 	}
 }

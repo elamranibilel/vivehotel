@@ -1,25 +1,25 @@
-- Lister les services d'une réservation si cela ne fonctionne pas [B]
+
 - Sur la page "reservation" "edit", il y a un formulaire qui permet d'Ajouter
 un service à une réservation. Faire foncitonner ce formulaire en créant un formulaire
 qui permet à l'utilisateur d'ajouter des entrées dans la table  commander. Vérifier si la Liste
 des "proposer" de la réservation s'affiche bien dans la tableau. Créer une nouvelle action
 qui permet de supprimer un élément dans la table "proposer". [B]
 
-- Modifier l'action edit de "tarifer" [C]
-- Supprimer les actions de suppression des tarifications  [C]
+- Créer une pagination sur le CRUD de la liste des clambres
+- Renommer le titre H1 des pages pour qu'elles soeitn descritives
 
-- Créer un compte administrateur
-- N'autoriser le CRUD que pour les administrateurs du site 
+- Confgiurer la table utilisateur [A]
+- Créer un compte administrateur [A]
+- Retester le CRUD administrateur en tant que connecté [A,C]
+- Vérifir que le CRUD administarteur n'est pas accessible aux autres [A,C]
 
-- Retester le CRUD administrateur en tant que connecté
-- Vérifir que le CRUD administarteur n'est pas accessible aux autres
+- Créer les pages des gestionnaires
+- Créer les pages des téléconseillers
+- Créer les pages des cleints
 
 - Tester le site intenret en entier
-- Créer un GPS qui donne la latitude et longitude (optionnel, à voir en dernier)
-
-- Créer une classe qui permet de faire les formulaires interactifs
-
-- Créer un
-
-- Tester le site internet en entier
 - Commenter les actions des contrôleurs pour plus de clarté
+
+Non important non urgent :
+- Créer une classe qui permet de faire les formulaires interactifs
+- Créer un GPS qui donne la latitude et longitude (optionnel, à voir en dernier)

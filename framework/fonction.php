@@ -156,7 +156,11 @@ function listeValeursChamp(array $data, string $pk, string $field)
 	return $list;
 }
 
-// Créer un tableau à double dimension dont les valeurs sont vides
+/* 
+	Crée une tableau à double entrée vide
+	de dimension $dimensionX*$dimensionY
+	où chaque case stocke la valeur $defaultValue
+*/
 function tableau2D(int $dimensionX, int $dimensionY, string $defaultValue = 'X')
 {
 	$mytable = [];
@@ -169,35 +173,50 @@ function tableau2D(int $dimensionX, int $dimensionY, string $defaultValue = 'X')
 }
 
 /*
-* $vecteursCles : contient un vectur avec les clés en axe des X, le 2nd en axe des Y
-* $nomAxes : contient en clé X le nom en axe des X, en clé Y le nom des axes en Y
-* $tabValeurs : valeurs du tableau croisé dynamiques contenus dans des entrées d'une table. 
-* Pour chaque valeur de ce tableau, il s'agit d'un tableau contenant une entrée MySQL
---> La valeur contenue dans la clé de valeur $nomAxes['Z'] donne la valeur de l'array du TCD au point (X,Y)
---> la valeur contenu dans sa clé de valeur $nomAxes['X'] dit la valeur de X
---> la valeur contenu dans sa clé de valeur $nomAxes['X'] dit la valeur de Y
+Le premier paramètre a pour clés X1 et X2 et contient des entiers naturels 
+strictement positifs. 
+La fonction matriceSqlD2 appelle la fonction tableauD2 pour créer un tableau
+de dimension D1*D2 où 
+* D1 = $dimensionsTab['X1']
+* D2 = $dimensionsTab['X2']
+
+A partir du tableau D1*D2 crée par la méthode tableau2D,
+cette fonction crée un tableau croisé dynamique avec pour axes :
+- X1 : la clé en axe des X
+- X2 : la clé en axes des Y
+- Y : la valeur dans la case de coordonnées (X1,X2)
+
+L'ensemble des données en troisième paramètres sont des array à index numériques
+contenant des enregistrements d'une requête SQL.
+
+Chaque enregistrement d'un résultat SQL doit être un array de la forme :
+[cle1=>val1, cle2=>val2, ... X1=>valX1, X2=>valX2, Y=>valY]
+
+Pour chaque enregistrement itéré, la fonction va remplir la case ayant 
+la double clé [val1][val2] du tableau vide T, avec la valeur valY.
 */
-function tableauCD(array $vecteursCles, array $nomsAxes, array $tabValeurs): array
+function matriceSqlCD(array $dimensionsTab, array $nomAxe, array $mysqlRecords): array
 {
-	// Je vérifie que les dimensions sont valides
-	if (!isset($nomsAxes['X1']) or !isset($nomsAxes['X2']))
+	// Vérifions que les dimensions soient valides
+	if (!isset($nomAxe['D1']) or !isset($nomAxe['D2']))
 		return [];
 
-	$cardinalX1 = count($vecteursCles['X1']);
-	$cardinalX2 = count($vecteursCles['X2']);
+	$D1 = $dimensionsTab['D1'];
+	$D2 = $dimensionsTab['D2'];
 
-	// Je crée un tableau à partir des cardinaux des deux axes
-	$tableauCD = tableau2D($cardinalX1, $cardinalX2);
+	$tableauSqlCD = tableau2D($D1, $D2);
 
+	/* 
+	Nous plaçons une valeur d'une enregistreent Mysql
+	dans le tableau en fonction de la valeur de ses champs
+	*/
+	foreach ($mysqlRecords as $enregistrement) {
+		$cleX1 = $enregistrement[$nomAxe['D1']];
+		$cleX2 = $enregistrement[$nomAxe['D2']];
+		$valY = $enregistrement[$nomAxe['Y']];
 
-	// Je remplis le tableauCD avec valeurs de $tabValeurs 
-	foreach ($tabValeurs as $key => $entree) {
-		$cleX1 = $entree[$nomsAxes['X1']];
-		$cleX2 = $entree[$nomsAxes['X2']];
-		$valY = $entree[$nomsAxes['Y']];
-
-		$tableauCD[$cleX1][$cleX2] = $valY;
+		$tableauSqlCD[$cleX1][$cleX2] = $valY;
 	}
 
-	return $tableauCD;
+	return $tableauSqlCD;
 }

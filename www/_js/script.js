@@ -37,9 +37,9 @@ async function editTar(hoc, chc, tarprix) {
         mode: "cors",
         credentials: "same-origin",
         body: JSON.stringify({
-            hoc: hoc,
-            chc: chc,
-            tarprix: tarprix
+            tar_hocategorie: hoc,
+            tar_chcategorie: chc,
+            tar_prix: tarprix
         })
     };
 

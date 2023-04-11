@@ -10,19 +10,28 @@ class Chcategorie extends Table
 		parent::__construct("chcategorie", "chc_id");
 	}
 
+	public function selectAll(): array
+	{
+		$sql = 'SELECT chc_categorie from chcategorie';
+		$resultats = self::$link->query($sql);
+		$chcCats = [];
+
+		while ($nomCat = $resultats->fetchColumn()) {
+			$chcCats[] = $nomCat;
+		}
+
+		return $chcCats;
+	}
+
 	static public function OPTIONchcategories($id)
 	{
 		return self::HTMLoptions('SELECT chc_id, chc_categorie FROM chcategorie', 'chc_id', 'chc_categorie', $id);
 	}
 
-	public function selectDistinctCat()
+	public function countCat()
 	{
-		$sql = "SELECT DISTINCT chc_categorie FROM chcategorie";
+		$sql = "SELECT COUNT(DISTINCT chc_categorie) `nb_chc` FROM chcategorie";
 		$result = self::$link->query($sql);
-		$data = $result->fetchAll();
-
-		return array_map(function ($elem) {
-			return $elem['chc_categorie'];
-		}, $data);
+		return $result->fetch()['nb_chc'];
 	}
 }
