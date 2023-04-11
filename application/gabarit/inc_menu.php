@@ -18,8 +18,14 @@
 
       </ul>
       <ul class="navbar-nav ml-auto">
-        <li><a class="nav-link" href="<?= hlien("authentification", "deconnexion") ?>">Déconnexion</a></li>
-        <li><a class="nav-link" href='<?= hlien("authentification", "connexion") ?>'>Connexion</a></li>
+        <?php if (isset($_SESSION["per_profil"])) { ?>
+          } else { ?>
+          <li><a class="nav-link" href="<?= hlien("index") ?>">Bienvenu <?= $_SESSION['per_nom'] ?></a></li>
+          <li><a class="nav-link" href="<?= hlien("authentification", "deconnexion") ?>">Déconnexion</a></li>
+        <?php } else { ?>
+          <li><a class="nav-link" href='<?= hlien("authentification", "inscription") ?>'>Inscription</a></li>
+          <li><a class="nav-link" href='<?= hlien("authentification", "connexion") ?>'>Connexion</a></li>
+        <?php } ?>
       </ul>
     </div>
   </div>
