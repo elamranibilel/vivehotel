@@ -1,4 +1,4 @@
-    <h2>Ensemble des services proposés dans les hôtels de la catégorie</h2>
+    <h2>Ensemble des services proposés dans les hôtels du groupe</h2>
     <p><a class="btn btn-primary" href="<?= hlien("services", "edit", "id", 0) ?>">Nouveau services</a></p>
     <table class="table table-striped table-bordered table-hover">
     	<thead>
