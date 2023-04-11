@@ -8,16 +8,13 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="index.php">Accueil</span></a>
         </li>
-<?php
-if (isset($_SESSION["_ti_id"]) and $_SESSION["uti_profil"] == "admin")
-{?> 
-<li><a class='nav-link' href='<?= hlien("chambre", "index") ?>'>Chambre</a></li>
+
+        <li><a class='nav-link' href='<?= hlien("chambre", "index") ?>'>Chambre</a></li>
         <li><a class='nav-link' href='<?= hlien("client", "index") ?>'>Client</a></li>
         <li><a class='nav-link' href='<?= hlien("hotel", "index") ?>'>Hotel</a></li>
         <li><a class='nav-link' href='<?= hlien("services", "index") ?>'>Services</a></li>
         <li><a class='nav-link' href='<?= hlien("personnel", "index") ?>'>Personnel</a></li>
         <li><a class='nav-link' href='<?= hlien("tarifer", "index") ?>'>Tarif</a></li>
-<?php } ?>
 
       </ul>
       <ul class="navbar-nav ml-auto">
