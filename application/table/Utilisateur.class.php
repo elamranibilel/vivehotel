@@ -7,14 +7,14 @@ class Utilisateur extends Table
 {
 	public function __construct()
 	{
-		parent::__construct("client", "cli_id");
+		parent::__construct("personnel", "per_id");
 	}
 
-	static public function estEmailUnique(string $cli_email): bool
+	static public function estEmailUnique(string $per_email): bool
 	{
-		$sql = "select * from client where cli_email=:mail";
+		$sql = "select * from personnel where per_email=:mail";
 		$statement = self::$link->prepare($sql);
-		$statement->bindValue(":mail", $cli_email);
+		$statement->bindValue(":mail", $per_email);
 		$statement->execute();
 		if ($statement->rowCount() > 0)
 			return false;
@@ -22,11 +22,11 @@ class Utilisateur extends Table
 			return true;
 	}
 
-	static public function selectByEmail(string $cli_email)
+	static public function selectByEmail(string $per_email)
 	{
-		$sql = "SELECT * FROM client WHERE cli_email=:mail";
+		$sql = "SELECT * FROM personnel WHERE per_email=:mail";
 		$statement = self::$link->prepare($sql);
-		$statement->bindValue(":mail", $cli_email);
+		$statement->bindValue(":mail", $per_email);
 		$statement->execute();
 		return $statement->fetch();
 	}
