@@ -10,7 +10,5 @@ class Ctr__default extends Ctr_controleur {
     public function a_index() {
         require $this->gabarit;   
     }
-
 }
-
 ?>
