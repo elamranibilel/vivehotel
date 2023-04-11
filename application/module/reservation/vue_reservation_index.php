@@ -1,4 +1,4 @@
-    <h2>reservation</h2>
+    <h2>Liste des réservations de la catégorie (limité à 100 résultats)</h2>
 
     <form method="post">
     	<label for="nom_film">Rechercher une réservation :</label> <input type="text" name="nom_reservation" value='' />

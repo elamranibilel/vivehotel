@@ -1,4 +1,4 @@
-    <h2>hotel</h2>
+    <h2>Liste de tous les hôtels de la compagnie</h2>
     <p><a class="btn btn-primary" href="<?= hlien("hotel", "edit", "id", 0) ?>">Nouveau hotel</a></p>
     <table class="table table-striped table-bordered table-hover">
     	<thead>

@@ -1,4 +1,4 @@
-    <h2>chambre</h2>
+    <h2>Liste des chambres de la compagnie.</h2>
 
     <?= FormRecherche('Chambre') ?>
 

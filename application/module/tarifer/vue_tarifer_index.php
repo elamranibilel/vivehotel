@@ -1,4 +1,4 @@
-<h2>Consulter et modifier le tarif des chambres</h2>
+<h2>Consulter et modifier le tarif des chambres.</h2>
 
 <table>
 	<thead>

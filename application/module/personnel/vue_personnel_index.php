@@ -1,4 +1,4 @@
-    <h2>personnel</h2>
+    <h2>Ensemble du personnel de la compagnie</h2>
     <p><a class="btn btn-primary" href="<?= hlien("personnel", "edit", "id", 0) ?>">Nouveau personnel</a></p>
     <table class="table table-striped table-bordered table-hover">
     	<thead>
