@@ -36,6 +36,7 @@
     				<td><?= mhe($row['res_client']) ?></td>
     				<td><?= mhe($row['res_hotel']) ?></td>
     				<td><?= mhe($row['res_chambre']) ?></td>
+					<td><a class="btn btn-info" href="<?=hlien("reservation","services","id", $row["res_id"]) ?>">Services</a></td>
     				<td><a class="btn btn-warning" href="<?= hlien("reservation", "edit", "id", $row["res_id"]) ?>">Modifier</a></td>
     				<td><a class="btn btn-danger" href="<?= hlien("reservation", "delete", "id", $row["res_id"]) ?>">Supprimer</a></td>
     			</tr>

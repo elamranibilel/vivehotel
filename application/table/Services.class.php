@@ -69,4 +69,15 @@ class Services extends Table
 
 		return Table::HTMLoptions($sql, 'ser_id', 'ser_nom', '');
 	}
+
+	static public function optionNotServices($res_id)
+	{
+		$sql = "SELECT ser_id, ser_nom 
+		FROM services
+		WHERE ser_id NOT IN (SELECT com_id
+		FROM commander
+		WHERE com_reservation = $res_id)";
+
+		return Table::HTMLoptions($sql, "ser_id","ser_nom","");
+	}
 }

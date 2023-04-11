@@ -104,4 +104,54 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		if (!isset($_GET["id"]))
 			header('Location: ' . hlien('client'));
 	}
-}
+
+	function a_services()
+	{
+		$reservation = new Reservation();
+
+		if (!isset($_GET["id"]) or !is_numeric($_GET["id"])) {
+			header("Location: " . hlien('reservation'));
+		}
+
+		$data = $reservation->reservationServices($_GET["id"]);
+		require $this -> gabarit;
+	}
+
+	function a_services_edit()
+	{
+		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
+
+		$com = new Commander();
+
+		$data = $com->selecte($id);
+		extract($data);
+
+		require $this->gabarit;
+	}
+
+	function a_services_save()
+	{
+		extract($_POST);
+
+		if (isset($bt_submit)) {
+
+			$com_id = isset($com_id) ? $com_id : 0;
+			$doublonCommander = isset($com_services) ? Commander::selectResServices($com_reservation, $com_services) : [];
+
+			if (count($doublonCommander) > 0) {
+				$_SESSION["message"][] = "Le service a déjà été créé pour la réservation {$com_reservation}.";
+				header("Location: " . hlien("reservation", "services", "id", $com_reservation));
+				exit();
+			}
+
+			$u = new Reservation();
+			$u->save($_POST);
+			$_SESSION["message"][] = ($res_id == 0) ? "Le service a été créé pour la réservation {$com_reservation}."
+				: "Le prix du servuice a bien été mis à jour pour la réservation {$com_reservation}.";
+
+			//$_SESSION["message"][] = "Le prix du service a bien été mis à jour pour l'hôtel {$pro_hotel}.";
+
+			header("location: " . hlien("reservation", "services", "id", $com_reservation));
+		}
+	}
+	}

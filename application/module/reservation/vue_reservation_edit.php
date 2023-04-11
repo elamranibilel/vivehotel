@@ -12,7 +12,7 @@
     </div>
     <div class='form-group'>
         <label for='res_etat'>Etat</label>
-        <select id='res_etat'>
+        <select id='res_etat' class="form-control">
             <?php
             foreach (Reservation::RES_ETAT as $etat) {
                 echo "<option value='$etat'>$etat</option>";
