@@ -1,6 +1,6 @@
 <h2>Consulter et modifier le tarif des chambres.</h2>
 
-<table>
+<table class="table table-striped">
 	<thead>
 		<tr>
 			<th class="devise">€</th>
@@ -20,7 +20,7 @@
 		foreach ($hoCategorie as $numHoc => $nomHoc) {
 		?>
 			<tr>
-				<th><?= $nomHoc ?></th>
+				<th scope="col"><?= $nomHoc ?></th>
 				<?php
 				foreach ($chCategorie as $numChc => $nomChc) {
 					$prix = $grilleTarifaire[$numHoc][$numChc];
