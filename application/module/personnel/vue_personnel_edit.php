@@ -8,9 +8,6 @@
             <label for='per_identifiant'>identifiant</label>
             <input id='per_identifiant' name='per_identifiant' type='text' size='50' value='<?= mhe($per_identifiant) ?>' class='form-control' />
         </div>
-
-
-
         <div class='form-group'>
             <label for='per_email'>saisisez le mail</label>
             <input id='per_email' name='per_email' type='text' size='50' value='<?= mhe($per_email) ?>' class='form-control' />
