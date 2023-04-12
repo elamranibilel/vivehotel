@@ -61,13 +61,15 @@ class Reservation extends Table
 		return $stmt->fetchAll();
 	}
 
-	public function reservationServices($id): array {
-		$sql = "select
-		* from commander, services
-		where com_services = ser_id
-		and com_reservation= :id";
+	public function reservationServices(int $res_id): array
+	{
+		$sql = "SELECT ser_nom, com_id, com_quantite, com_reservation
+		FROM services, commander
+		WHERE com_services = ser_id
+		AND com_reservation = :id";
+
 		$stmt = self::$link->prepare($sql);
-		$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+		$stmt->bindValue(':id', $res_id, PDO::PARAM_INT);
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}

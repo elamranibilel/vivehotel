@@ -109,49 +109,69 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	{
 		$reservation = new Reservation();
 
-		if (!isset($_GET["id"]) or !is_numeric($_GET["id"])) {
-			header("Location: " . hlien('reservation'));
-		}
+		$data = $reservation->reservationServices($_GET['id']);
 
-		$data = $reservation->reservationServices($_GET["id"]);
-		require $this -> gabarit;
+
+		require $this->gabarit;
 	}
 
 	function a_services_edit()
 	{
-		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
+		$reservation = new Reservation();
 
-		$com = new Commander();
+		$res = $reservation->select($_GET['id']);
+		$noHotel = $res['res_hotel'];
 
-		$data = $com->selecte($id);
-		extract($data);
 
+		$data = $reservation->reservationServices($_GET["id"]);
+
+		foreach ($data as $enreg) {
+			// Vérifie si le service ajouté correspond déjà à un service de la réservation
+			if ($_POST['com_service'] == $enreg['com_service']) {
+				$_SESSION['message'][] = 'Le service a déjà été pris par cette réservation';
+			}
+		}
+
+		$reservation->save($_POST);
+		header('Location: ' . hlien('reservation', 'services', 'id', $_GET['id']));
 		require $this->gabarit;
 	}
 
 	function a_services_save()
 	{
-		extract($_POST);
+		$reservation = new Reservation();
 
-		if (isset($bt_submit)) {
+		$data = $reservation->reservationServices($_POST["com_reservation"]);
 
-			$com_id = isset($com_id) ? $com_id : 0;
-			$doublonCommander = isset($com_services) ? Commander::selectResServices($com_reservation, $com_services) : [];
 
-			if (count($doublonCommander) > 0) {
-				$_SESSION["message"][] = "Le service a déjà été créé pour la réservation {$com_reservation}.";
-				header("Location: " . hlien("reservation", "services", "id", $com_reservation));
-				exit();
+		foreach ($data as $enreg) {
+			// Vérifie si le service ajouté correspond déjà à un service de la réservation
+			if ($_POST['com_service'] == $enreg['com_service']) {
+				$_SESSION['message'][] = 'Le service a déjà été pris par cette réservation';
 			}
-
-			$u = new Reservation();
-			$u->save($_POST);
-			$_SESSION["message"][] = ($res_id == 0) ? "Le service a été créé pour la réservation {$com_reservation}."
-				: "Le prix du servuice a bien été mis à jour pour la réservation {$com_reservation}.";
-
-			//$_SESSION["message"][] = "Le prix du service a bien été mis à jour pour l'hôtel {$pro_hotel}.";
-
-			header("location: " . hlien("reservation", "services", "id", $com_reservation));
 		}
+
+		$commander = new Commander();
+		$commander->save($_POST);
+
+		header('Location: ' . hlien('reservation', 'services', 'id', $_POST['com_reservation']));
+		require $this->gabarit;
 	}
+
+	function a_services_delete()
+	{
+
+		if (isset($_GET["id"])) {
+
+			$u = new Commander();
+			$com = $u->select($_GET['id']);
+			$idReservation = $com['com_reservation'];
+
+			$u->delete($_GET["id"]);
+			$_SESSION["message"][] = "L'enregistrement Commander a bien été supprimé.";
+			header("Location: " . hlien("reservation", "services", "id", $idReservation));
+			exit();
+		}
+		header("location: " . hlien("reservation"));
 	}
+}
