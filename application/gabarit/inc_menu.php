@@ -19,8 +19,8 @@
 
       </ul>
       <ul class="navbar-nav ml-auto">
-        <?php if (isset($_SESSION["per_profil"])) { ?>
-          <li><a class="nav-link" href="<?= hlien("index") ?>">Bienvenu <?= $_SESSION['per_nom'] ?></a></li>
+        <?php if (isset($_SESSION["cli_nom"])) { ?>
+          <li><a class="nav-link" href="<?= hlien("index") ?>">Bienvenu <?= $_SESSION["cli_nom"] ?></a></li>
           <li><a class="nav-link" href="<?= hlien("authentification", "deconnexion") ?>">Déconnexion</a></li>
         <?php } else { ?>
           <li><a class="nav-link" href='<?= hlien("authentification", "inscription") ?>'>Inscription</a></li>
