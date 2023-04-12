@@ -1,3 +1,3 @@
 Framework-GUINOT&copy;2021-2022
 
-<script src="_js/script.js"></script>
+<script src="_js/script.php"></script>
