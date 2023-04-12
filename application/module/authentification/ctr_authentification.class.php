@@ -32,7 +32,7 @@ class Ctr_authentification extends Ctr_controleur
                 require $this->gabarit;    
                 exit;
             }
-                             
+
             //Tous est ok : enregistrement du nouvel Utilisateur
             $_POST["cli_id"]=0;
             $_POST["cli_mdp"]=password_hash($_POST["cli_mdp"],PASSWORD_DEFAULT);
@@ -93,11 +93,7 @@ class Ctr_authentification extends Ctr_controleur
             $_SESSION["message"][]="bienvenu $cli_identifiant $cli_nom.";
             header("location:" . hlien("_default"));   
         } else {
-<<<<<<< HEAD
-            $per_email = "";
-=======
             $cli_email="";
->>>>>>> c2ca095 (avancement de l'inscription utilisateur)
             require $this->gabarit;
         }
     }

@@ -19,7 +19,6 @@
 
       </ul>
       <ul class="navbar-nav ml-auto">
-<<<<<<< HEAD
         <?php if (isset($_SESSION["per_profil"])) { ?>
           <li><a class="nav-link" href="<?= hlien("index") ?>">Bienvenu <?= $_SESSION['per_nom'] ?></a></li>
           <li><a class="nav-link" href="<?= hlien("authentification", "deconnexion") ?>">Déconnexion</a></li>
@@ -27,12 +26,6 @@
           <li><a class="nav-link" href='<?= hlien("authentification", "inscription") ?>'>Inscription</a></li>
           <li><a class="nav-link" href='<?= hlien("authentification", "connexion") ?>'>Connexion</a></li>
         <?php } ?>
-=======
-        <li><a class="nav-link" href="<?= hlien("authentification", "deconnexion") ?>">Déconnexion</a></li>
-        <li><a class="nav-link" href="<?= hlien("authentification", "inscription") ?>">Inscription</a></li>
-
-        <li><a class="nav-link" href='<?= hlien("authentification", "connexion") ?>'>Connexion</a></li>
->>>>>>> c2ca095 (avancement de l'inscription utilisateur)
       </ul>
     </div>
   </div>
