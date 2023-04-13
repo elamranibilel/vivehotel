@@ -1,4 +1,6 @@
-<h2>Consulter et modifier le tarif des chambres.</h2>
+<h1>Consulter et modifier le tarif des chambres.</h1>
+<p>Pour modifier un tarif, il faut "tabuler" dans le tableau des tarifs et modifier la valeur de la case.
+	La modification sera automatiquement faite en base de donnnées.</p>
 
 <table class="table table-striped">
 	<thead>
