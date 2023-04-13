@@ -1,8 +1,14 @@
-- Compléter la page de statistiques d'un hôtel avec des statistiques différentes [B]
+- Créer une page "Statistiques" dans le CRUD où pour un ID d'hôtel, le chiffre d'affaire 
+est calculé. [C]
 
-- Créer une connexion administrateur [A]
-- Créer une administration utilisateur [A]
 
+
+- Renommer le titre H1 des pages pour qu'elles soeitn descritives [A,B,C]
+
+- Confgiurer la table utilisateur [A]
+- Créer un compte administrateur [A]
+
+- Retester le CRUD administrateur en tant que connecté [A,C]
 - Vérifier que le CRUD administarteur n'est pas accessible aux autres [A,C]
 
 - Créer les pages des gestionnaires
@@ -15,8 +21,13 @@
 - Mettre des commentaires automatique pour les classes et les fonctions
 
 * Non important non urgent :
-- Créer une classe qui permet de faire les formulaires interactifs pour les utilisaeturs du site
+- Créer une classe qui permet de faire les formulaires interactifs pour les utilisaeturs du site [C]
 - Créer un GPS qui donne la latitude et longitude (optionnel, à voir en dernier) [?]
-- Créer un GPS sur le pied de page
-- Créer une pagination sur le CRUD de la liste des clambres
-- Renommer le titre H1 des pages pour qu'elles soeitn descriptives
+- Créer un GPS sur le pied de page [C]
+- Créer une pagination sur le CRUD de la liste des clambres [C]
+
+Liste des tâches du document technique 
+- Faire la structure physique de l'application
+- Lister les paramètres de configuration de l'application
+- Indiquer la liste des variables globales
+- Lister les fonctions et les procédures

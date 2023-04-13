@@ -1,3 +1,4 @@
+<h1>Modifier les données du client "<?= mhe($cli_nom) ?>"</h1>
 <form method="post" action="<?= hlien("client", "save") ?>">
     <input type="hidden" name="cli_id" id="cli_id" value="<?= $id ?>" />
 

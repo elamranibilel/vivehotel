@@ -5,15 +5,14 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>Date_debut</th>
-            <th>Date_fin</th>
-            <th>Date_maj</th>
+            <th>Date début</th>
+            <th>Date fin</th>
             <th>Etat</th>
             <th>Hotel</th>
             <th>Chambre</th>
             <th>Services</th>
-            <th>modifier</th>
-            <th>supprimer</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
         </tr>
     </thead>
     <tbody>
