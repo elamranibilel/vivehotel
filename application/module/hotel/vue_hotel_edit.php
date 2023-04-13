@@ -1,7 +1,11 @@
     <form method="post" action="<?= hlien("hotel", "save") ?>">
         <input type="hidden" name="hot_id" id="hot_id" value="<?= $id ?>" />
 
-        <div class='form-group'>
+        <div class='form-group'><br />
+            <p><a class="btn btn-secondary" href="<?= hlien('hotel') ?>">Retour</a></p>
+
+            <h1><?= "Modification de l'hôtel $hot_nom" ?></h1>
+
             <label for="hot_statut">Statut</label>
             <select id="hot_statut" name="hot_statut" class='form-control'>
                 <?php
@@ -44,5 +48,7 @@
                     <?= Table::HTMLoptions("select * from hocategorie ", "hoc_id", "hoc_categorie", $hot_hocategorie) ?>
                 </select>
             </div>
-            <input class=" btn btn-success" type="submit" name="btSubmit" value="Enregistrer" />
+
+            <p><input class=" btn btn-success" type="submit" name="btSubmit" value="Enregistrer" /></p>
+
     </form>

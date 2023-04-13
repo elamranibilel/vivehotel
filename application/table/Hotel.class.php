@@ -59,15 +59,15 @@ class Hotel extends Table
 
 	public function chiffreAffaire(int $id): array
 	{
-		$sql = 'SELECT hot_id, SUM(tar_prix) `c_affaire`
-		FROM chambre, reservation, tarifer, hotel 
+		$sql = 'SELECT hot_id, SUM(tar_prix* diff_date) `c_affaire` FROM
+		(SELECT hot_id, tar_prix, DATEDIFF(res_date_fin, res_date_debut) `diff_date`
+		FROM chambre, reservation, tarifer, hotel
 		WHERE res_chambre = cha_id
-		AND res_hotel = hot_id
-		AND tar_chcategorie = cha_chcategorie
+		AND res_hotel = hot_id 
+		AND tar_chcategorie = cha_chcategorie 
 		AND tar_hocategorie = hot_hocategorie
-		AND hot_id = :id
-		GROUP BY hot_id
-		';
+		AND hot_id = :id) reservations
+		GROUP BY hot_id';
 		$stmt = self::$link->prepare($sql);
 		$stmt->bindValue(':id', $id, PDO::PARAM_INT);
 		$stmt->execute();
