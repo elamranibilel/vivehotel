@@ -1,4 +1,5 @@
-<h2>Consulter les statistiques de l'hôtel "<?= mhe($data['hot_nom']) ?>"</h2>
+<h2>Description de l'hôtel "<?= mhe($data['hot_nom']) ?>"</h2>
+
 
 <table class="table table-striped">
     <thead>
@@ -10,6 +11,14 @@
     </thead>
     <tbody>
         <tr>
+            <td>Adresse</td>
+            <td><?= mhe($data['hot_adresse']) ?></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><?= mhe($data['hot_description']) ?></td>
+        </tr>
+        <tr>
             <td>Catégorie</td>
             <td><?= mhe($data['hoc_categorie']) ?></td>
         </tr>
@@ -19,6 +28,9 @@
         </tr>
     </tbody>
 </table>
+
+<h2>Statistiques de l'hôtel "<?= mhe($data['hot_nom']) ?>"</h2>
+
 
 <table class="table table-striped">
     <thead>
@@ -37,11 +49,13 @@
         </tr>
         <tr>
             <td>
-                <h2>Chiffre d'affaire total</h2>
+                <b>Chiffre d'affaire total</b>
             </td>
             <td>
-                <h2><?= mhe($chiffreA + $caSservices) ?></h2>
+                <b><?= mhe($chiffreA + $caSservices) ?></b>
             </td>
         </tr>
     </tbody>
 </table>
+
+<a href="<?= hlien('hotel') ?>" class="btn btn-primary" type="button">Liste des hôtels</a>
