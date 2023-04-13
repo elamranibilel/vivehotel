@@ -19,7 +19,6 @@
 
       </ul>
       <ul class="navbar-nav ml-auto">
-      <li><a class="nav-link" href='<?= hlien("authentification", "inscription_gestionnaire") ?>'>gestionnaire</a></li>
  
       
       <?php if (isset($_SESSION["cli_nom"])) { ?>
