@@ -105,4 +105,23 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 			header("location: " . hlien("hotel", "services", "id", $pro_hotel));
 		}
 	}
+
+	function a_statistiques()
+	{
+		# CheckAuth
+
+		$hotel = new Hotel();
+		$data = (isset($_GET['id'])) ? $hotel->select($_GET['id']) : [];
+
+		if (count($data)  === 0) {
+			$_SESSION['message'][] = "Le numéro de l'hôtel demandé est invalide";
+			header('Location: ' . hlien('hotel', 'index'));
+			exit();
+		}
+
+		$chiffreA = $hotel->chiffreAffaire($_GET['id'])['c_affaire'];
+		$caSservices = $hotel->CAservices($_GET['id'])['ca_service'];
+
+		require $this->gabarit;
+	}
 }
