@@ -21,12 +21,9 @@ class Chambre extends Table
 	];
 
 	const CRI_RECHERCHE = [
-		'Jacuzzi' => 'cha_jacuzzi',
-		'Balcon' => 'cha_balcon',
-		'Wifi' => 'cha_wifi',
-		'Minibar' => 'cha_minibar',
-		'Coffre' => 'cha_coffre',
-		'Vue' => 'cha_vue'
+		'Type lits' => 'cha_typeLit',
+		'Statut' => 'cha_statut',
+		'Description' => 'cha_description',
 	];
 
 	const LISTE_OPTIONS = [
