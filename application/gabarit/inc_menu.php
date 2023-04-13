@@ -19,11 +19,18 @@
 
       </ul>
       <ul class="navbar-nav ml-auto">
-        <?php if (isset($_SESSION["cli_nom"])) { ?>
+      <li><a class="nav-link" href='<?= hlien("authentification", "inscription_gestionnaire") ?>'>gestionnaire</a></li>
+ 
+      
+      <?php if (isset($_SESSION["cli_nom"])) { ?>
           <li><a class="nav-link" href="<?= hlien("index") ?>">Bienvenu <?= $_SESSION["cli_nom"] ?></a></li>
           <li><a class="nav-link" href="<?= hlien("authentification", "deconnexion") ?>">Déconnexion</a></li>
         <?php } else { ?>
           <li><a class="nav-link" href='<?= hlien("authentification", "inscription") ?>'>Inscription</a></li>
+     
+          
+
+     
           <li><a class="nav-link" href='<?= hlien("authentification", "connexion") ?>'>Connexion</a></li>
         <?php } ?>
       </ul>

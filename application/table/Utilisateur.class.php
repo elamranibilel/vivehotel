@@ -30,4 +30,14 @@ class Utilisateur extends Table
 		$statement->execute();
 		return $statement->fetch();
 	}
+
+
+
+
+
+
+
+
+
+
 }
