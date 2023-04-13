@@ -1,13 +1,12 @@
-- Confgiurer la table utilisateur [A]
-- Créer un compte administrateur [A]
-
 - Créer une page "Statistiques" dans le CRUD où pour un ID d'hôtel, le chiffre d'affaire 
 est calculé. [C]
 
-- Donner un caractère descriptif au titre et aux données des pages. Ajouter les requêtes
-créées au premier semestre sur le CRUD de l'administrateur. [B]
 
 
+- Renommer le titre H1 des pages pour qu'elles soeitn descritives [A,B,C]
+
+- Confgiurer la table utilisateur [A]
+- Créer un compte administrateur [A]
 
 - Retester le CRUD administrateur en tant que connecté [A,C]
 - Vérifier que le CRUD administarteur n'est pas accessible aux autres [A,C]

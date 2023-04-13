@@ -10,6 +10,17 @@ class Services extends Table
 		parent::__construct("services", "ser_id");
 	}
 
+	public function selectAll(): array
+	{
+		$sql = 'SELECT ser_id, ser_nom, COUNT(hot_id) `nb_hotel`
+		FROM services, proposer, hotel
+		WHERE ser_id = pro_services
+		AND hot_id = pro_hotel
+		GROUP BY ser_id';
+		$stmt = Table::$link->query($sql);
+		return $stmt->fetchAll();
+	}
+
 	static public function Res(int $idRes): array
 	{
 		/* 
@@ -78,6 +89,6 @@ class Services extends Table
 		FROM commander
 		WHERE com_reservation = $res_id)";
 
-		return Table::HTMLoptions($sql, "ser_id","ser_nom","");
+		return Table::HTMLoptions($sql, "ser_id", "ser_nom", "");
 	}
 }
