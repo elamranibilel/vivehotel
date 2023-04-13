@@ -11,6 +11,7 @@
                 <th>Etat</th>
                 <th>Hotel</th>
                 <th>Chambre</th>
+                <th>Services</th>
                 <th>modifier</th>
                 <th>supprimer</th>
             </tr>

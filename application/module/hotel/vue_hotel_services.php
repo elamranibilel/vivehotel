@@ -29,5 +29,7 @@
     	<input type="hidden" name="pro_hotel" value="<?= mhe($_GET['id']) ?>" />
     	<input type="hidden" name="pro_hotel" value="<?= mhe($_GET['id']) ?>" />
     	<input type="hidden" name="bt_submit" />
-    	<input type="submit" value="Envoyer" />
+    	<input class="btn btn-success" type="submit" value="Envoyer" />
+		<br>
+		<a class="btn btn-info" href="<?=hlien("hotel","index")?>">Retour</a>
     </form>

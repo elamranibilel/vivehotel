@@ -19,6 +19,7 @@
 		<?php } ?>
 	</tbody>
 </table>
+<a class="btn btn-info" href="<?=hlien("reservation","index") ?>">Retour</a>
 <!-- 
 Créer un formulaire qui permet d'ajouter un service à la réservation
 * Faire une liste des services qui n'ont pas été prises par la réservation
