@@ -29,7 +29,6 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		$res_commandes = [];
 		if ($id > 0) {
 			$row = $u->select($id);
-			$res_commandes = Services::Res($id);
 		} else {
 			$row = $u->emptyRecord();
 			$res_commandes = [];

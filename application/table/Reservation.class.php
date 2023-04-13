@@ -24,6 +24,18 @@ class Reservation extends Table
 		return $result->fetchAll();
 	}
 
+	public function select(int $id): array
+	{
+		$sql = 'SELECT * FROM reservation, client, hotel
+		WHERE cli_id = res_client
+		AND hot_id = res_hotel
+		AND res_id = :id';
+		$stmt = self::$link->prepare($sql);
+		$stmt->bindValue(':id', $id);
+		$stmt->execute();
+		return $stmt->fetch();
+	}
+
 	public function reservationsCha(int $idChambre): array
 	{
 		$sql = "SELECT 
@@ -49,11 +61,13 @@ class Reservation extends Table
 
 	public function reservationsClient($cli_id): array
 	{
-		$sql = "select 
-		* from reservation, client, hotel, chambre
-		where res_hotel = hot_id
-		and res_client = :client
-		and res_client = cli_id
+		$sql = "SELECT * 
+		FROM reservation, client, hotel, chambre
+		WHERE res_hotel = hot_id
+		AND res_chambre = cha_id
+		AND res_client = :client
+		AND res_client = cli_id
+		ORDER BY res_id
 		LIMIT 0,100";
 		$stmt = self::$link->prepare($sql);
 		$stmt->bindValue(':client', $cli_id, PDO::PARAM_INT);
