@@ -121,6 +121,7 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 
 		$chiffreA = $hotel->chiffreAffaire($_GET['id'])['c_affaire'];
 		$caSservices = $hotel->CAservices($_GET['id'])['ca_service'];
+		$chambreActif = $hotel->ChambreActifs($_GET["id"])['nb_chambres'];
 
 		require $this->gabarit;
 	}

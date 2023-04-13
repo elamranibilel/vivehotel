@@ -89,6 +89,22 @@ class Hotel extends Table
 		return $stmt->fetch();
 	}
 
+	public function ChambreActifs(int $id): array
+	{
+		$sql = "SELECT hot_id, hot_nom, COUNT(DISTINCT(cha_id)) `nb_chambres`
+		FROM hotel, reservation, chambre
+		WHERE res_hotel = hot_id
+		AND res_chambre = cha_id
+		AND cha_statut = 'Validé'
+		AND hot_id = :id
+		GROUP BY hot_id
+		ORDER BY nb_chambres";
+		$stmt = self::$link->prepare($sql);
+		$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetch();
+	}
+
 	static public function OPTIONhotel(string $selected)
 	{
 		return Table::HTMLoptions('SELECT * FROM hotel', 'hot_id', 'hot_nom', $selected);

@@ -26,6 +26,10 @@
             <td>Statut</td>
             <td><?= mhe($data['hot_statut']) ?></td>
         </tr>
+        <tr>
+            <td>Nombres Chambres Actifs</td>
+            <td><?= mhe($chambreActif) ?></td>
+        </tr>
     </tbody>
 </table>
 
