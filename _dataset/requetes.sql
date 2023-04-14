@@ -52,7 +52,7 @@ WHERE cha_id = res_chambre
 AND res_date_debut > '2021-01-01'
 AND res_date_fin < '2021-03-01'
 AND res_etat = 'En attente'
-AND res_hotel = 1
+AND res_hotel = 1;
 -- 10.	Calcul du prix d’une réservation hors services.
 SELECT  res_id, cha_id, tar_prix
 FROM reservation, chambre, hotel, tarifer

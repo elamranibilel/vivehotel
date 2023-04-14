@@ -30,6 +30,10 @@
             <td>Nombres Chambres Actifs</td>
             <td><?= mhe($chambreActif) ?></td>
         </tr>
+        <tr>
+            <td>Nombres Chambres Libres</td>
+            <td><?=mhe($chambreLibres) ?></td>
+        </tr>
     </tbody>
 </table>
 
