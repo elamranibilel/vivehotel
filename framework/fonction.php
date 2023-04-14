@@ -147,14 +147,14 @@ function FormRecherche($className)
 <?php
 }
 
-function listeValeursChamp(array $data, string $pk, string $field)
-{
-	$list = [];
-	foreach ($data as $cle => $valeur) {
-		$list[$valeur[$pk]] = $data[$cle][$field];
-	}
-	return $list;
-}
+// function listeValeursChamp(array $data, string $pk, string $field)
+// {
+// 	$list = [];
+// 	foreach ($data as $cle => $valeur) {
+// 		$list[$valeur[$pk]] = $data[$cle][$field];
+// 	}
+// 	return $list;
+// }
 
 /* 
 	Crée une tableau à double entrée vide
