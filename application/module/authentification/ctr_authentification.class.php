@@ -107,56 +107,9 @@ class Ctr_authentification extends Ctr_controleur
 
 
 
-    public function a_inscription_gestionnaire()
-    {
-        extract($_POST);
-        if (isset($_SESSION["per_id"])) {
-            $_SESSION["message"][] = "Tentative d'intrusion détectée...";
-            require $this->gabarit;
-            exit;
-        }
 
-        if (isset($btSubmit)) {
-            //vérifier que $per_email est unique
-            if (!Personnel::estEmailUnique($per_email)) {
-                $_SESSION["message"][] = "$per_email : cette adresse mail est déjà prise. Veuillez en saisir une autre.";
-                require $this->gabarit;
-                exit;
-            }
 
-            //vérifier que $per_mdp==$per_mdp2
-            if ($per_mdp != $per_mdp2) {
-                $_SESSION["message"][] = "La vérification du mot de passe à échouer. Veuillez vérifier votre mot de passe.";
-                require $this->gabarit;
-                exit;
-            }
-
-            //Tous est ok : enregistrement du nouvel Utilisateur
-            $_POST["per_id"] = 0;
-            $_POST["per_mdp"] = password_hash($_POST["per_mdp"], PASSWORD_DEFAULT);
-            $_POST["per_profil"] = "personnel";
-            (new Personnel)->save($_POST);
-            $_SESSION["message"][] = "
-            bienvenu !  $per_nom ! Inscription réussie. Vous pouvez maintenant vous connecter.";
-            //rediriger sur l'hôtel
-            header("location:" . hlien("hotel"));
-
-            //Tous est ok : enregistrement du nouvel utilisateur
-            $_POST["per_id"] = 0;
-            $_POST["per_mdp"] = password_hash($_POST["per_mdp"], PASSWORD_DEFAULT);
-            $_POST["per_profil"] = "personnel";
-            (new Personnelr)->save($_POST);
-            $_SESSION["message"][] = "Bravo $per_nom ! Inscription réussie. Vous pouvez maintenant vous connecter.";
-            //rediriger sur l'accueil
-            header("location:" . hlien("_default"));
-        } else {
-            //affichage du formulaire
-            extract((new Personnel())->emptyRecord());
-            require $this->gabarit;
-        }
-    }
-
-    public function a_connexion_gestionnaire()
+    public function a_connexion_personnel()
     {
         if (isset($_SESSION["per_id"])) {
             $_SESSION["message"][] = "Tentative d'intrusion détectée...";
@@ -166,7 +119,7 @@ class Ctr_authentification extends Ctr_controleur
 
         extract($_POST);
         if (isset($btSubmit)) {
-            //récupérer en bdd l'Utilisateur qui posséde $per_email
+            //récupérer en bdd le personnel  qui possède $per_email
             $row = Personnel::selectByEmail($per_email);
 
             if ($row === false) {
@@ -175,14 +128,6 @@ class Ctr_authentification extends Ctr_controleur
                 exit;
             }
 
-            //vérification du mot de passe
-            if (!password_verify($per_mdp, $row["per_mdp"])) {
-                $_SESSION["message"][] = "Mot de passe incorrect.";
-                require $this->gabarit;
-                exit;
-            }
-
-            //Connexion réussie
             extract($row);
             $_SESSION["per_id"] = $per_id;
             $_SESSION["per_nom"] = $per_nom;
@@ -197,12 +142,5 @@ class Ctr_authentification extends Ctr_controleur
             $per_email = "";
             require $this->gabarit;
         }
-    }
-
-    public function a_deconnexion_gestionnaire()
-    {
-        $_SESSION = [];
-        $_SESSION["message"][] = "Vous êtes bien déconnecté.";
-        header("location:" . hlien("_default"));
     }
 }

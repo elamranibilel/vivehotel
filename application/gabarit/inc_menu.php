@@ -20,6 +20,7 @@
       </ul>
       <ul class="navbar-nav ml-auto">
  
+      <li><a class="nav-link" href='<?= hlien("authentification", "connexion_personnel") ?>'>connection pour les membres cdu personnel</a></li>
       
       <?php if (isset($_SESSION["cli_nom"])) { ?>
           <li><a class="nav-link" href="<?= hlien("index") ?>">Bienvenu <?= $_SESSION["cli_nom"] ?></a></li>

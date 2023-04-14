@@ -24,7 +24,7 @@
     				<td><?= mhe($row['per_identifiant']) ?></td>
     				<td><?= mhe($row['per_email']) ?></td>
     				<td><?= mhe($row['per_role']) ?></td>
-    				<td><?= mhe($row['hot_nom']) ?></td>
+    				<td><?= mhe($row['per_hotel']) ?></td>
     				<td><a class="btn btn-warning" href="<?= hlien("personnel", "edit", "id", $row["per_id"]) ?>">Modifier</a></td>
     				<td><a class="btn btn-danger" href="<?= hlien("personnel", "delete", "id", $row["per_id"]) ?>">Supprimer</a></td>
     			</tr>
