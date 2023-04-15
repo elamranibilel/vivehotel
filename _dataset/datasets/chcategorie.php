@@ -1,15 +1,9 @@
 <?php
-//génération de Categorie_chambre  
-$chcategorie = [
-    "Standard",
-    "Supérieure",
-    "Luxe",
-    "Suite"
-];
+//génération des catégories de chambre
 $tab = [];
-foreach ($chcategorie as $chc_nom) {
+foreach (CHA_CATEGORIE as $chc_nom) {
     $tab[] = "(null,'$chc_nom')";
 }
 $sql = "INSERT INTO chcategorie VALUES " . implode(",", $tab);
 mysqli_query($link, $sql);
-echo "<p>Génération de " . count($chcategorie) . " catégories de chambres.</p>";
+echo "<p>Génération de " . count(CHA_CATEGORIE) . " catégories de chambres.</p>";

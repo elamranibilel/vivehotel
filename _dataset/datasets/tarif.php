@@ -9,10 +9,10 @@ $tab = [];
 
 $noTarif = 0;
 $hoc = 1;
-foreach ($hoCategorie as $hocat) {
+foreach (HOTEL_CATEGORIE as $hocat) {
     $chc = 1;
-    foreach ($chcategorie as $chcat) {
-        $tar_prix = $tarifsChambre[$hocat][$chcat];
+    foreach (CHA_CATEGORIE as $chcat) {
+        $tar_prix = TARIFS_CHAMBRES[$hocat][$chcat];
         /* Si le tarif n'existe pas pour un type de chambre
         pris dans une catégorie d'hôtel, on l'ajoute. */
         if ($tar_prix == NULL) {

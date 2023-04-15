@@ -19,6 +19,6 @@ for ($hotel = 1; $hotel <= NOMBRE_HOTEL; $hotel++) {
         $tab[] = "(NULL,'$pro_prix','$pro_hotel','$pro_services')";
     }
 }
-$sql = "insert into proposer values " . implode(",", $tab);
+$sql = "INSERT INTO proposer VALUES " . implode(",", $tab);
 mysqli_query($link, $sql);
 echo "<p>Génération de ? propositions.</p>";

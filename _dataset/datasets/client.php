@@ -1,6 +1,4 @@
 <?php
-const NOMBRE_DE_CLIENTS = 20;
-
 //Génération des clients         
 $tab = [];
 for ($i = 1; $i <= NOMBRE_DE_CLIENTS; $i++) {

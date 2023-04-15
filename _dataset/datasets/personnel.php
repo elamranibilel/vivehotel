@@ -1,17 +1,6 @@
 <?php
-
-//génération de personnels  
-const NOMBRE_PERSONNEL = 20;
-$nombre_hotel = 50;
-const NOMBRE_TELEC = 10;
-const NOMBRE_ADMIN = 1;
-
-$role = [
-    "teleconseiller",
-    "gestionnaire"
-];
 $tab = [];
-for ($i = 1; $i <= $nombre_hotel; $i++) {
+for ($i = 1; $i <= NOMBRE_HOTEL; $i++) {
     $per_nom = "gestionnaire  $i";
     $per_identifiant = "gestionnaire$i";
     $per_mdp = password_hash($per_identifiant, PASSWORD_DEFAULT);
@@ -42,5 +31,5 @@ for ($i = 1; $i <= NOMBRE_ADMIN; $i++) {
     $tab[] = "(null,'$per_nom','$per_identifiant','$per_mdp','$per_email','$per_role',$per_hotel)";
 }
 
-$sql = "insert into personnel values " . implode(",", $tab);
+$sql = "INSERT INTO personnel VALUES " . implode(",", $tab);
 mysqli_query($link, $sql);

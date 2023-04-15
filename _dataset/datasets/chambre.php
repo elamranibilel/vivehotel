@@ -1,16 +1,4 @@
 <?php
-const NB_CHAMBRE_P_HOTEL = 10;
-
-$chambreStatut = ['Initialisé', 'En attente', 'Validé', 'Annnulé'];
-
-$typeLits = [
-    '2 Lits simples',
-    'Lit double standard Queen Size',
-    'Lit double Confort',
-    'Lit double King Size',
-    '1 Lit double et un lit simple'
-];
-
 $tab = [];
 $noChambreHotels = [];
 
@@ -22,14 +10,14 @@ for ($idHotel = 1; $idHotel <= NOMBRE_HOTEL; $idHotel++) {
 
         $noChambreHotels[$idHotel][] = $idChambre;
 
-        $cha_chcategorie = mt_rand(1, count($chcategorie));
+        $cha_chcategorie = mt_rand(1, count(CHA_CATEGORIE));
         $cha_hotel = mt_rand(1, NOMBRE_HOTEL);
 
         $cha_numero = $chambreNo;
 
-        $cha_statut = $chambreStatut[array_rand($chambreStatut)];
+        $cha_statut = CHAMBRE_STATUTS[array_rand(CHAMBRE_STATUTS)];
         $cha_surface = mt_rand(10, 40);
-        $cha_typeLit = $typeLits[array_rand($typeLits)];
+        $cha_typeLit = TYPE_LITS[array_rand(TYPE_LITS)];
 
         $cha_description = "text $idHotel <a href=\'index.php\'>Accueil</a>";
         $cha_jacuzzi = mt_rand(0, 1);

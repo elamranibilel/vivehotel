@@ -1,5 +1,4 @@
 <?php
-$reservation_statut = ['Initialisé', 'En attente', 'Validé', 'Annnulé'];
 
 $idClients = range(1, NOMBRE_DE_CLIENTS);
 shuffle($idClients);
@@ -33,7 +32,7 @@ for ($hotel = 1; $hotel <= NOMBRE_HOTEL; $hotel++) // 50 hôtels
             $res_timestamp_fin = mktime(11, 0, 0, 1, $jour + $duree_reservation, 2021);
             $res_date_fin    = date('Y-m-d', $res_timestamp_fin);
 
-            $res_etat    = $reservation_statut[array_rand($reservation_statut)];
+            $res_etat    = STATUT_RESERVATION[array_rand(STATUT_RESERVATION)];
             $res_client    = $idClients[$nb_reservations % NOMBRE_DE_CLIENTS];
             $res_hotel    = $hotel;
             $res_chambre = $cle_chambre;
