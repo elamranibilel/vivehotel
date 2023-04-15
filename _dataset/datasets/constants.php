@@ -9,6 +9,3 @@ $lits = [
 	["Lit double King Size", 'NULL'],
 	["lit double", 'lit simple']
 ];
-
-
-?>

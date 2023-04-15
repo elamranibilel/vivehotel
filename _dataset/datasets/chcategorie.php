@@ -5,7 +5,7 @@ $chcategorie = [
     "Supérieure",
     "Luxe",
     "Suite"
-]; 
+];
 $tab = [];
 foreach ($chcategorie as $chc_nom) {
     $tab[] = "(null,'$chc_nom')";

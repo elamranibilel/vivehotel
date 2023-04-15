@@ -1,9 +1,11 @@
 <?php
-$dbh = new PDO('mysql:host=localhost', 'root', '');
-$dbh->query('DROP DATABASE IF EXISTS vivehotel ');
+$connexion = new PDO('mysql:host=localhost', 'root', '');
+$connexion->query('DROP DATABASE IF EXISTS vivehotel ');
 
-$queries = file_get_contents('vivehotel.sql');
-$sth = $dbh->query($queries);
+$SqlCreationBdd = file_get_contents('vivehotel.sql');
+$connexion->query($SqlCreationBdd);
+
+$connexion = NULL;
 
 $link = mysqli_connect("localhost", "root", "", "vivehotel");
 mysqli_set_charset($link, "utf8");

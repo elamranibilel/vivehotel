@@ -1,7 +1,7 @@
 <?php
 const NOMBRE_DE_CLIENTS = 20;
 
-//génération des clients         
+//Génération des clients         
 $tab = [];
 for ($i = 1; $i <= NOMBRE_DE_CLIENTS; $i++) {
     $cli_nom = "client $i";
