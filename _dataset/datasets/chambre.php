@@ -48,25 +48,7 @@ for ($idHotel = 1; $idHotel <= NOMBRE_HOTEL; $idHotel++) {
         $idChambre++;
     }
 }
-$sql = "insert into chambre values " . implode(",", $tab);
+$sql = "INSERT INTO chambre VALUES " . implode(",", $tab);
 
 mysqli_query($link, $sql);
 echo "<p>Génération de " . strval(NB_CHAMBRE_P_HOTEL * NOMBRE_HOTEL) . " chambres</p>";
-
-/*
-chambre
-    cha_id int auto_increment primary key,
-    cha_numero varchar(500) not null,
-    cha_statut varchar(500) not null,
-    cha_surface int not null,    
-    cha_typelit1 varchar(500) not null, 
-    cha_typelit2 varchar(500),
-    cha_description text not null,
-    cha_jacuzzi boolean not null,
-    cha_balcon boolean not null,
-    cha_wifi boolean not null,
-    cha_minibar boolean not null,
-    cha_coffre boolean not null,
-    cha_vue boolean not null,
-    cha_chcategorie int not null 
-*/

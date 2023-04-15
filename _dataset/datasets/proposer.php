@@ -2,7 +2,7 @@
 $tab = [];
 $lkey_services = [];
 $hotel_propose = [];
-$id_services = range(1,count($services));
+$id_services = range(1,count($servicesNom));
 
 for ($hotel = 1; $hotel <= NOMBRE_HOTEL; $hotel++) {
     
@@ -23,4 +23,3 @@ for ($hotel = 1; $hotel <= NOMBRE_HOTEL; $hotel++) {
 $sql = "insert into proposer values " . implode(",", $tab);
 mysqli_query($link, $sql);
 echo "<p>Génération de ? propositions.</p>";
-?>

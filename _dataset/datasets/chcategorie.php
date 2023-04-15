@@ -10,6 +10,6 @@ $tab = [];
 foreach ($chcategorie as $chc_nom) {
     $tab[] = "(null,'$chc_nom')";
 }
-$sql = "insert into chcategorie values " . implode(",", $tab);
+$sql = "INSERT INTO chcategorie VALUES " . implode(",", $tab);
 mysqli_query($link, $sql);
-echo "<p>génération de catégorie de chambre</p>";
+echo "<p>Génération de " . count($chcategorie) . " catégories de chambres.</p>";

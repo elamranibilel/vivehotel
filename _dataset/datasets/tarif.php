@@ -13,22 +13,24 @@ foreach ($hoCategorie as $hocat) {
     $chc = 1;
     foreach ($chcategorie as $chcat) {
         $tar_prix = $tarifsChambre[$hocat][$chcat];
+        /* Si le tarif n'existe pas pour un type de chambre
+        pris dans une catégorie d'hôtel, on l'ajoute. */
+        if ($tar_prix !== NULL) {
+            continue;
+        }
+
         $tar_hocategorie = $hoc;
         $tar_chcategorie = $chc;
 
-        /* Si le tarif existe pour un type de chambre
-        pris dans une catégorie d'hôtel, on l'ajoute. */
-        if ($tar_prix != '0') {
-            $tab[] = "(null,'$tar_prix', '$tar_hocategorie', '$tar_chcategorie')";
-            $noTarif++;
-        }
+        $tab[] = "(null,'$tar_prix', '$tar_hocategorie', '$tar_chcategorie')";
+        $noTarif++;
         $chc++;
     }
     $hoc++;
 }
 
 
-$sql = "insert into tarifer values " . implode(",", $tab);
+$sql = "INSERT INTO tarifer VALUES " . implode(",", $tab);
 mysqli_query($link, $sql);
 
-echo '<p>génération de ' . ($noTarif) . ' tarifsChambre</p>';
+echo '<p>génération de ' . ($noTarif) . ' tarifs des chambres. </p>';
