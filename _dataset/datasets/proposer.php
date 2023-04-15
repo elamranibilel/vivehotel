@@ -1,22 +1,21 @@
-<?php      
+<?php
 $tab = [];
-$lkey_services = [];
-$hotel_propose = [];
-$id_services = range(1,count($servicesNom));
+$nbServicesHotel = [];
+$hotelListeSer = [];
+$id_services = range(1, count($servicesNom));
 
 for ($hotel = 1; $hotel <= NOMBRE_HOTEL; $hotel++) {
-    
-    $lkey_services[] = mt_rand(2,4)-1;
-    shuffle($id_services);
-    $services_prop = array_slice($id_services,0, end($lkey_services));
 
-    foreach($services_prop as $id_service)
-    {
+    $nbServicesHotel[] = mt_rand(2, 4) - 1;
+    shuffle($id_services);
+    $idServicesHotel = array_slice($id_services, 0, end($nbServicesHotel));
+
+    foreach ($idServicesHotel as $id_service) {
         $pro_services = $id_service;
-        $hotel_propose[$hotel][] = $id_service;
-       
+        $hotelListeSer[$hotel][] = $id_service;
+
         $pro_hotel = $hotel;
-        $pro_prix = mt_rand(0,100);
+        $pro_prix = mt_rand(0, 100);
         $tab[] = "(NULL,'$pro_prix','$pro_hotel','$pro_services')";
     }
 }

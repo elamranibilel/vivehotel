@@ -15,7 +15,7 @@ foreach ($hoCategorie as $hocat) {
         $tar_prix = $tarifsChambre[$hocat][$chcat];
         /* Si le tarif n'existe pas pour un type de chambre
         pris dans une catégorie d'hôtel, on l'ajoute. */
-        if ($tar_prix !== NULL) {
+        if ($tar_prix == NULL) {
             continue;
         }
 
