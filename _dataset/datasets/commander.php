@@ -14,4 +14,4 @@ for ($no_comm = 1; $no_comm <= NOMBRE_COMMANDES; $no_comm++) {
 $sql = 'INSERT INTO commander VALUES ' . implode(',', $tab);
 mysqli_query($link, $sql);
 
-echo '<br/>génération de ' . NOMBRE_COMMANDES . ' commandes.';
+echo '<br/>Génération de ' . NOMBRE_COMMANDES . ' commandes de services.';

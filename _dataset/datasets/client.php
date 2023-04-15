@@ -11,4 +11,4 @@ for ($i = 1; $i <= NOMBRE_DE_CLIENTS; $i++) {
 }
 $sql = "insert into client values " . implode(",", $tab);
 mysqli_query($link, $sql);
-echo "<p>génération de " . NOMBRE_DE_CLIENTS . " clients</p>";
+echo "<p>Génération de " . NOMBRE_DE_CLIENTS . " clients</p>";
