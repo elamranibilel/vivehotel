@@ -1,19 +1,20 @@
 <?php
 
-//génération de Categorie_chambre  
-$hocategorie = [
+//génération de categorie_chambre  
+$hoCategorie = [
     "2 étoiles",
     "3 étoiles",
     "4 étoiles",
     "5 étoiles",
     "Palace"
 ];
- 
+
 $tab = [];
-foreach ($hocategorie as $hoc_nom) {
+foreach ($hoCategorie as $hoc_nom) {
     $tab[] = "(null,'$hoc_nom')";
 }
-$sql = "insert into hocategorie values " . implode(",", $tab);
+
+$sql = "INSERT INTO hocategorie VALUES " . implode(",", $tab);
 mysqli_query($link, $sql);
-echo '<p>génération de ' . count($hocategorie) . ' catégorie de l\'hôtel</p>';
-?>
+
+echo '<p>génération de ' . count($hoCategorie) . ' catégorie de l\'hôtel</p>';

@@ -18,7 +18,7 @@ for ($idHotel = 1; $idHotel <= NOMBRE_HOTEL; $idHotel++) {
     $hot_longitude = mt_rand(-10, 10);
     $hot_latitude = mt_rand(-10, 10);
 
-    $hot_hocategorie = mt_rand(1, count($hocategorie));
+    $hot_hocategorie = mt_rand(1, count($hoCategorie));
     $data[] = "(null,'$hot_statut','$hot_nom','$hot_adresse','$hot_departement','$hot_description','$hot_longitude','$hot_latitude','$hot_hocategorie')";
 }
 $sql = "insert into hotel values " . implode(",", $data);
