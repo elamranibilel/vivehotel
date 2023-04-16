@@ -35,6 +35,7 @@ class Reservation extends Table
 		WHERE res_client = cli_id
 		AND res_chambre = cha_id
 		AND cha_hotel = hot_id
+		ORDER BY res_date_creation DESC
 		LIMIT 0,100';
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
