@@ -21,6 +21,14 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
+	function a_hotel()
+	{
+		$u = new Reservation();
+		$data = $u->selectAll();
+		require $this->gabarit;
+	}
+
+
 	//$_GET["id"] : id de l'enregistrement
 	function a_edit()
 	{
@@ -46,7 +54,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		$u = new Reservation();
 		$aDoublons = $u->aDoublons($_POST);
 
-		if ($aDoublons AND $_POST['res_etat'] == '') {
+		if ($aDoublons and $_POST['res_etat'] == '') {
 			$_SESSION["message"][] = "La chambre n'est pas libre entre ces deux dates : "
 				. "la réservation n'a pas été modifiée";
 			header("location:" . hlien("reservation", "edit", "id", $_POST['res_id']));

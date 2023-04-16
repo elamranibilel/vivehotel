@@ -1,7 +1,4 @@
-    <h2>Liste des chambres de l'h$ôtel ""</h2>
-
-    <?= FormRecherche('Chambre') ?>
-
+    <h2>Liste des chambres de l'hôtel "<?= mhe($hot_nom) ?>"</h2>
     <table class="table table-striped table-bordered table-hover">
     	<thead>
     		<tr>
@@ -14,8 +11,8 @@
     			<th>Services</th>
     			<th>Chcategorie</th>
     			<th>Réservation</th>
-    			<th>modifier</th>
-    			<th>supprimer</th>
+    			<th>Modifier</th>
+    			<th>Supprimer</th>
     		</tr>
     	</thead>
     	<tbody>

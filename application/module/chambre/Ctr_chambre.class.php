@@ -33,7 +33,22 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	//$_GET["id"] : id de l'enregistrement
+	function a_hotel()
+	{
+		if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+			$_SESSION['message'][]  = "Numéro d'hôtel invalide";
+			header('Location: ' . hlien('chambre'));
+			exit();
+		}
+
+		$h = new Hotel();
+		$hotData = $h->select($_GET['id']);
+		extract($hotData);
+		$c = new Chambre();
+		$data = $c->chaHotel($_GET['id']);
+		require $this->gabarit;
+	}
+
 	function a_edit()
 	{
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
