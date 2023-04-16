@@ -27,12 +27,12 @@
             <td><?= mhe($data['hot_statut']) ?></td>
         </tr>
         <tr>
-            <td>Nombres Chambres Actifs</td>
+            <td>Nombre de chambres actives</td>
             <td><?= mhe($chambreActif) ?></td>
         </tr>
         <tr>
-            <td>Nombres Chambres Libres</td>
-            <td><?=mhe($chambreLibres) ?></td>
+            <td>Nombre de chambres libres</td>
+            <td><?= mhe($chambreLibres) ?></td>
         </tr>
     </tbody>
 </table>

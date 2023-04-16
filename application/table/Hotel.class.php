@@ -59,8 +59,8 @@ class Hotel extends Table
 
 	public function chiffreAffaire(int $id): array
 	{
-		$sql = 'SELECT hot_id, SUM(tar_prix* diff_date) `c_affaire` FROM
-		(SELECT hot_id, tar_prix, DATEDIFF(res_date_fin, res_date_debut) `diff_date`
+		$sql = 'SELECT hot_id, SUM(tar_prix* res_duree) `c_affaire` FROM
+		(SELECT hot_id, tar_prix, DATEDIFF(res_date_fin, res_date_debut) `res_duree`
 		FROM chambre, reservation, tarifer, hotel
 		WHERE res_chambre = cha_id
 		AND res_hotel = hot_id 

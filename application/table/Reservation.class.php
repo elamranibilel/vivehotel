@@ -68,6 +68,7 @@ class Reservation extends Table
 		WHERE res_hotel = hot_id
 		AND res_chambre = :chambre
 		AND res_client = cli_id
+		ORDER BY res_date_debut DESC
 		LIMIT 0,100
 		"; // ordonner par date de création de la réservation
 		$stmt = self::$link->prepare($sql);
