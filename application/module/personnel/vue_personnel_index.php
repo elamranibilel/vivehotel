@@ -3,7 +3,6 @@
     <table class="table table-striped table-bordered table-hover">
     	<thead>
     		<tr>
-
     			<th>Id</th>
     			<th>Nom</th>
     			<th>Identifiant</th>

@@ -1,4 +1,4 @@
-        <h2>connection des gestionnaires</h2>
+        <h2>Connexion des gestionnaires</h2>
         <form method="post">
             <div class='form-group'>
                 <label for='per_email'>Email</label>

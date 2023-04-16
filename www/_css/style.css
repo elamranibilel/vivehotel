@@ -39,6 +39,9 @@ td .tarif {
   text-align: center;
 }
 
+.lien_pied {
+  float: right;
+}
 /*.button {
   display: inline-block;
   background-color: #f3412a;
