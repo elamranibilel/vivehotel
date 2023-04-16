@@ -23,8 +23,19 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 
 	function a_hotel()
 	{
+
+		if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+			$_SESSION['message'][]  = "Numéro d'hôtel invalide";
+			header('Location: ' . hlien('chambre'));
+			exit();
+		}
+
+		$h = new Hotel();
+		$hotData = $h->select($_GET['id']);
+		extract($hotData);
+
 		$u = new Reservation();
-		$data = $u->selectAll();
+		$data = $u->resHotel($_GET['id']);
 		require $this->gabarit;
 	}
 

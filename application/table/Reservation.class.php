@@ -86,6 +86,23 @@ class Reservation extends Table
 		return $stmt->fetchAll();
 	}
 
+	public function resHotel(int $hot_id): array
+	{
+		$sql = "SELECT * 
+		FROM reservation, client, hotel, chambre
+		WHERE res_hotel = hot_id
+		AND res_chambre = cha_id
+		AND res_hotel = :hotel
+		AND res_client = cli_id
+		ORDER BY res_id
+		LIMIT 0,100";
+		$stmt = self::$link->prepare($sql);
+		$stmt->bindValue(':hotel', $hot_id, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+
+
 	public function reservationServices(int $res_id): array
 	{
 		$sql = "SELECT ser_nom, com_id, com_quantite, com_reservation

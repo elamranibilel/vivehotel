@@ -56,9 +56,9 @@ class Chambre extends Table
 
 	function select(int $id)
 	{
-		$sql = "SELECT * FROM chambre, hotel 
+		$sql = 'SELECT * FROM chambre, hotel 
 		WHERE cha_hotel = hot_id
-		AND cha_id=:id";
+		AND cha_id=:id';
 		$statement = self::$link->prepare($sql);
 		$statement->bindValue(":id", $id, PDO::PARAM_INT);
 		$statement->execute();

@@ -1,4 +1,4 @@
-    <h2>Liste des réservations de la catégorie (limité à 100 résultats)</h2>
+    <h2>Liste des réservations de l'hôtel "<?= mhe($hot_nom) ?>"</h2>
 
     <p><a class="btn btn-primary" href="<?= hlien("reservation", "edit", "id", 0) ?>">Nouveau reservation</a></p>
     <table class="table table-striped table-bordered table-hover">
