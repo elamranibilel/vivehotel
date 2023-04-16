@@ -1,9 +1,4 @@
-- Créer une page "Statistiques" dans le CRUD où pour un ID d'hôtel, le chiffre d'affaire 
-est calculé. [C]
-
-
-
-- Renommer le titre H1 des pages pour qu'elles soeitn descritives [A,B,C]
+- Renommer le titre H1 des pages pour qu'elles soeitn descriptives [A,B,C]
 
 - Confgiurer la table utilisateur [A]
 - Créer un compte administrateur [A]

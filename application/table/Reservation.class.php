@@ -12,6 +12,13 @@ class Reservation extends Table
 		'En attente'
 	];
 
+	const LISTE_OPTIONS = [
+		'Hôtel' => 'hot_nom',
+		'Client' => 'res_client',
+		'Etat' => 'res_etat',
+	];
+
+
 	public function __construct()
 	{
 		parent::__construct("reservation", "res_id");
@@ -19,7 +26,16 @@ class Reservation extends Table
 
 	public function selectAll(): array // supprimer
 	{
-		$sql = "select * from reservation LIMIT 0,100";
+		$sql = 'SELECT res_id, res_date_creation, res_date_debut,
+		res_date_fin, res_etat,
+		cli_nom, 
+		hot_nom, 
+		cha_numero
+		FROM reservation, client, chambre, hotel
+		WHERE res_client = cli_id
+		AND res_chambre = cha_id
+		AND cha_hotel = hot_id
+		LIMIT 0,100';
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
 	}
