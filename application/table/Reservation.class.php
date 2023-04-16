@@ -55,22 +55,15 @@ class Reservation extends Table
 
 	public function reservationsCha(int $idChambre): array
 	{
-		$sql = "SELECT 
-		res_id,
-		res_date_creation,
-		res_date_debut,
-		res_date_maj,
-		res_date_fin,
-		res_etat,
-		cli_nom,
-		hot_nom
+		$sql = 'SELECT res_id, res_date_creation, res_date_debut,
+		res_date_maj, res_date_fin, res_etat,
+		cli_nom, hot_nom
 		FROM hotel, reservation, chambre, client 
 		WHERE res_hotel = hot_id
 		AND res_chambre = :chambre
 		AND res_client = cli_id
 		ORDER BY res_date_debut DESC
-		LIMIT 0,100
-		"; // ordonner par date de création de la réservation
+		LIMIT 0,100'; // ordonner par date de création de la réservation
 		$stmt = self::$link->prepare($sql);
 		$stmt->bindValue(':chambre', $idChambre, PDO::PARAM_INT);
 		$stmt->execute();
@@ -130,6 +123,6 @@ class Reservation extends Table
 		$stmt->bindValue(':res_date_fin', $data['res_date_fin'], PDO::PARAM_STR);
 
 		$stmt->execute();
-		return $stmt->fetchAll();
+		return count($stmt->fetchAll()) > 0 ? true : false;
 	}
 }

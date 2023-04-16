@@ -17,7 +17,8 @@ class Chambre extends Table
 		'Annnulé',
 		'Initialisé',
 		'Validé',
-		'En attente'
+		'En attente',
+		'Supprimé'
 	];
 
 	const CRI_RECHERCHE = [
@@ -29,9 +30,11 @@ class Chambre extends Table
 	const LISTE_OPTIONS = [
 		'Jacuzzi' => 'cha_jacuzzi',
 		'Balcon' => 'cha_balcon',
+		'Wifi' => 'cha_wifi',
+		'Mini-bar' => 'cha_minibar',
+		'Coffre' => 'cha_coffre',
+		'Vue' => 'cha_vue'
 	];
-
-	// (?) Catégories de la chambre
 
 	public function __construct()
 	{
@@ -85,5 +88,15 @@ class Chambre extends Table
 	static public function OPTIONChambre(int $idChambre)
 	{
 		return self::HTMLoptions('SELECT cha_id, cha_numero FROM chambre', 'cha_id', 'cha_numero', $idChambre);
+	}
+
+	public function delete($id)
+	{
+		$sql = 'UPDATE chambre 
+		SET cha_statut = "Supprimé" 
+		WHERE cha_id=:id';
+		$statement = self::$link->prepare($sql);
+		$statement->bindValue(":id", $id, PDO::PARAM_INT);
+		$statement->execute();
 	}
 }

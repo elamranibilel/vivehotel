@@ -6,7 +6,13 @@ Classe créé par le générateur.
 
 class Hotel extends Table
 {
-	const STATUT = ["En attente", "Initialisé", "Annnulé",	"Validé"];
+	const STATUT = [
+		"En attente",
+		"Initialisé",
+		"Annnulé",
+		"Validé",
+		"Supprimé"
+	];
 	public function __construct()
 	{
 		parent::__construct("hotel", "hot_id");
@@ -44,6 +50,13 @@ class Hotel extends Table
 		$result = self::$link->query($sql);
 		return $result->fetchAll();
 	}
+
+	public function countAll(): int
+	{
+		$listeHotel = $this->selectAll();
+		return count($listeHotel);
+	}
+
 	public function selectAllservices($id): array
 	{
 		$sql = "SELECT ser_id, ser_nom, 
@@ -55,6 +68,21 @@ class Hotel extends Table
 		$stmt->bindValue(':id', $id, PDO::PARAM_INT);
 		$stmt->execute();
 		return $stmt->fetchAll();
+	}
+
+	public function chiffreAffTot()
+	{
+		$sql = 'SELECT SUM(tar_prix* res_duree) `c_affaire` FROM
+		(SELECT hot_id, tar_prix, DATEDIFF(res_date_fin, res_date_debut) `res_duree`
+		FROM chambre, reservation, tarifer, hotel
+		WHERE res_chambre = cha_id
+		AND res_hotel = hot_id 
+		AND tar_chcategorie = cha_chcategorie 
+		AND tar_hocategorie = hot_hocategorie
+		AND res_etat != "Annulé"
+		)  reservations';
+		$stmt = self::$link->query($sql);
+		return $stmt->fetch()['c_affaire'];
 	}
 
 	public function chiffreAffaire(int $id): array
@@ -124,5 +152,15 @@ class Hotel extends Table
 	static public function OPTIONhotel(string $selected)
 	{
 		return Table::HTMLoptions('SELECT * FROM hotel', 'hot_id', 'hot_nom', $selected);
+	}
+
+	public function delete($id)
+	{
+		$sql = 'UPDATE hotel 
+		SET hot_statut = "Annulé" 
+		WHERE hot_id=:id';
+		$statement = self::$link->prepare($sql);
+		$statement->bindValue(":id", $id, PDO::PARAM_INT);
+		$statement->execute();
 	}
 }

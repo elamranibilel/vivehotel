@@ -3,13 +3,10 @@
         <label>Modification de la chambre "<?= mhe($cha_numero) ?>" de l'hôtel "<?= $hot_nom ?>"</label>
     </h1>
     <a class="btn btn-secondary" href="<?= hlien('chambre', 'index') ?>">Liste des chambres</a>
-
-
-
 </div>
 
 <form method="post" action="<?= hlien("chambre", "save") ?>">
-    <input type="hidden" name="cha_id" id="cha_id" value="<?= $id ?>" />
+    <input type="hidden" name="cha_id" id="cha_id" value="<?= mhe($id) ?>" />
     <div class='form-group'>
         <label for='cha_statut'>Statut</label>
         <select id='cha_statut' name='cha_statut' type='text' class='form-control'>
@@ -48,10 +45,10 @@
     </div>
     <div class='form-group'>
         <?php
-        foreach ($CRI_RECHERCHE as $texte => $champ) { ?>
+        foreach (Chambre::LISTE_OPTIONS as $texte => $champ) { ?>
 
-            <label for='<?= $champ ?>'><?= $texte ?></label>
-            <select id='<?= $champ ?>' name='<?= $champ ?>' type='text' class='form-control'>
+            <label for='<?= mhe($champ) ?>'><?= mhe($texte) ?></label>
+            <select id='<?= mhe($champ) ?>' name='<?= mhe($champ) ?>' type='text' class='form-control'>
                 <option value='0' <?= ($$champ ===  0) ? 'selected' : '' ?>>Non</option>
                 <option value='1' <?= ($$champ ===  1) ? 'selected' : '' ?>>Oui</option>
             </select>
