@@ -1,22 +1,33 @@
-- Indiquer obligatoirement le nom de l'hôtel dans la liste des chambres [C]
-- Indiquer un bouton chambre pour l'hôtel [C]
-- Supprimer les services d'une réservation déjà commandés dans la liste [C]
-- Le texte "le prix du service a été mis à jour" apparaît deux fois dans la réservation [C]
-- Modifier la requête du nombre de chambres libres actuellement [B]
-- Refaire fonctionner la création d'une réservation
-- Editer le formulaire de création ou édition de réservations
+* CHAMBRES
 - Faire en sorte que la modification du numéro de chambre soit cohérente
-- Autoriser la modification d'une réservation si les dates de celle-ci se superposent à elle-même. [C]
+
+* HÔTEL
+- Indiquer obligatoirement le nom de l'hôtel dans la liste des chambres 
+- Indiquer un bouton chambre pour l'hôtel 
+
+* RESERVATION
+- Editer le formulaire de création ou édition de réservations
+- Refaire fonctionner la création d'une réservation
+- Supprimer les services d'une réservation déjà commandés dans la liste 
+- Le texte "le prix du service a été mis à jour" apparaît deux fois dans la réservation 
+- Autoriser la modification d'une réservation si les nouvelles dates de celle-ci ne se superposent à elle-même.
+
+* STATISTIQUES
+- Modifier la requête du nombre de chambres libres actuellement
+
+* TARIF :
 - Modifier les balises pour que ce soit "data-XX" sinon c'est pas bien !
-- Avoir une fonction javascript H-lien (?) [C]
+- Avoir une fonction javascript H-lien (?)
+
+* HOT/CH CATEGORIE :
 - Peut-être pouvoir gérer les catégories d'hôtels et catégories de chambres (?)
-- Ajouter le numéro de page dans la table des matières 
+
+* DOSSIER TECHNIQUE :
+- Ajouter le numéro de page dans la table des matières du dossier technique
 - Modifier les captures d'écran du dossier technique
+----> Finir de rédiger le dossier technique [!!!]
 
-- Renommer le titre H1 des pages pour qu'elles soeitn descriptives [A,B,C]
-
-- Confgiurer la table utilisateur [A]
-- Créer un compte administrateur [A]
+- Renommer le titre H1 des pages pour qu'elles soient descriptives [A,B,C]
 
 - Retester le CRUD administrateur en tant que connecté [A,C]
 - Vérifier que le CRUD administarteur n'est pas accessible aux autres [A,C]
