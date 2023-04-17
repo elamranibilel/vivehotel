@@ -1,6 +1,0 @@
-Création d'un nouveau module : "authentification" :
-
-1. Créer sous "module" le dossier "authentification"
-2. Créer un fichier "ctr_authentification.class.php"
-3. Créer 3 actions : inscription, connexion, deconnexion
-

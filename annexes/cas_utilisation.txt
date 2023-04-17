@@ -27,12 +27,14 @@
 - Modifier les captures d'écran du dossier technique
 ----> Finir de rédiger le dossier technique [!!!]
 
+
+
 - Renommer le titre H1 des pages pour qu'elles soient descriptives [A,B,C]
 
-- Retester le CRUD administrateur en tant que connecté [A,C]
-- Vérifier que le CRUD administarteur n'est pas accessible aux autres [A,C]
-
 - Créer les pages des gestionnaires
+* possibilité de gérer les chambres de son hôtel
+* possibilité de gérer les réservations de son hôtel
+* possibilité de voir les statisituqes de son hôtel
 - Créer les pages des téléconseillers
 - Créer les pages des cleints
 
