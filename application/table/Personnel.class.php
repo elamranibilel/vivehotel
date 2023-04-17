@@ -32,7 +32,7 @@ class Personnel extends Table
 
 	static public function selectByEmail(string $per_email)
 	{
-		$sql = "SELECT per_nom, per_identifiant, 
+		$sql = "SELECT per_id, per_nom, per_identifiant, 
 		per_email, per_mdp, per_role
 		FROM personnel
 		WHERE per_email=:mail";
@@ -53,8 +53,6 @@ class Personnel extends Table
 		$statement->bindValue(":id", $id);
 		$statement->execute();
 		$res = $statement->fetch();
-		debug($res);
-		exit();
 		return is_array($res) ? $res['hot_id'] : NULL;
 	}
 }

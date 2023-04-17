@@ -130,14 +130,17 @@ class Ctr_authentification extends Ctr_controleur
                 exit;
             }
 
+
             extract($row);
+
             $_SESSION["per_id"] = $per_id;
             $_SESSION["per_nom"] = $per_nom;
             $_SESSION["per_identifiant"] = $per_identifiant;
             $_SESSION["per_email"] = $per_email;
             $_SESSION["per_profil"] = $per_profil;
             $_SESSION["per_role"] = $per_role;
-            $_SESSION["per_hotel"] = $per_hotel;
+
+            $_SESSION["per_hotel"] = Personnel::selectHotel($per_id);
             $_SESSION["message"][] = "bienvenu $per_nom.";
             header("location:" . hlien("_default"));
         } else {
