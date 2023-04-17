@@ -58,7 +58,7 @@
 
     <div class='form-group'>
         <label for='cha_chcategorie'>Catégorie de la chambre</label>
-        <select id="cha_chcategorie" name="cha_chcategorie">
+        <select class="form-control" id="cha_chcategorie" name="cha_chcategorie">
             <option value='1'>Standard</option>
             <option value='2'>Supérieure</option>
             <option value='3'>Luxe</option>

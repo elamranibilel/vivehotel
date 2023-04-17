@@ -57,13 +57,14 @@ class Reservation extends Table
 	{
 		$sql = 'SELECT res_id, res_date_creation, res_date_debut,
 		res_date_maj, res_date_fin, res_etat,
-		cli_nom, hot_nom
+		cli_nom, hot_nom, cha_numero
 		FROM hotel, reservation, chambre, client 
 		WHERE res_hotel = hot_id
 		AND res_chambre = :chambre
 		AND res_client = cli_id
-		ORDER BY res_date_debut DESC
-		LIMIT 0,100'; // ordonner par date de création de la réservation
+		AND res_chambre = cha_id
+		ORDER BY res_date_debut DESC'; 
+		// ordonner par date de création de la réservation
 		$stmt = self::$link->prepare($sql);
 		$stmt->bindValue(':chambre', $idChambre, PDO::PARAM_INT);
 		$stmt->execute();
