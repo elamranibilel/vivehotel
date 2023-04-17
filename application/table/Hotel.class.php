@@ -135,10 +135,12 @@ class Hotel extends Table
 
 	public function ChambreLibres(int $id): array
 	{
-		$sql = "SELECT hot_id, hot_nom, COUNT(DISTINCT(cha_id)) 'nb_chambreLibres', res_hotel
+		$sql = "SELECT hot_id, hot_nom, COUNT(DISTINCT(cha_id)) 'nb_chambreLibres', cha_numero, res_hotel
 		FROM hotel, reservation, chambre
 		WHERE res_hotel = hot_id
 		AND res_chambre = cha_id
+		AND res_date_debut > '2021-01-01'
+		AND res_date_fin < '2021-03-01'
 		AND res_etat = 'En attente'
 		AND hot_id = :id
 		GROUP BY hot_id
