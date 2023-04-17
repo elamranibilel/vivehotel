@@ -4,9 +4,7 @@ create database if not exists vivehotel default character set utf8 collate utf8_
 use vivehotel;
 
 DROP VIEW IF EXISTS prix_services;
-
 DROP VIEW IF EXISTS liste_chambres;
-
 DROP VIEW IF EXISTS prix_chambres;
 
 set
