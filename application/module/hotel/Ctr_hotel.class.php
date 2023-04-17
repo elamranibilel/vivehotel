@@ -16,6 +16,7 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 
 	function a_index()
 	{
+		checkallow('admin');
 		$u = new Hotel();
 		$data = $u->selectAll();
 		require $this->gabarit;
@@ -24,6 +25,7 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 	//$_GET["id"] : id de l'enregistrement
 	function a_edit()
 	{
+		checkallow('admin');
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Hotel();
 		if ($id > 0)
@@ -37,6 +39,7 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 	//$_POST
 	function a_save()
 	{
+		checkallow('admin');
 		if (isset($_POST["btSubmit"])) {
 			$u = new Hotel();
 			$u->save($_POST);
@@ -50,6 +53,7 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 
 	function a_delete()
 	{
+		checkallow('admin');
 		if (isset($_GET["id"])) {
 			$u = new Hotel();
 			$u->delete($_GET["id"]);
@@ -59,6 +63,7 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 	}
 	function a_services()
 	{
+		checkallow('admin');
 		$hotel = new Hotel();
 
 		if (!isset($_GET["id"]) or !is_numeric($_GET['id'])) {
@@ -70,6 +75,7 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 
 	function a_services_edit()
 	{
+		checkallow('admin');
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 
 		$pro = new Proposer();
@@ -82,6 +88,7 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 
 	function a_services_save()
 	{
+		checkallow('admin');
 		extract($_POST);
 
 		if (isset($bt_submit)) {
@@ -108,7 +115,7 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 
 	function a_statistiques()
 	{
-		# CheckAuth
+		checkallow('admin');
 
 		$hotel = new Hotel();
 		$data = (isset($_GET['id'])) ? $hotel->select($_GET['id']) : [];

@@ -16,6 +16,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 
 	function a_index()
 	{
+		checkallow('admin');
 		$u = new Reservation();
 		$data = $u->selectAll();
 		require $this->gabarit;
@@ -23,7 +24,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 
 	function a_hotel()
 	{
-
+		checkallow('admin');
 		if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 			$_SESSION['message'][]  = "Numéro d'hôtel invalide";
 			header('Location: ' . hlien('chambre'));
@@ -43,6 +44,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	//$_GET["id"] : id de l'enregistrement
 	function a_edit()
 	{
+		checkallow('admin');
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Reservation();
 		$res_commandes = [];
@@ -60,6 +62,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	//$_POST
 	function a_save()
 	{
+		checkallow('admin');
 		if (!isset($_POST["btSubmit"])) exit();
 
 		$u = new Reservation();
@@ -95,6 +98,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	//param GET id 
 	function a_delete()
 	{
+		checkallow('admin');
 		if (isset($_GET["id"])) {
 			$u = new Reservation();
 			$u->delete($_GET["id"]);
@@ -105,6 +109,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 
 	function a_client()
 	{
+		checkallow('admin');
 		if (!isset($_GET["id"]))
 			header('Location: ' . hlien('client'));
 
@@ -119,12 +124,14 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 
 	function a_save_res()
 	{
+		checkallow('admin');
 		if (!isset($_GET["id"]))
 			header('Location: ' . hlien('client'));
 	}
 
 	function a_services()
 	{
+		checkallow('admin');
 		$reservation = new Reservation();
 
 		$data = $reservation->reservationServices($_GET['id']);
@@ -135,6 +142,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 
 	function a_services_edit()
 	{
+		checkallow('admin');
 		$reservation = new Reservation();
 
 		$res = $reservation->select($_GET['id']);
@@ -157,6 +165,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 
 	function a_services_save()
 	{
+		checkallow('admin');
 		$reservation = new Reservation();
 
 		$data = $reservation->reservationServices($_POST["com_reservation"]);
@@ -178,6 +187,7 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 
 	function a_services_delete()
 	{
+		checkallow('admin');
 
 		if (isset($_GET["id"])) {
 

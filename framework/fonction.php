@@ -84,8 +84,9 @@ function afficheTableHTML($data)
 //si user non authentifié redirection vers index
 function checkAuth()
 {
-	if (!isset($_SESSION["uti_id"])) {
-		$_SESSION["message"][] = "accès non autorisé. Veuillez vous connecter.";
+	if (!isset($_SESSION["cli_id"]) and !isset($_SESSION['per_role'])) {
+
+		$_SESSION["message"][] = "Vous n'êtes pas connecté.";
 		header("location:" . hlien("_default"));
 		exit;
 	}
@@ -95,8 +96,11 @@ function checkAuth()
 function checkAllow($profil)
 {
 	checkAuth();
-	if ($_SESSION["uti_profil"] != $profil) {
-		$_SESSION["message"][] = "accès non autorisé.";
+	if (
+		(isset($_SESSION["per_role"]) and $_SESSION['per_role'] != $profil)
+		or ($profil == 'client' and isset($_POST["cli_profil"]))
+	) {
+		$_SESSION["message"][] = "Cette page n'existe pas.";
 		header("location:" . hlien("_default"));
 		exit;
 	}

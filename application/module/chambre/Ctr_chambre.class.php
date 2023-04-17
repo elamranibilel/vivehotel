@@ -16,7 +16,7 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 
 	function a_index()
 	{
-
+		checkAllow('admin');
 		$chClasse = new Chambre();
 
 		array_map('trim', $_POST);
@@ -35,6 +35,7 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 
 	function a_hotel()
 	{
+
 		if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 			$_SESSION['message'][]  = "Numéro d'hôtel invalide";
 			header('Location: ' . hlien('chambre'));
@@ -51,6 +52,7 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 
 	function a_edit()
 	{
+		checkAllow('admin');
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Chambre();
 		if ($id > 0)
@@ -68,6 +70,7 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 	//$_POST
 	function a_save()
 	{
+		checkAllow('admin');
 		if (isset($_POST["btSubmit"])) {
 			if (!in_array($_POST['cha_statut'], Chambre::CHA_STATUT)) {
 				$_SESSION["message"][] = "Statut de la chambre non valide.";
@@ -89,6 +92,7 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 	//param GET id 
 	function a_delete()
 	{
+		checkAllow('admin');
 		if (isset($_GET["id"])) {
 			$u = new Chambre();
 			$u->delete($_GET["id"]);
@@ -99,6 +103,7 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 
 	function a_reservations()
 	{
+		checkAllow('admin');
 		if (!is_numeric($_GET['id'])) {
 			$_SESSION['message'][] = 'Le lien est invalide';
 			header('Location: ' . hlien('chambre', 'index'));

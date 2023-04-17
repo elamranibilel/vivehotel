@@ -16,6 +16,7 @@ class Ctr_client extends Ctr_controleur implements I_crud
 
 	function a_index()
 	{
+		checkAllow('admin');
 		$u = new Client();
 		$data = $u->selectAll();
 		require $this->gabarit;
@@ -24,6 +25,7 @@ class Ctr_client extends Ctr_controleur implements I_crud
 	//$_GET["id"] : id de l'enregistrement
 	function a_edit()
 	{
+		checkAllow('admin');
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Client();
 		if ($id > 0)
@@ -38,6 +40,7 @@ class Ctr_client extends Ctr_controleur implements I_crud
 	//$_POST
 	function a_save()
 	{
+		checkAllow('admin');
 		if (isset($_POST["btSubmit"])) {
 			$u = new Client();
 			$u->save($_POST);
@@ -54,6 +57,7 @@ class Ctr_client extends Ctr_controleur implements I_crud
 	//param GET id 
 	function a_delete()
 	{
+		checkAllow('admin');
 		if (isset($_GET["id"])) {
 			$u = new Client();
 			$u->delete($_GET["id"]);

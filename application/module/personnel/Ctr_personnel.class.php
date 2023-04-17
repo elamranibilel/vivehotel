@@ -16,6 +16,7 @@ class Ctr_personnel extends Ctr_controleur implements I_crud
 
 	function a_index()
 	{
+		checkallow('admin');
 		$u = new Personnel();
 		$data = $u->selectAll();
 		require $this->gabarit;
@@ -24,6 +25,7 @@ class Ctr_personnel extends Ctr_controleur implements I_crud
 	//$_GET["id"] : id de l'enregistrement
 	function a_edit()
 	{
+		checkallow('admin');
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Personnel();
 		if ($id > 0)
@@ -38,6 +40,7 @@ class Ctr_personnel extends Ctr_controleur implements I_crud
 	//$_POST
 	function a_save()
 	{
+		checkallow('admin');
 		if (isset($_POST["btSubmit"])) {
 			$_POST["per_mdp"] = password_hash($_POST["per_mdp"], PASSWORD_DEFAULT);
 			$u = new Personnel();
@@ -56,6 +59,7 @@ class Ctr_personnel extends Ctr_controleur implements I_crud
 	//param GET id 
 	function a_delete()
 	{
+		checkallow('admin');
 
 		if (isset($_GET["id"])) {
 			$u = new Personnel();
