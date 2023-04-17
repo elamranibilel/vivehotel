@@ -15,9 +15,9 @@ class Personnel extends Table
 		parent::__construct("personnel", "per_id");
 	}
 
-	
 
-	
+
+
 	static public function estEmailUnique(string $per_email): bool
 	{
 		$sql = "select * from personnel where per_email=:mail";
@@ -32,11 +32,29 @@ class Personnel extends Table
 
 	static public function selectByEmail(string $per_email)
 	{
-		$sql = "SELECT per_nom, per_identifiant, per_email, per_mdp,  per_role, hot_nom FROM personnel, hotel  
-		WHERE per_hotel=hot_id and per_email=:mail";
+		$sql = "SELECT per_nom, per_identifiant, 
+		per_email, per_mdp, per_role
+		FROM personnel
+		WHERE per_email=:mail";
+		// per_hotel=hot_id 
 		$statement = self::$link->prepare($sql);
 		$statement->bindValue(":mail", $per_email);
 		$statement->execute();
 		return $statement->fetch();
+	}
+
+	static public function selectHotel(int $id)
+	{
+		$sql = "SELECT hot_id FROM hotel, personnel
+		WHERE per_hotel = hot_id
+		AND per_id = :id";
+
+		$statement = self::$link->prepare($sql);
+		$statement->bindValue(":id", $id);
+		$statement->execute();
+		$res = $statement->fetch();
+		debug($res);
+		exit();
+		return is_array($res) ? $res['hot_id'] : NULL;
 	}
 }

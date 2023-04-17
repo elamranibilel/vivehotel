@@ -111,6 +111,8 @@ class Ctr_authentification extends Ctr_controleur
 
     public function a_connexion_personnel()
     {
+        array_map('trim', $_POST);
+
         if (isset($_SESSION["per_id"])) {
             $_SESSION["message"][] = "Tentative d'intrusion détectée...";
             require $this->gabarit;
