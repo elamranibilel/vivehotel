@@ -16,6 +16,7 @@ class Ctr_tarifer extends Ctr_controleur implements I_crud
 
 	function a_index()
 	{
+		checkAllow('admin');
 		$hoc = new Hocategorie();
 		$chc = new Chcategorie();
 		$tarifer = new Tarifer();
@@ -45,6 +46,7 @@ class Ctr_tarifer extends Ctr_controleur implements I_crud
 	*/
 	function a_ajax()
 	{
+		checkAllow('admin');
 		$tarif = new Tarifer();
 
 		// Vérifier si l'utilsiateur est administrateur
@@ -64,6 +66,7 @@ class Ctr_tarifer extends Ctr_controleur implements I_crud
 	//$_GET["id"] : id de l'enregistrement
 	function a_edit()
 	{
+		checkAllow('admin');
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
 		$u = new Tarifer();
 		if ($id > 0)
