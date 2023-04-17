@@ -2,7 +2,7 @@
 // Chambres
 const NB_CHAMBRE_P_HOTEL = 10;
 
-const CHAMBRE_STATUTS = ['Initialisé', 'En attente', 'Validé', 'Annnulé'];
+const CHAMBRE_STATUTS = ['Actif','Libre'];
 
 const TYPE_LITS = [
     '2 Lits simples',
