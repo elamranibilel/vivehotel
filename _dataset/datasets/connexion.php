@@ -1,5 +1,6 @@
 <?php
-$connexion = new PDO('mysql:host=localhost', 'root', '');
+include('../application/config/config.php');
+$connexion = new PDO('mysql:host=localhost', DB_USER, DB_PWD);
 $connexion->query('DROP DATABASE IF EXISTS vivehotel ');
 
 $SqlCreationBdd = file_get_contents('vivehotel.sql');
