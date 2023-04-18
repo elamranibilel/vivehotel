@@ -98,7 +98,7 @@ function checkAllow($profil)
 	checkAuth();
 	if (
 		(isset($_SESSION["per_role"]) and $_SESSION['per_role'] != $profil)
-		or ($profil == 'client' and isset($_POST["cli_profil"]))
+		or ($profil == 'client' and !isset($_POST["cli_profil"]))
 	) {
 		$_SESSION["message"][] = "Cette page n'existe pas.";
 		header("location:" . hlien("_default"));
