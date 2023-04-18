@@ -174,6 +174,8 @@ function tableau2D(int $dimensionX, int $dimensionY, string $defaultValue = 'X')
 }
 
 /*
+Cette fonction crée un tableau croisé dynamique à partir d’enregistrements de requêtes SQL.
+
 Le premier paramètre de cette fonction est un tableau qui a pour clés X1 et X2. Chaque clé est associée à une valeur qui est un entier naturel strictement positif. 
 
 La fonction « matriceSqlCD » appelle tout d’abord la fonction tableauD2 pour créer un tableau T de dimension D1*D2 où :
@@ -190,7 +192,7 @@ Le nom des axes X1,X2 est donné dans le deuxième paramètre de la fonction ($n
 
 Le troisième paramètre est un array de résultats SQL à index numériques. Chaque clé est associée à un array contenant un tableau associatif d’un enregistrement d’une requête SQL.
 
-Chaque enregistrement d'un résultat SQL doit être un array de la forme :
+Chaque enregistrement d'un résultat SQL doit être un array de la forme (dans l’ordre ou non) :
 [cle1=>val1, cle2=>val2, ... X1=>valX1, X2=>valX2, Y=>valY]
 
 Pour chaque enregistrement itéré, la fonction va remplir une case du tableau T de coordonnées (valX1,valX2) avec la valeur valY.
