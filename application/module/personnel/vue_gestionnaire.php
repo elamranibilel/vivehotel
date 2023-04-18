@@ -5,12 +5,10 @@
     		<tr>
 
     			<th>Id</th>
-    			<th>Nom</th>
-    			<th>mdp</th>
-    			<th>Identifiant</th>
-    			<th>Email</th>
-    			<th>Role</th>
+    			<th>Réservations</th>
+    			<th>Chambres</th>
     			<th>Hotel</th>
+    			<th>Statistiques</th>
     			<th>modifier</th>
     			<th>supprimer</th>
     		</tr>
@@ -21,11 +19,10 @@
     			<tr>
 
     				<td><?= mhe($row['per_id']) ?></td>
-    				<td><?= mhe($row['per_nom']) ?></td>
-    				<td><?= mhe($row['per_mdp']) ?></td>
-    				<td><?= mhe($row['per_identifiant']) ?></td>
-    				<td><?= mhe($row['per_email']) ?></td>
-    				<td><?= mhe($row['per_role']) ?></td>
+    				<td><?= mhe($row['res_id']) ?></td>
+    				<td><?= mhe($row['res_chambre']) ?></td>
+    				<td><?= mhe($row['res_hotel']) ?></td>
+    				<td><?= mhe($row['stistiques']) ?></td>
     				<td><?= mhe($row['hot_nom']) ?></td>
     				<td><a class="btn btn-warning" href="<?= hlien("personnel", "edit", "id", $row["per_id"]) ?>">Modifier</a></td>
     				<td><a class="btn btn-danger" href="<?= hlien("personnel", "delete", "id", $row["per_id"]) ?>">Supprimer</a></td>
