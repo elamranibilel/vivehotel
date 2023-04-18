@@ -210,7 +210,8 @@ function matriceSqlCD(array $dimensionsTab, array $nomAxe, array $mysqlRecords):
 
 	/* 
 	Nous plaçons une valeur d'une enregistreent Mysql
-	dans le tableau en fonction de la valeur de ses champs
+	dans le tableau en fonction de la valeur de ses
+	champs.
 	*/
 	foreach ($mysqlRecords as $enregistrement) {
 		$cleX1 = $enregistrement[$nomAxe['D1']];
