@@ -41,7 +41,7 @@ class Chambre extends Table
 		parent::__construct("chambre", "cha_id");
 	}
 
-	public function selectAll(): array
+	public function selectAll(): array // récupères tous les enregistrements des chambres
 	{
 		$sql = "SELECT  cha_id, cha_numero, 
 		cha_statut, cha_surface, cha_typeLit,  cha_description, cha_jacuzzi,
@@ -54,7 +54,7 @@ class Chambre extends Table
 		return $result->fetchAll();
 	}
 
-	function select(int $id)
+	function select(int $id) // Sélectionne un enregistrement d'une chambre
 	{
 		$sql = 'SELECT * FROM chambre, hotel 
 		WHERE cha_hotel = hot_id
@@ -65,6 +65,7 @@ class Chambre extends Table
 		return $statement->fetch();
 	}
 
+	// Sélectionne tous les enregistrement des chambres d'un hôtel
 	function chaHotel(int $id)
 	{
 		$sql = "SELECT cha_id, cha_numero, 
@@ -82,6 +83,7 @@ class Chambre extends Table
 		return $statement->fetchAll();
 	}
 
+	// Retourne des enregistrements de chambres en fonction d'un crtière de recherche
 	public function chaRecherche(string $texte, string $champ)
 	{
 		$sql = "SELECT  cha_id, cha_numero, 
@@ -100,11 +102,13 @@ class Chambre extends Table
 		return $stmt->fetchAll();
 	}
 
+	// Liste déroulante de toutes les chambres de tous les hôtels
 	static public function OPTIONChambre(int $idChambre)
 	{
 		return self::HTMLoptions('SELECT cha_id, cha_numero FROM chambre', 'cha_id', 'cha_numero', $idChambre);
 	}
 
+	// Permet de suppirmer un enregistrement ayant un identifiant spécifique
 	public function delete($id)
 	{
 		$sql = 'UPDATE chambre 

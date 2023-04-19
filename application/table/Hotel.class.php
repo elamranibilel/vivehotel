@@ -19,7 +19,9 @@ class Hotel extends Table
 	}
 
 
-	//retourne un enregistrement vide
+	/**
+	 * @return array Retourne un enregistrement vide de la table hôtel
+	 */
 	function emptyRecord(): array
 	{
 		$fields = $this->getFields();
@@ -30,6 +32,10 @@ class Hotel extends Table
 		return $row;
 	}
 
+	/**
+	 * @param int $id : Clé primaire d'un enregistrement à sélectionner
+	 * @return array Retourne un enregistrement d'hôtel avec les clés étrangères
+	 */
 	public function select(int $id): array
 	{
 		$sql = "SELECT * FROM hotel, hocategorie 
@@ -41,7 +47,9 @@ class Hotel extends Table
 		return $stmt->fetch();
 	}
 
-	// creation d'une table de catégorie d'hotel
+	/**
+	 * @return array Retourne l'ensemble des enregistrements d'un hôtel
+	 */
 	public function selectAll(): array
 	{
 		$sql = "SELECT * FROM hotel, hocategorie 
@@ -51,12 +59,19 @@ class Hotel extends Table
 		return $result->fetchAll();
 	}
 
+	/**
+	 * @return array Retourne la nombre d'enregistrements 
+	 */
 	public function countAll(): int
 	{
 		$listeHotel = $this->selectAll();
 		return count($listeHotel);
 	}
 
+	/**
+	 * @param int $id : clé primaire d'un enregistrement d'un service
+	 * @return array Retourne un enregistreemnt du service ayant la clé primaire $id
+	 */
 	public function selectAllservices($id): array
 	{
 		$sql = "SELECT ser_id, ser_nom, 
@@ -70,6 +85,9 @@ class Hotel extends Table
 		return $stmt->fetchAll();
 	}
 
+	/**
+	 * @return int Retourne le chiffre d'affaires hors services de la compagnie Vivehotel
+	 */
 	public function chiffreAffTot()
 	{
 		$sql = 'SELECT SUM(tar_prix* res_duree) `c_affaire` FROM
@@ -85,6 +103,10 @@ class Hotel extends Table
 		return $stmt->fetch()['c_affaire'];
 	}
 
+	/**
+	 * @param int $id : clé primaire d'un enregistrement de la table hôtel
+	 * @return int Retourne le chiffre d'affaires hors services d'un hôtel de la compagnie Vivehotel
+	 */
 	public function chiffreAffaire(int $id): array
 	{
 		$sql = 'SELECT hot_id, SUM(tar_prix* res_duree) `c_affaire` FROM
@@ -102,6 +124,11 @@ class Hotel extends Table
 		return $stmt->fetch();
 	}
 
+
+	/**
+	 * @param int $id : clé primaire d'un enregistrement de la table hôtel
+	 * @return int Retourne le chiffre d'affaires des services d'un hôtel de la compagnie Vivehotel
+	 */
 	public function CAservices(int $hot_id): array
 	{
 		$sql = 'SELECT pro_hotel, SUM(pro_prix*com_quantite) `ca_service`
@@ -117,6 +144,10 @@ class Hotel extends Table
 		return $stmt->fetch();
 	}
 
+	/**
+	 * @param int $id : clé primaire d'un enregistrement de la table "Hôtel"
+	 * @return array Retourne l'ensemble des chambres actives de l'hôtel $id
+	 */
 	public function ChambreActifs(int $id): array
 	{
 		$sql = "SELECT hot_id, hot_nom, COUNT(DISTINCT(cha_id)) `nb_chambres`
@@ -133,6 +164,11 @@ class Hotel extends Table
 		return $stmt->fetch();
 	}
 
+
+	/**
+	 * @param int $id : clé primaire d'un enregistrement de la table "Hôtel"
+	 * @return array Retourne l'ensemble des chambres actives de l'hôtel $id
+	 */
 	public function ChambreLibres(int $id): array
 	{
 		$sql = "SELECT hot_id, hot_nom, COUNT(DISTINCT(cha_id)) 'nb_chambreLibres', cha_numero, res_hotel
@@ -151,11 +187,20 @@ class Hotel extends Table
 		return $stmt->fetch();
 	}
 
-	static public function OPTIONhotel(string $selected)
+
+	/**
+	 * @param string $select : clé étrangère d'un enregistrement de la table "Hôtel"
+	 * @return string $HTML : retourne la liste deéroulante de l'ensemble des hôtels
+	 */
+	static public function OPTIONhotel(int $selected)
 	{
 		return Table::HTMLoptions('SELECT * FROM hotel', 'hot_id', 'hot_nom', $selected);
 	}
 
+	/**
+	 * @param int $id : clé primaire d'un enregistrement de la table hôtel
+	 * @return void : Supprime de manière logique l'enregistrement de la table hôtel ayant la clé $id 
+	 */
 	public function delete($id)
 	{
 		$sql = 'UPDATE hotel 
