@@ -24,11 +24,11 @@ class Proposer extends Table
 		return $stmt->fetchAll();
 	}
 
-
 	/**
-	 *  retourne un enregistrement depuis la base de données
+	 * select
 	 *
-	 * @param integer $id        	
+	 * @param  mixed $id
+	 * @return void
 	 */
 	function select(int $id)
 	{
