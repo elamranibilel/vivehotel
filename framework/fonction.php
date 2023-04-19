@@ -130,6 +130,7 @@ function debug($t)
 	echo "</pre>";
 }
 
+// Crée un formulaire HTML pour rechercher les données de la table nommée "$className"
 function FormRecherche($className)
 { ?>
 	<p>
@@ -151,6 +152,7 @@ function FormRecherche($className)
 <?php
 }
 
+// Modifier les dates dans un format en Français
 function dateFr($date)
 {
 	$date = new DateTime($date);
