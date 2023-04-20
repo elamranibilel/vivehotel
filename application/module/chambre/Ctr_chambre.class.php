@@ -6,7 +6,12 @@ Controleur associé à une table (implémente le CRUD)
  */
 class Ctr_chambre extends Ctr_controleur implements I_crud
 {
-
+	/**
+	 * __construct
+	 *
+	 * @param string $action nom de l'action appelé dans le constructeur
+	 * @return void Lance l'action a_$action en tant que page web
+	 */
 	public function __construct($action)
 	{
 		parent::__construct("chambre", $action);
@@ -14,6 +19,11 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 		$this->$a();
 	}
 
+	/**
+	 * a_index
+	 *
+	 * @return void Charge la page d'index des chambres
+	 */
 	function a_index()
 	{
 		checkAllow('admin');
@@ -33,6 +43,11 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
+	/**
+	 * a_hotel
+	 *
+	 * @return void Page de la liste des hôtels d'une chambre
+	 */
 	function a_hotel()
 	{
 
@@ -50,6 +65,11 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
+	/**
+	 * a_edit
+	 *
+	 * @return void Page d'édition d'une chambre
+	 */
 	function a_edit()
 	{
 		checkAllow('admin');
@@ -67,7 +87,12 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	//$_POST
+
+	/**
+	 * a_save
+	 *
+	 * @return void Page de sauvegarde d'une chambre en base de données
+	 */
 	function a_save()
 	{
 		checkAllow('admin');
@@ -89,7 +114,12 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 
 
 
-	//param GET id 
+
+	/**
+	 * a_delete
+	 *
+	 * @return void Page de suppression d'une chambre en base de donnnées
+	 */
 	function a_delete()
 	{
 		checkAllow('admin');
@@ -101,6 +131,11 @@ class Ctr_chambre extends Ctr_controleur implements I_crud
 		header("location:" . hlien("chambre"));
 	}
 
+	/** 
+	 * a_reservations
+	 *
+	 * @return void Liste des réservations d'une chambre en fonction de la clé id de GET
+	 */
 	function a_reservations()
 	{
 		checkAllow('admin');

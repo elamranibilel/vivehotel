@@ -19,12 +19,25 @@ class Reservation extends Table
 	];
 
 
+	/**
+	 * __construct
+	 *
+	 * @return void construit un modèle de la 
+	 * table réservation qui a pour clé primaire "res_id"
+	 */
 	public function __construct()
 	{
 		parent::__construct("reservation", "res_id");
 	}
 
-	public function selectAll(): array // supprimer
+
+	/**
+	 * selectAll
+	 *
+	 * @return array retourne l'ensemble des enregistrements de la table réservation 
+	 * avec des informations supplémentaires
+	 */
+	public function selectAll(): array
 	{
 		$sql = 'SELECT res_id, res_date_creation, res_date_debut,
 		res_date_fin, res_etat,
@@ -41,6 +54,13 @@ class Reservation extends Table
 		return $result->fetchAll();
 	}
 
+
+	/**
+	 * select
+	 *
+	 * @param  mixed $id Clé primaire d'une réservation
+	 * @return array retourne l'enregistrement de la table réservation ayant la clé primaire $id
+	 */
 	public function select(int $id): array
 	{
 		$sql = 'SELECT * FROM reservation, client, hotel
@@ -53,6 +73,12 @@ class Reservation extends Table
 		return $stmt->fetch();
 	}
 
+	/**
+	 * reservationsCha
+	 *
+	 * @param  mixed $idChambre clé primaire de l'enregistremnt d'une chambre en base de données
+	 * @return array Récupère tous les enregistrements de réservations de la chambre $idChambre
+	 */
 	public function reservationsCha(int $idChambre): array
 	{
 		$sql = 'SELECT res_id, res_date_creation, res_date_debut,
@@ -63,7 +89,7 @@ class Reservation extends Table
 		AND res_chambre = :chambre
 		AND res_client = cli_id
 		AND res_chambre = cha_id
-		ORDER BY res_date_debut DESC'; 
+		ORDER BY res_date_debut DESC';
 		// ordonner par date de création de la réservation
 		$stmt = self::$link->prepare($sql);
 		$stmt->bindValue(':chambre', $idChambre, PDO::PARAM_INT);
@@ -71,7 +97,13 @@ class Reservation extends Table
 		return $stmt->fetchAll();
 	}
 
-	public function reservationsClient($cli_id): array
+	/**
+	 * reservationsClient
+	 *
+	 * @param int $idChambre clé primaire de l'enregistremnt d'une chambre en base de données
+	 * @return array Récupère tous les enregistrements de réservations ddu client $cli_id
+	 */
+	public function reservationsClient(int $cli_id): array
 	{
 		$sql = "SELECT * 
 		FROM reservation, client, hotel, chambre
@@ -87,6 +119,14 @@ class Reservation extends Table
 		return $stmt->fetchAll();
 	}
 
+
+
+	/**
+	 * resHotel
+	 *
+	 * @param  int $hot_id Clé primaire d'un enregistrement de la table "hôtel"
+	 * @return array Ensemble des enregistrements de réservations faites dans l'hôtel $hot_id
+	 */
 	public function resHotel(int $hot_id): array
 	{
 		$sql = "SELECT * 
@@ -104,6 +144,12 @@ class Reservation extends Table
 	}
 
 
+	/**
+	 * reservationServices
+	 *
+	 * @param  int $res_id Clé primaire d'un enregistrement de la table "réservation"
+	 * @return array ensemble des enregistrements de services que la réservation a prises
+	 */
 	public function reservationServices(int $res_id): array
 	{
 		$sql = "SELECT ser_nom, com_id, com_quantite, com_reservation
@@ -117,6 +163,12 @@ class Reservation extends Table
 		return $stmt->fetchAll();
 	}
 
+	/**
+	 * aDoublons
+	 *
+	 * @param  array $data Tableau associatif qui est l'entrée d'une réservation
+	 * @return array Retourne l'ensemble dess réservations qui sont incompatibles avec $data en dates, hôtel 
+	 */
 	public function aDoublons(array $data)
 	{
 

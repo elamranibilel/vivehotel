@@ -7,6 +7,12 @@ Controleur associé à une table (implémente le CRUD)
 class Ctr_client extends Ctr_controleur implements I_crud
 {
 
+	/**
+	 * __construct
+	 *
+	 * @param string $action nom de l'action appelé dans le constructeur
+	 * @return void Lance la méthode a_{$action}
+	 */
 	public function __construct($action)
 	{
 		parent::__construct("client", $action);
@@ -14,6 +20,11 @@ class Ctr_client extends Ctr_controleur implements I_crud
 		$this->$a();
 	}
 
+	/**
+	 * a_index
+	 *
+	 * @return void lance la page d'index de la liste des clients
+	 */
 	function a_index()
 	{
 		checkAllow('admin');
@@ -22,7 +33,11 @@ class Ctr_client extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	//$_GET["id"] : id de l'enregistrement
+	/**
+	 * a_index
+	 *
+	 * @return void lance la page d'édition d'un client ayant pour identifiant $_GET['id']
+	 */
 	function a_edit()
 	{
 		checkAllow('admin');
@@ -37,7 +52,12 @@ class Ctr_client extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	//$_POST
+
+	/**
+	 * a_save
+	 *
+	 * @return void Lance la page de sauvegarde d'un client
+	 */
 	function a_save()
 	{
 		checkAllow('admin');
@@ -54,7 +74,11 @@ class Ctr_client extends Ctr_controleur implements I_crud
 
 
 
-	//param GET id 
+	/**
+	 * a_delete
+	 *
+	 * @return void Suppression d'un enregistrement de la table client ayant le paramètre $_GET['id']
+	 */
 	function a_delete()
 	{
 		checkAllow('admin');

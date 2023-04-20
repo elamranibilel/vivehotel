@@ -5,11 +5,24 @@ Classe créé par le générateur.
  */
 class Proposer extends Table
 {
+	/**
+	 * __construct
+	 *
+	 * @return void
+	 */
 	public function __construct()
 	{
 		parent::__construct("proposer", "pro_id");
 	}
 
+
+	/**
+	 * selectHotService
+	 *
+	 * @param  int $hotel clé primaire de l'hôtel
+	 * @param  int $service clé étrangère d'un hôtel
+	 * @return array retourne tous les entrées des hôtels ayant un service
+	 */
 	static public function selectHotService(int $hotel, int $service): array
 	{
 		$sql = "SELECT hot_nom, ser_nom FROM proposer, services, hotel 
@@ -27,8 +40,8 @@ class Proposer extends Table
 	/**
 	 * select
 	 *
-	 * @param  mixed $id
-	 * @return void
+	 * @param int  $id clé primaire d'un enregistrement de la table "proposer"
+	 * @return array enregistreemnt correspond à la clé $id ou alors tabmeau vide
 	 */
 	function select(int $id)
 	{

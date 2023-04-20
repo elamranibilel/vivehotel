@@ -7,6 +7,12 @@ Controleur associé à une table (implémente le CRUD)
 class Ctr_personnel extends Ctr_controleur implements I_crud
 {
 
+	/**
+	 * __construct
+	 *
+	 * @param  mixed $action
+	 * @return void 
+	 */
 	public function __construct($action)
 	{
 		parent::__construct("personnel", $action);
@@ -14,6 +20,11 @@ class Ctr_personnel extends Ctr_controleur implements I_crud
 		$this->$a();
 	}
 
+	/**
+	 * a_index
+	 *
+	 * @return void Liste de tous les enregistrements des membres du personnel 
+	 */
 	function a_index()
 	{
 		checkallow('admin');
@@ -22,7 +33,12 @@ class Ctr_personnel extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	//$_GET["id"] : id de l'enregistrement
+
+	/**
+	 * a_edit
+	 *
+	 * @return void Page d'édition d'un membre du personnel
+	 */
 	function a_edit()
 	{
 		checkallow('admin');
@@ -37,7 +53,12 @@ class Ctr_personnel extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	//$_POST
+
+	/**
+	 * a_save
+	 *
+	 * @return void Page de sauvegarde d'un membre du personnel
+	 */
 	function a_save()
 	{
 		checkallow('admin');
@@ -54,9 +75,11 @@ class Ctr_personnel extends Ctr_controleur implements I_crud
 		header("location:" . hlien("personnel"));
 	}
 
-
-
-	//param GET id 
+	/**
+	 * a_delete
+	 *
+	 * @return void Page de suppression d'un membre du personnel
+	 */
 	function a_delete()
 	{
 		checkallow('admin');

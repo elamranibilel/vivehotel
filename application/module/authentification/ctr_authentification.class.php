@@ -1,7 +1,12 @@
 <?php
 class Ctr_authentification extends Ctr_controleur
 {
-
+    /**
+     * __construct
+     *
+     * @param string $action nom de l'action appelé dans le constructeur
+     * @return void Lance l'action a_$action en tant que page web
+     */
     public function __construct($action)
     {
         parent::__construct("authentification", $action);
@@ -9,6 +14,11 @@ class Ctr_authentification extends Ctr_controleur
         $this->$a();
     }
 
+    /**
+     * a_inscription
+     *
+     * @return void Page d'inscription au site
+     */
     public function a_inscription()
     {
         extract($_POST);
@@ -57,6 +67,11 @@ class Ctr_authentification extends Ctr_controleur
         }
     }
 
+    /**
+     * a_connexion
+     *
+     * @return void Page de connexion pour les membres inscrits
+     */
     public function a_connexion()
     {
         if (isset($_SESSION["cli_id"])) {
@@ -98,6 +113,11 @@ class Ctr_authentification extends Ctr_controleur
         }
     }
 
+    /**
+     * a_deconnexion
+     *
+     * @return void Page de déconnexion pour les membres inscrits
+     */
     public function a_deconnexion()
     {
         $_SESSION = [];
@@ -105,10 +125,11 @@ class Ctr_authentification extends Ctr_controleur
         header("location:" . hlien("_default"));
     }
 
-
-
-
-
+    /**
+     * a_connexion_personnel
+     *
+     * @return void Page de connexion du personnel
+     */
     public function a_connexion_personnel()
     {
         array_map('trim', $_POST);

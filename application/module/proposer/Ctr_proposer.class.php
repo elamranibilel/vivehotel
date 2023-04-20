@@ -14,6 +14,11 @@ class Ctr_proposer extends Ctr_controleur implements I_crud
 		$this->$a();
 	}
 
+	/**
+	 * a_index
+	 *
+	 * @return void
+	 */
 	function a_index()
 	{
 		$u = new Proposer();

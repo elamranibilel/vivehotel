@@ -14,6 +14,11 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 		$this->$a();
 	}
 
+	/**
+	 * a_index
+	 *
+	 * @return void Page d'index indiquant la liste des hôtels
+	 */
 	function a_index()
 	{
 		checkallow('admin');
@@ -22,7 +27,12 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	//$_GET["id"] : id de l'enregistrement
+
+	/**
+	 * a_edit
+	 *
+	 * @return void Permet de modifier un enregistrement d'un hôtel dans la base de données
+	 */
 	function a_edit()
 	{
 		checkallow('admin');
@@ -36,7 +46,13 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	//$_POST
+
+	/**
+	 * a_save
+	 *
+	 * @return void Permet de savuegarder ou éditer l'enregistrement d'un hôtel 
+	 * dans la base de données
+	 */
 	function a_save()
 	{
 		checkallow('admin');
@@ -51,6 +67,11 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 		header("location:" . hlien("hotel"));
 	}
 
+	/**
+	 * a_delete
+	 *
+	 * @return void Permet de supprimer un enregistrement d'hôtel dans la base de données
+	 */
 	function a_delete()
 	{
 		checkallow('admin');
@@ -61,6 +82,13 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 		}
 		header("location:" . hlien("hotel"));
 	}
+
+
+	/**
+	 * a_services
+	 *
+	 * @return void Cette action lsite les services d'un hôtel passé en paramètre GET
+	 */
 	function a_services()
 	{
 		checkallow('admin');
@@ -73,6 +101,11 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
+	/**
+	 * a_services_edit
+	 *
+	 * @return void Page permettant d'éditer un service d'un hôtel
+	 */
 	function a_services_edit()
 	{
 		checkallow('admin');
@@ -86,6 +119,11 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
+	/**
+	 * a_services_save
+	 *
+	 * @return void Page permettant de modifier/supprimer le serveice d'un hôtel
+	 */
 	function a_services_save()
 	{
 		checkallow('admin');
@@ -113,6 +151,11 @@ class Ctr_hotel extends Ctr_controleur implements I_crud
 		}
 	}
 
+	/**
+	 * a_statistiques
+	 *
+	 * @return void Affiche les statistiques d'un hôtel précis
+	 */
 	function a_statistiques()
 	{
 		checkallow('admin');
