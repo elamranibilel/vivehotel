@@ -17,7 +17,7 @@ class Ctr_proposer extends Ctr_controleur implements I_crud
 	/**
 	 * a_index
 	 *
-	 * @return void
+	 * @return void Page d'index de la liste des porpositions (page à bloquer)
 	 */
 	function a_index()
 	{
@@ -26,7 +26,12 @@ class Ctr_proposer extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	//$_GET["id"] : id de l'enregistrement
+
+	/**
+	 * a_edit
+	 *
+	 * @return void Page d'édition d'un service proposé dans un hôtel (à supprimer)
+	 */
 	function a_edit()
 	{
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
@@ -40,7 +45,12 @@ class Ctr_proposer extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	//$_POST
+
+	/**
+	 * a_save
+	 *
+	 * @return void Action de la page de savuegarde d'un service dans un hôtel (à supprimer)
+	 */
 	function a_save()
 	{
 		if (isset($_POST["btSubmit"])) {
@@ -56,7 +66,12 @@ class Ctr_proposer extends Ctr_controleur implements I_crud
 
 
 
-	//param GET id 
+	/**
+	 * a_delete
+	 *
+	 * @return void Action de la page de suppression d'une proposition de service dans un
+	 * hôtel
+	 */
 	function a_delete()
 	{
 		if (isset($_GET["id"])) {

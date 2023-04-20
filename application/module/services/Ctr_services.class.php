@@ -14,6 +14,11 @@ class Ctr_services extends Ctr_controleur implements I_crud
 		$this->$a();
 	}
 
+	/**
+	 * a_index
+	 *
+	 * @return void Page listant tous les services pouvant être proposés par les hôtels
+	 */
 	function a_index()
 	{
 		$u = new Services();
@@ -21,7 +26,12 @@ class Ctr_services extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	//$_GET["id"] : id de l'enregistrement
+
+	/**
+	 * a_edit
+	 *
+	 * @return void Page d'édition la propriétés d'un service (nom)
+	 */
 	function a_edit()
 	{
 		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
@@ -35,7 +45,12 @@ class Ctr_services extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	//$_POST
+
+	/**
+	 * a_save
+	 *
+	 * @return void Page de sauvegarde ou modification d'un service, directement en BDD
+	 */
 	function a_save()
 	{
 		if (isset($_POST["btSubmit"])) {
@@ -51,7 +66,11 @@ class Ctr_services extends Ctr_controleur implements I_crud
 
 
 
-	//param GET id 
+	/**
+	 * a_delete
+	 *
+	 * @return void Page de suppression d'un service
+	 */
 	function a_delete()
 	{
 		if (isset($_GET["id"])) {
@@ -61,5 +80,4 @@ class Ctr_services extends Ctr_controleur implements I_crud
 		}
 		header("location:" . hlien("services"));
 	}
-
 }

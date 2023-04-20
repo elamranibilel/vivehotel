@@ -14,6 +14,12 @@ class Ctr_tarifer extends Ctr_controleur implements I_crud
 		$this->$a();
 	}
 
+	/**
+	 * a_index
+	 *
+	 * @return void Page listant l'ensemble des tarifs, 
+	 * éditables par appel ajax sur des cellules d'un tableau
+	 */
 	function a_index()
 	{
 		checkAllow('admin');
@@ -40,10 +46,14 @@ class Ctr_tarifer extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	/* 
-	* Traitement de la modification de la grille tarifaire
-	* Reçoit un appel AJAX de modification
-	*/
+
+	/**
+	 * a_ajax
+	 *
+	 * @return void Page qui reçoit le traitement
+	 * d'une requête AJAX visant à modifier un tarif spécifique
+	 * entré par l'utilisateur dans un élément éditable
+	 */
 	function a_ajax()
 	{
 		checkAllow('admin');
@@ -63,30 +73,18 @@ class Ctr_tarifer extends Ctr_controleur implements I_crud
 		$tarif->save($infosPrix);
 	}
 
-	//$_GET["id"] : id de l'enregistrement
+	// Pas d'action de modification des tarifs
 	function a_edit()
 	{
-		checkAllow('admin');
-		$id = isset($_GET["id"]) ? $_GET["id"] : 0;
-		$u = new Tarifer();
-		if ($id > 0)
-			$row = $u->select($id);
-		else
-			$row = $u->emptyRecord();
-
-		extract($row);
-		require $this->gabarit;
 	}
 
-	// Pas de fonction de sauvegarde des tarifs
+	// Pas d'action de sauvegarde des tarifs
 	function a_save()
 	{
-		header("location:" . hlien("tarifer"));
 	}
 
-	// Pas de fonction de suppression de tarifs
+	// Pas d'action de suppression de tarifs
 	function a_delete()
 	{
-		header("location:" . hlien("tarifer"));
 	}
 }

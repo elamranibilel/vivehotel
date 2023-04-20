@@ -14,6 +14,11 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		$this->$a();
 	}
 
+	/**
+	 * a_index
+	 *
+	 * @return void Page d'index de la liste des réservations d'un hôtel
+	 */
 	function a_index()
 	{
 		checkallow('admin');
@@ -22,6 +27,11 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
+	/**
+	 * a_hotel
+	 *
+	 * @return void Liste les réservation d'un hôtel spécifique
+	 */
 	function a_hotel()
 	{
 		checkallow('admin');
@@ -41,7 +51,12 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 	}
 
 
-	//$_GET["id"] : id de l'enregistrement
+
+	/**
+	 * a_edit
+	 *
+	 * @return void Page d'édition d'une réservation, en fonction de son identifiant
+	 */
 	function a_edit()
 	{
 		checkallow('admin');
@@ -59,7 +74,11 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
-	//$_POST
+	/**
+	 * a_save
+	 *
+	 * @return void Page de sauvegarde d'un enregistreemnt "Réservation"
+	 */
 	function a_save()
 	{
 		checkallow('admin');
@@ -93,9 +112,11 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		header("location:" . hlien("reservation", "edit", "id", $_POST['res_id']));
 	}
 
-
-
-	//param GET id 
+	/**
+	 * a_delete
+	 *
+	 * @return void Page de suppression d'une réservation, en fonction de son identifiant
+	 */
 	function a_delete()
 	{
 		checkallow('admin');
@@ -107,6 +128,11 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		header("location:" . hlien("reservation"));
 	}
 
+	/**
+	 * a_client
+	 *
+	 * @return void Page listant les réservations d'un client
+	 */
 	function a_client()
 	{
 		checkallow('admin');
@@ -122,6 +148,11 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
+	/**
+	 * a_save_res
+	 *
+	 * @return void Nouvelle page de sauvegarde de réservation : à modifier
+	 */
 	function a_save_res()
 	{
 		checkallow('admin');
@@ -129,6 +160,11 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 			header('Location: ' . hlien('client'));
 	}
 
+	/**
+	 * a_services
+	 *
+	 * @return void Liste les services d'une réservaition
+	 */
 	function a_services()
 	{
 		checkallow('admin');
@@ -140,6 +176,11 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
+	/**
+	 * a_services_edit
+	 *
+	 * @return void Editer des attributs d'un service d'une réservation (prix)
+	 */
 	function a_services_edit()
 	{
 		checkallow('admin');
@@ -163,6 +204,11 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
+	/**
+	 * a_services_save
+	 *
+	 * @return void Sauvegarder un nouveau service pour une réservation
+	 */
 	function a_services_save()
 	{
 		checkallow('admin');
@@ -185,6 +231,11 @@ class Ctr_reservation extends Ctr_controleur implements I_crud
 		require $this->gabarit;
 	}
 
+	/**
+	 * a_services_delete
+	 *
+	 * @return void Page de suppresion d'un enregistrement d'un service d'un hôtel
+	 */
 	function a_services_delete()
 	{
 		checkallow('admin');
